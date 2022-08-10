@@ -1,5 +1,8 @@
-import {ChangeEvent, MouseEvent, useState} from "react"
+import styled from "@emotion/styled";
+import {ChangeEvent, MouseEvent, useEffect, useState} from "react"
 import {Button} from "./Button";
+import {FormNotification} from "./FormNotification";
+
 
 //Data definitions
 const currency = {
@@ -7,22 +10,91 @@ const currency = {
 		cost: '60,38',
 		symbol: '$',
 	},
-	rub: {
-		cost: '-',
-		symbol: '₽',
-	},
 	cny: {
 		cost: '8,95',
 		symbol: '¥',
+	},
+	rub: {
+		cost: '-',
+		symbol: '₽',
 	}
 }
 
-const cities = ['Москва', 'Владивосток', 'Омск']
+const cities = ['Москва', 'Крым', 'Омск']
 
 function typedKeys<T>(o: T): (keyof T)[] {
 	// type cast should be safe because that's what really Object.keys() does
 	return Object.keys(o) as (keyof T)[];
 }
+
+
+//Styles definitions
+const SForm = styled.form`
+	position: relative;
+	display: flex;
+	justify-items: center;
+	align-items: end;
+	margin-top: 48px;
+	max-width: 700px;
+`
+const SLabel = styled.label`
+	font-family: 'Roboto';
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 15px;
+	color: #B7B7B7;
+	display: inline-block;
+	margin-bottom: 16px;
+`
+const SInputWrapper = styled.div`
+	background-color: #FFFFFF;
+	min-width: 135px;
+	min-height: 67px;
+	display: flex;
+`
+const SButtonWrapper = styled.div`
+	margin-left: 12px;
+`
+const SFormElement = styled.div`
+
+`
+const SInput = styled.input`
+	text-align: center;
+	flex: 1;
+	font-family: 'Roboto';
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 15px;
+	color: #606F7A;
+	display: inline-block;
+	background: url('/divider_input.png') right center no-repeat;
+`
+const SInputDisabled = styled.input`
+	text-align: center;
+	font-family: 'Roboto';
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 15px;
+	background-color: #FFFFFF;
+	flex: 1;
+	color: #B7B7B7;
+`
+const SSelect = styled.select`
+	font-family: 'Roboto';
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 15px;
+	width: 100%;
+	text-align: center;
+	color: #606F7A;
+	background: url('/divider_input.png'), url('/mark_input.png'); right center no-repeat;
+	background-position: right center, 100px center;
+	background-repeat: no-repeat, no-repeat;
+	}
+`
+
+
+
 
 const Form = () => {
 
@@ -31,7 +103,15 @@ const Form = () => {
 	const [currentCurrency, setCurrentCurrency] = useState('USD')
 	const [cost, setCost] = useState('60,38')
 
-	const [isEnable, setIsEnable] = useState(true)
+	const [isDisable, setIsDisable] = useState(true)
+
+	useEffect(() => {
+		if (from.trim().length === 0) {
+			setIsDisable(true)
+		} else {
+			setIsDisable(false)
+		}
+	}, [from])
 
 	const fromChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setFrom(e.target.value)
@@ -51,15 +131,16 @@ const Form = () => {
 
 	const handleSubmit = (e: MouseEvent) => {
 		e.preventDefault()
+		alert('Submit!')
 	}
 
 	return (
 		<>
-			<form action="">
-				<div>
-					<label htmlFor="from">Откуда</label>
-					<div>
-						<input
+			<SForm action="">
+				<SFormElement>
+					<SLabel htmlFor="from">Откуда</SLabel>
+					<SInputWrapper>
+						<SInput
 							type="text"
 							name="from"
 							id="from"
@@ -67,70 +148,86 @@ const Form = () => {
 							value={from}
 							onChange={fromChangeHandler}
 						/>
-					</div>
-				</div>
-				<div>
-					<label htmlFor="to">Куда</label>
-					<div>
-						<select
+					</SInputWrapper>
+				</SFormElement>
+				<SFormElement>
+					<SLabel htmlFor="to">Куда</SLabel>
+					<SInputWrapper>
+						<SSelect
 							name="to"
 							id="to"
 							value={to}
 							onChange={toChangeHandler}
 						>
 							{cities.map((el, index) => <option key={index} value={el}>{el}</option>)}
-						</select>
-					</div>
-				</div>
-				<div>
-					<label htmlFor="currency">Валюта</label>
-					<div>
-						<select
+						</SSelect>
+					</SInputWrapper>
+				</SFormElement>
+				<SFormElement>
+					<SLabel htmlFor="currency">Валюта</SLabel>
+
+					<SInputWrapper>
+						<SSelect
 							name="currency"
 							id="currency"
 							value={currentCurrency}
 							onChange={currencyChangeHandler}
 						>
 							{Object.keys(currency).map((el, index) => <option key={index} value={el.toUpperCase()}>{el.toUpperCase()}</option>)}
-						</select>
-					</div>
-				</div>
+						</SSelect>
+					</SInputWrapper>
+				</SFormElement>
 
-				<div>
-					<label htmlFor="cost">Курс</label>
-					<div>
-						<input
+				<SFormElement>
+					<SLabel htmlFor="cost">Курс</SLabel>
+					{!isDisable && <FormNotification
+						content="Теперь нажмите на кнопку “Далее”"
+						arrow="down"
+						top="-25px"
+						right="-107px"
+					/>}
+					<SInputWrapper>
+						<SInputDisabled
 							name="cost"
 							id="cost"
 							value={cost}
 							disabled />
-					</div>
-				</div>
+					</SInputWrapper>
+				</SFormElement>
 
-				<Button
-				width="163px"
-				height="67px"
-				color="white"
-				bgc="#5DAAFF"
-				icon="arrow"
-					mq={true}
-					disabled={isEnable}
-					type='submit'
-					onClick={handleSubmit}
-					content='Далее'
-				/>
-				<Button
-					width="335px"
-					height="55px"
-					color="white"
-					mq={false}
-					bgc="#5DAAFF"
-					disabled={isEnable}
-					type='submit'
-					onClick={handleSubmit}
-					content='Выбрать мебель'
-				/>
-			</form>
+				<SButtonWrapper>
+					<Button
+						width="163px"
+						height="67px"
+						color="white"
+						bgc="#5DAAFF"
+						icon="arrow"
+						mq={true}
+						bs={true}
+						disabled={isDisable}
+						type='submit'
+						onClick={handleSubmit}
+						content='Далее'
+					/>
+					<Button
+						width="335px"
+						height="55px"
+						color="white"
+						mq={false}
+						bgc="#5DAAFF"
+						disabled={isDisable}
+						type='submit'
+						onClick={handleSubmit}
+						content='Выбрать мебель'
+					/>
+				</SButtonWrapper>
+				{isDisable && <FormNotification
+					content="Для начала заполните поля выше"
+					top="130px"
+					arrow="up"
+				/>}
+			</SForm>
+			
 		</>
 	)
 }
