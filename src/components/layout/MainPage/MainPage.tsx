@@ -1,5 +1,7 @@
 import {Header} from '../../common/Header'
 import styled from '@emotion/styled'
+import React from 'react'
+import Form from '../../common/Form'
 
 const MainPage = () => {
 	const StyledWrapper = styled.div`
@@ -36,12 +38,15 @@ const MainPage = () => {
 		}
 	`
 
+
 	return (
 		<StyledWrapper>
 			<Header />
 			<StyledMain>
-				<StyledArticle>Рассчитайте<br />
-					стоимость доставки из Китая</StyledArticle>
+				<StyledArticle>
+					Рассчитайте<br />стоимость доставки из Китая
+				</StyledArticle>
+				<Form/>
 			</StyledMain>
 		</StyledWrapper>
 	)

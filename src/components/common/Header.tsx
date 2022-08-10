@@ -13,6 +13,18 @@ export const Header = () => {
 		height: 40px;
 	`
 
+	const StyledBurger = styled.button`
+	display: none;
+	@media (max-width: 1200px) {
+		display: block;
+		width: 22px;
+		height: 20px;
+		border: none;
+		background: url("/menu_burger.png");
+	}
+	`
+
+
 	return (
 		<StyledHeader>
 			<StyledImg src="/baykal_logo.png" alt="logo" />
@@ -21,10 +33,12 @@ export const Header = () => {
 				height={'45px'}
 				color={'#606F7A'}
 				bgc={'white'}
+				type='button'
 				content='Связаться'
 				bs={true}
 				mq={true}
 				/>
+			<StyledBurger/>
 		</StyledHeader>
 	);
 };
