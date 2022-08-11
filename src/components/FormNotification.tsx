@@ -25,6 +25,9 @@ export const FormNotification = ({top = 'none', right = 'none',arrow = 'none', c
 		align-items: center;
 		top: ${top};
 		right: ${right};
+		@media (max-width: 1200px) {
+			display: none;
+		}
 	`
 	const SIconWrapper = styled.span`
 		margin-left: 13px;

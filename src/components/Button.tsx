@@ -8,6 +8,7 @@ interface ButtonProps {
 	font?: string
 	bgc?: string
 	content?: string
+	select?: boolean
 	bs?: boolean
 	mq?: boolean
 	disabled?: boolean
@@ -21,7 +22,7 @@ export const Button = (props: ButtonProps) => {
 	const {width, height, weight = '600',
 	font = 'OpenSans', color, bgc,
 	content, bs, mq, disabled = false,
-	icon = 'none', ...restProps} = props
+	icon = 'none', select = false, ...restProps} = props
 	
 	const boxShaddow = bs ? '0px 4px 40px rgba(0, 0, 0, 0.15)' : 'none';
 	const StyledButton = styled.button`
@@ -44,16 +45,18 @@ export const Button = (props: ButtonProps) => {
 	margin-top: 5px;
 	`
 
+	const buttonText = select ? 'Сохранить' : content
+
 	return (
 		<>
 			<StyledButton
 				disabled={disabled}
 				{...restProps}>
-				{content}
-				{icon === 'arrow' && <IconWrapper>
+				{buttonText}
+				{icon === 'arrow' && !select && <IconWrapper>
 					<img src="/arrow_button.png" alt="arrow" />
 				</IconWrapper>}
-				{icon === 'plus' && <IconWrapper>
+				{icon === 'plus' && !select && <IconWrapper>
 					<img src="/plus_button.png" alt="plus" />
 				</IconWrapper>}
 			</StyledButton>
