@@ -61,3 +61,25 @@ select {
   select::-ms-expand {
 	display: none;
   }
+  /* !Стили для оформления скроллбара */
+  /* W3C standard
+   сейчас только для Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: blue #8C8C8C26;
+	;
+  }
+  
+  /* для Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+	height: 12px;
+	width: 4px;
+  }
+  *::-webkit-scrollbar-track {
+	background: #8C8C8C26;
+  }
+  *::-webkit-scrollbar-thumb {
+	background-color: #BDCBE0;
+	border-radius: 5px;
+	border: 2px solid #8C8C8C26;
+  }

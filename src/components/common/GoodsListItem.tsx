@@ -1,10 +1,19 @@
 import styled from "@emotion/styled";
-import {MouseEvent} from "react";
+import {Dispatch, MouseEvent, SetStateAction, useEffect, useState} from "react";
 import {Button} from "./Button";
 
 interface GoodsListItemProps {
-	img: string;
-	description: string;
+	img: string
+	description: string
+	setSelectedGoodData: 
+	Dispatch<SetStateAction<{id?: number, img: string; description: string; value: number; netto: number; brutto: number; cost: number; }>>
+	setIsChoosedToogle: Dispatch<SetStateAction<boolean>>
+	value: number
+	netto: number
+	brutto: number
+	cost: number
+	disabled: boolean
+	id?: number
 }
 const Good = styled.section`
 	display: flex;
@@ -23,22 +32,47 @@ const Good = styled.section`
 		line-height: 17px;
 		color: #606F7A;
 	}
+	img {
+		width: 120px;
+		height: 97px;
+	}
 `;
-export const GoodsListItem = ({img, description}: GoodsListItemProps) => {
+export const GoodsListItem = ({id, img, description, value, netto, brutto,
+	cost, setSelectedGoodData, setIsChoosedToogle, disabled}: GoodsListItemProps) => {
+
+	const [isChoosedLocal, setIsChoosedLocal] = useState(false)
+
+	useEffect(() => {
+		if (!disabled) {
+			setIsChoosedLocal(false)
+		}
+	}, [disabled])
 
 	const onClickHandle = (e: MouseEvent) => {
-		e.preventDefault();
+		e.preventDefault()
+		setSelectedGoodData({id, img, description, value, netto, brutto, cost})
+		setIsChoosedLocal(prev => !prev)
+		setIsChoosedToogle(prev => !prev)
 	};
 
 	return (
 		<Good>
 			<img src={img} alt="item" />
 			<p>{description}</p>
-			<Button
+			{!isChoosedLocal ?
+				<Button
 				content='Выбрать'
+				disabled={disabled}
 				property='choose'
 				type='button'
 				onClick={onClickHandle} />
+			:
+				<Button
+				content='Выбрано'
+				disabled={disabled}
+				property='choose'
+				type='button'
+				onClick={onClickHandle} />}
 		</Good>
 	);
 };

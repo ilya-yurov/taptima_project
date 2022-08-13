@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import {ChangeEvent, MouseEvent, useState} from "react"
+import {ChangeEvent, Dispatch, MouseEvent, SetStateAction, useState} from "react"
 import {Button} from "./Button"
 
 const SearchForm = styled.form`
@@ -26,9 +26,11 @@ const SearchInput = styled.input`
 interface SearchBarProps {
 	placeholder: string
 	buttonText: string
+	disabled: boolean
+	setFilter: Dispatch<SetStateAction<string>>
 }
 
-const SearchBar = ({placeholder, buttonText}:SearchBarProps) => {
+const SearchBar = ({placeholder, buttonText, disabled, setFilter}:SearchBarProps) => {
 
 	const [value, setValue] = useState('')
 
@@ -38,17 +40,22 @@ const SearchBar = ({placeholder, buttonText}:SearchBarProps) => {
 
 	let handleSubmit = (e: MouseEvent) => {
 		e.preventDefault()
+		setFilter(value)
 	}
 
 	return (
 		<SearchForm action="">
 			<SearchInput
+				disabled={disabled}
+				name="search"
+				id="search"
 				type="text"
 				placeholder={placeholder}
 				value={value}
 				onChange={onChangeHandler}
 			/>
 			<Button
+				disabled={disabled}
 				content={buttonText}
 				property='search'
 				type='submit'

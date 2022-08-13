@@ -50,7 +50,8 @@ export const RightArticle = styled.article`
 `;
 export const SearchBarWrapper = styled.article`
 	grid-area: searchBar;
-	align-self: center;
+	align-self: flex-start;;
+	
 `;
 export const GoodsList = styled.article`
 	grid-area: goodsList;
@@ -62,5 +63,4 @@ export const GoodsList = styled.article`
 export const ChoosedElements = styled.article`
 	grid-area: choosedElements;
 	border: 1px solid black;
-	
-`;
+`

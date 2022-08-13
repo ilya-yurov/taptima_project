@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {IFormData, updateMainForm, updateHeaderToogle} from "../../redux/mainFormReducer";
 import {Button} from "./Button";
 import {FormNotification} from "./FormNotification";
-import {MainForm, MainInput, MainInputWrapper, MainSelect, SButtonWrapper, SelectForm, SelectInputWrapper, SelectPageInput, SelectPageSelect, SelectPageSelectCurrency, SFormElement, SInputDisabled, SLabel} from "../styles/Form.styled";
+import {MainForm, MainInput, MainInputWrapper, MainSelect, SButtonWrapper, SelectForm, SelectInputWrapper, SelectPageInput, SelectPageSelect, SelectPageSelectCurrency, SFormElement, SInputDisabled, SLabel} from "./styles/Form.styled";
 import {currencyData, cities} from "../../api/data";
 
 

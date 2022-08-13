@@ -62,6 +62,7 @@ const HeaderNotification = styled.article`
 
 const SIconWrapper = styled.span`
 margin-left: 13px;
+margin-right: 13px;
 `
 const SHeaderIconWrapper = styled.span`
 margin-left: 13px;
