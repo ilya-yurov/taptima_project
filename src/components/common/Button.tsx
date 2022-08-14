@@ -124,6 +124,23 @@ const ChooseButton = styled.button`
 	margin-right: 27px;
 	`
 
+	const AddButton = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3px;
+	font-family: 'OpenSans';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 17px;
+	width: 206px;
+	height: 55px;
+	color: white;
+	background-color: #5DAAFF;
+	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+	`
+
 interface ButtonProps {
 	disabled?: boolean
 	type?: 'submit' | 'reset' | 'button'
@@ -158,6 +175,8 @@ export const Button = (props: ButtonProps) => {
 		CurrentButton = SearchButton
 	else if (property === 'choose')
 		CurrentButton = ChooseButton
+	else if (property === 'add')
+		CurrentButton = AddButton
 	return (
 		<>
 			<CurrentButton

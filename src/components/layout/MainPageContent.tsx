@@ -1,4 +1,4 @@
-import Header from './Header';
+import Header from '../common/Header';
 import React from 'react';
 import Form from '../common/Form';
 import {SWrapper, SMain, SArticle} from './styles/MainPageContent.styled';

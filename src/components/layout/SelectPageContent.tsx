@@ -1,15 +1,15 @@
 import SearchBar from "../common/SearchBar"
-import Header from "./Header"
+import Header from "../common/Header"
 import {GoodsListItem} from "../common/GoodsListItem"
 import {
 	SWrapper, HeaderWrapper, LeftArticle,
 	RightArticle, SearchBarWrapper, GoodsList, ChoosedElements
-} from "./styles/SelectPage.styled"
+} from "./styles/SelectPageContent.styled"
 import styled from "@emotion/styled"
 import {useState} from "react"
 import {IGoodsData, deleteBasketElement, addBasketElement} from "../../redux/goodsDataReducer"
 import {connect} from "react-redux"
-import NumberSelection from "./NumberSelection"
+import NumberSelection from "../common/NumberSelection"
 
 const NotChoosedP = styled.p`
 	display: flex;
@@ -40,43 +40,44 @@ const SelectPageContent = ({goodsData, basket, deleteBasketElement, addBasketEle
 
 	const [isChoosedToogle, setIsChoosedToogle] = useState(false)
 	const [filter, setFilter] = useState('')
-	const [selectedGoodData, setSelectedGoodData] = useState({img:'', description:'', value:0, netto:0, brutto:0, cost:0})
-	return (<SWrapper>
-		<HeaderWrapper>
-			<Header select={true} />
-		</HeaderWrapper>
-		<LeftArticle>
-			Выберите мебель, которую нужно<br />перевезти
-		</LeftArticle>
-		<RightArticle>
-			Затем заполните следующие<br />поля выбранного элемента:
-		</RightArticle>
-		<SearchBarWrapper>
-			<SearchBar setFilter={setFilter} disabled={isChoosedToogle} placeholder="Введите название" buttonText="Поиск" />
-		</SearchBarWrapper>
-		<GoodsList>
-			{goodsData?.filter((obj) => obj.description.toLowerCase().includes(filter.toLowerCase())).map((el, index) => 
-			<GoodsListItem
-			setSelectedGoodData={setSelectedGoodData} setIsChoosedToogle={setIsChoosedToogle}
-			key={index} id={el.id} img={el.img} description={el.description}
-			value={el.value} netto={el.netto} brutto={el.brutto} cost={el.cost}
-			disabled={isChoosedToogle}
-			/>)}
-		</GoodsList>
-		<ChoosedElements>
-			{!isChoosedToogle &&
-				<NotChoosedP>
-					Вы не выбрали пока ни одного элемента.
-				</NotChoosedP>}
-			{isChoosedToogle &&
-			<NumberSelection
-			basket={basket} goodData={selectedGoodData}
-			setIsChoosedToogle={setIsChoosedToogle}
-			deleteBasketElement={deleteBasketElement}
-			addBasketElement={addBasketElement}
-			/>}
-		</ChoosedElements>
-	</SWrapper>);
+	const [selectedGoodData, setSelectedGoodData] = useState({img: '', description: '', value: 0, netto: 0, brutto: 0, cost: 0})
+	return (
+		<SWrapper>
+			<HeaderWrapper>
+				<Header isNote={true} select={true} />
+			</HeaderWrapper>
+			<LeftArticle>
+				Выберите мебель, которую нужно<br />перевезти
+			</LeftArticle>
+			<RightArticle>
+				Затем заполните следующие<br />поля выбранного элемента:
+			</RightArticle>
+			<SearchBarWrapper>
+				<SearchBar setFilter={setFilter} disabled={isChoosedToogle} placeholder="Введите название" buttonText="Поиск" />
+			</SearchBarWrapper>
+			<GoodsList>
+				{goodsData?.filter((obj) => obj.description.toLowerCase().includes(filter.toLowerCase())).map((el, index) =>
+					<GoodsListItem
+						setSelectedGoodData={setSelectedGoodData} setIsChoosedToogle={setIsChoosedToogle}
+						key={index} id={el.id} img={el.img} description={el.description}
+						value={el.value} netto={el.netto} brutto={el.brutto} cost={el.cost}
+						disabled={isChoosedToogle}
+					/>)}
+			</GoodsList>
+			<ChoosedElements>
+				{!isChoosedToogle &&
+					<NotChoosedP>
+						Вы не выбрали пока ни одного элемента.
+					</NotChoosedP>}
+				{isChoosedToogle &&
+					<NumberSelection
+						basket={basket} goodData={selectedGoodData}
+						setIsChoosedToogle={setIsChoosedToogle}
+						deleteBasketElement={deleteBasketElement}
+						addBasketElement={addBasketElement}
+					/>}
+			</ChoosedElements>
+		</SWrapper>);
 }
 
 

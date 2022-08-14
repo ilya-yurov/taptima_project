@@ -4,13 +4,10 @@ import {abort} from "process";
 import {ChangeEvent, Dispatch, MouseEvent, SetStateAction, useEffect, useState} from "react";
 import {IGoodsData} from "../../redux/goodsDataReducer";
 import {clearLetters, isValidFieldCheck, setClear, setCorrectValue} from "../../utils/helpers";
-import {Button} from "../common/Button";
+import {Button} from "./Button";
+import {ButtonSection, ButtonsWrapper, FormWrapper, NumberSelectionWrapper, NumberWrapper, SelectionHeader} from "./styles/NumberSelection.styled";
 
-const NumberSelectionWrapper = styled.article`
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
-`
+
 
 interface NumberSelectionProps {
 	goodData: IGoodsData
@@ -37,11 +34,6 @@ const NumberSelection = ({
 	useEffect(() => {
 		recalculateQuantity()
 	}, [count])
-
-	/* const onCountChange = (e: ChangeEvent<HTMLInputElement>) => {
-		if (typeof (e.target.value) === 'number')
-			setCount(e.target.value)
-	} */
 
 	const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
 		let value: string = setCorrectValue(e.target.value, 'м3')
@@ -90,7 +82,6 @@ const NumberSelection = ({
 			curNetto = parseInt(basketMatch?.netto) + parseInt(clearLetters(netto))
 			curBrutto = parseInt(basketMatch?.brutto) + parseInt(clearLetters(brutto))
 			curCost = parseInt(basketMatch?.cost) + parseInt(clearLetters(cost))
-			debugger;
 			deleteBasketElement(basket.findIndex((el => el.id === goodData.id)))
 			addBasketElement({
 				id: goodData.id,
@@ -120,16 +111,27 @@ const NumberSelection = ({
 
 	return (
 		<NumberSelectionWrapper>
-			<header>
-				<img src={goodData.img} alt="good photo" />
+			<SelectionHeader>
+				<img src={goodData.img} alt="good's photo" />
 				<p>{goodData.description}</p>
-			</header>
-			<section>
-				<button type='button' onClick={onReduce}> - </button>
-				<p>{count}</p>
-				<button type='button' onClick={onIncrease}> + </button>
-			</section>
-			<form action="">
+			</SelectionHeader>
+			<NumberWrapper>
+				<header>Кол-во:</header>
+				<ButtonSection>
+					<p>
+						<button type='button' onClick={onReduce}>
+							<img src="/minus_selection.svg" alt="minus" />
+						</button>
+					</p>
+					<p>{count}</p>
+					<p>
+						<button type='button' onClick={onIncrease}>
+							<img src="plus_selection.svg" alt="plus" />
+						</button>
+					</p>
+				</ButtonSection>
+			</NumberWrapper>
+			<FormWrapper action="">
 				<input
 					name="value"
 					id="value"
@@ -163,19 +165,21 @@ const NumberSelection = ({
 					value={cost}
 					onChange={onCostChange}
 				/>
-				<Button
-					content={'Сбросить'}
-					property='search'
-					type='reset'
-					onClick={onReset}
-				/>
-				<Button
-					content={'Добавить'}
-					property='search'
-					type='submit'
-					onClick={handleSubmit}
-				/>
-			</form>
+				<ButtonsWrapper>
+					<Button
+						content={'Сбросить'}
+						property='add'
+						type='reset'
+						onClick={onReset}
+					/>
+					<Button
+						content={'Добавить'}
+						property='add'
+						type='submit'
+						onClick={handleSubmit}
+					/>
+				</ButtonsWrapper>
+			</FormWrapper>
 		</NumberSelectionWrapper>);
 };
 

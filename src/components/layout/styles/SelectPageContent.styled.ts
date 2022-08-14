@@ -62,5 +62,4 @@ export const GoodsList = styled.article`
 `;
 export const ChoosedElements = styled.article`
 	grid-area: choosedElements;
-	border: 1px solid black;
 `

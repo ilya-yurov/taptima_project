@@ -1,7 +1,3 @@
-/* 
-const UPDATE_FORM = 'UPDATE_FORM'
-const UPDATE_TOOGLE = 'UPDATE_TOOGLE' */
-
 const DELETE_ELEMENT = 'DELETE_ELEMENT'
 const ADD_ELEMENT = 'ADD_ELEMENT'
 
@@ -87,7 +83,25 @@ const initialState: IInitialState = {
 			netto: 20,
 			brutto: 22,
 			cost: 8000
-		}
+		},
+		{
+			id: 7,
+			img: '/shelf.jpeg',
+			description: 'Стеллаж',
+			value: 1,
+			netto: 22,
+			brutto: 26,
+			cost: 8500
+		},
+		{
+			id: 8,
+			img: '/stool.png',
+			description: 'Табурет',
+			value: 1,
+			netto: 5,
+			brutto: 7,
+			cost: 2500
+		},
 	],
 	basket: []
 }
@@ -95,7 +109,6 @@ const initialState: IInitialState = {
 const goodsDataReducer = (state = initialState, action: Action) => {
 	switch (action.type) {
 		case DELETE_ELEMENT:
-			debugger;
 			return {
 				...state,
 				...state.basket.splice(action.payload, 1)

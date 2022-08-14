@@ -1,20 +1,21 @@
 import {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {IFormData, updateMainForm, updateHeaderToogle} from '../../redux/mainFormReducer';
-import {Button} from '../common/Button';
-import Form from '../common/Form';
-import {FormNotification} from '../common/FormNotification';
+import {Button} from './Button';
+import Form from './Form';
+import {FormNotification} from './FormNotification';
 import {SHeader, StyledImg, SelectHeaderWrapper, SelectHeader, FormWrapper, StyledBurger} from './styles/Header.styled';
 
 interface HeaderProps {
 	select?: boolean
+	isNote?: boolean
 	formData: IFormData
 	headerActiveToogle: boolean
 	updateHeaderToogle: (status: boolean) => ({type: string, payload: boolean})
 }
 
 
-const Header = ({select, formData, headerActiveToogle, updateHeaderToogle}: HeaderProps) => {
+const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNote}: HeaderProps) => {
 
 	const {from, to, currency, cost, sign} = formData
 
@@ -33,7 +34,7 @@ const Header = ({select, formData, headerActiveToogle, updateHeaderToogle}: Head
 				<StyledImg src="/baykal_logo.png" alt="logo" />
 				{select && !headerActiveToogle &&
 					<SelectHeaderWrapper>
-						{note &&
+						{note && isNote &&
 							<FormNotification
 								onClick={() => setNote(false)}
 								content="Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения"
