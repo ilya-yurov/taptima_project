@@ -2,11 +2,11 @@ import SearchBar from "../common/SearchBar"
 import Header from "../common/Header"
 import {GoodsListItem} from "../common/GoodsListItem"
 import {
-	SWrapper, HeaderWrapper, LeftArticle,
-	RightArticle, SearchBarWrapper, GoodsList, ChoosedElements
+	SWrapperDesktop, HeaderWrapper, LeftArticle,
+	RightArticle, SearchBarWrapper, GoodsListDesktop, ChoosedElementsDesktop, SWrapperMobile, GoodsListMobile, ChoosedElementsMobile
 } from "./styles/SelectPageContent.styled"
 import styled from "@emotion/styled"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import {IGoodsData, deleteBasketElement, addBasketElement} from "../../redux/goodsDataReducer"
 import {connect} from "react-redux"
 import NumberSelection from "../common/NumberSelection"
@@ -41,43 +41,69 @@ const SelectPageContent = ({goodsData, basket, deleteBasketElement, addBasketEle
 	const [isChoosedToogle, setIsChoosedToogle] = useState(false)
 	const [filter, setFilter] = useState('')
 	const [selectedGoodData, setSelectedGoodData] = useState({img: '', description: '', value: 0, netto: 0, brutto: 0, cost: 0})
+	const [mobile, setMobile] = useState<boolean>()
+
+	let CurrentWrapper: typeof SWrapperDesktop = SWrapperDesktop
+	let CurrentGoodsList: typeof GoodsListDesktop = GoodsListDesktop
+	let CurrentChoosedElements: typeof ChoosedElementsDesktop = ChoosedElementsDesktop
+
+	useEffect(() => {
+		window.innerWidth <= 1200 ? setMobile(true) : setMobile(false)
+		window.addEventListener('resize', () => {
+			window.innerWidth <= 1200 ?
+				setMobile(true) :
+				setMobile(false)
+		})
+	}, [])
+
+	if (mobile) {
+		CurrentWrapper = SWrapperMobile
+		CurrentGoodsList = GoodsListMobile
+		CurrentChoosedElements = ChoosedElementsMobile
+	}
+
+
 	return (
-		<SWrapper>
+		<CurrentWrapper>
 			<HeaderWrapper>
 				<Header isNote={true} select={true} />
 			</HeaderWrapper>
-			<LeftArticle>
+			{!mobile && <LeftArticle>
 				Выберите мебель, которую нужно<br />перевезти
-			</LeftArticle>
-			<RightArticle>
+			</LeftArticle>}
+			{!mobile && <RightArticle>
 				Затем заполните следующие<br />поля выбранного элемента:
-			</RightArticle>
-			<SearchBarWrapper>
-				<SearchBar setFilter={setFilter} disabled={isChoosedToogle} placeholder="Введите название" buttonText="Поиск" />
-			</SearchBarWrapper>
-			<GoodsList>
-				{goodsData?.filter((obj) => obj.description.toLowerCase().includes(filter.toLowerCase())).map((el, index) =>
-					<GoodsListItem
-						setSelectedGoodData={setSelectedGoodData} setIsChoosedToogle={setIsChoosedToogle}
-						key={index} id={el.id} img={el.img} description={el.description}
-						value={el.value} netto={el.netto} brutto={el.brutto} cost={el.cost}
-						disabled={isChoosedToogle}
-					/>)}
-			</GoodsList>
-			<ChoosedElements>
-				{!isChoosedToogle &&
-					<NotChoosedP>
-						Вы не выбрали пока ни одного элемента.
-					</NotChoosedP>}
-				{isChoosedToogle &&
-					<NumberSelection
-						basket={basket} goodData={selectedGoodData}
-						setIsChoosedToogle={setIsChoosedToogle}
-						deleteBasketElement={deleteBasketElement}
-						addBasketElement={addBasketElement}
-					/>}
-			</ChoosedElements>
-		</SWrapper>);
+			</RightArticle>}
+			{!mobile &&
+				<SearchBarWrapper>
+					<SearchBar setFilter={setFilter} disabled={isChoosedToogle} placeholder="Введите название" buttonText="Поиск" />
+				</SearchBarWrapper>}
+			{(!mobile || (mobile && !isChoosedToogle)) &&
+				<CurrentGoodsList>
+					{goodsData?.filter((obj) => obj.description.toLowerCase().includes(filter.toLowerCase())).map((el, index) =>
+						<GoodsListItem
+							setSelectedGoodData={setSelectedGoodData} setIsChoosedToogle={setIsChoosedToogle}
+							key={index} id={el.id} img={el.img} description={el.description}
+							value={el.value} netto={el.netto} brutto={el.brutto} cost={el.cost}
+							disabled={isChoosedToogle} mobile={mobile}
+						/>)}
+				</CurrentGoodsList>
+			}
+			{(!mobile || (mobile && isChoosedToogle)) &&
+				<CurrentChoosedElements>
+					{!isChoosedToogle &&
+						<NotChoosedP>
+							Вы не выбрали пока ни одного элемента.
+						</NotChoosedP>}
+					{isChoosedToogle &&
+						<NumberSelection
+							basket={basket} goodData={selectedGoodData}
+							setIsChoosedToogle={setIsChoosedToogle}
+							deleteBasketElement={deleteBasketElement}
+							addBasketElement={addBasketElement}
+						/>}
+				</CurrentChoosedElements>}
+		</CurrentWrapper>);
 }
 
 

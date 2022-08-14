@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const SWrapper = styled.div`
+export const SWrapperDesktop = styled.div`
 height: 100vh;
 padding: 49px 97px 85px 97px;
 font-size: 30px;
@@ -19,6 +19,13 @@ grid-template-areas:
 	background: none;
 	padding: 24px 20px 0px 20px;
 }
+`;
+export const SWrapperMobile = styled.div`
+	margin: 0px auto;
+	padding: 20px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 `;
 export const HeaderWrapper = styled.article`
 	grid-area: header;
@@ -53,13 +60,28 @@ export const SearchBarWrapper = styled.article`
 	align-self: flex-start;;
 	
 `;
-export const GoodsList = styled.article`
+export const GoodsListDesktop = styled.article`
 	grid-area: goodsList;
 	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 `;
-export const ChoosedElements = styled.article`
+export const GoodsListMobile = styled.article`
+	margin: 0px auto;
+	overflow-y: auto;
+	margin-top: 25px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	img {
+		width: 69px;
+		height: 48px;
+	}
+`;
+export const ChoosedElementsDesktop = styled.article`
+	grid-area: choosedElements;
+`
+export const ChoosedElementsMobile = styled.article`
 	grid-area: choosedElements;
 `

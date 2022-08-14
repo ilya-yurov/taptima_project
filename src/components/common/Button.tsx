@@ -140,6 +140,23 @@ const ChooseButton = styled.button`
 	background-color: #5DAAFF;
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
 	`
+	const AddButtonMobile = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 10px;
+	line-height: 10px;
+	min-width: 68px;
+	height: 30px;
+	color: white;
+	margin-right: 20px;
+	background-color: #5DAAFF;
+	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+	`
 
 interface ButtonProps {
 	disabled?: boolean
@@ -175,8 +192,10 @@ export const Button = (props: ButtonProps) => {
 		CurrentButton = SearchButton
 	else if (property === 'choose')
 		CurrentButton = ChooseButton
-	else if (property === 'add')
+	else if (property === 'add' && !mobile)
 		CurrentButton = AddButton
+	else if (property === 'add' && mobile)
+		CurrentButton = AddButtonMobile
 	return (
 		<>
 			<CurrentButton
