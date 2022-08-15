@@ -1,26 +1,33 @@
-import {useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {IFormData, updateMainForm, updateHeaderToogle} from '../../redux/mainFormReducer';
 import {Button} from './Button';
 import Form from './Form';
 import {FormNotification} from './FormNotification';
-import {SHeader, StyledImg, SelectHeaderWrapper, SelectHeader, FormWrapper, StyledBurger} from './styles/Header.styled';
+import SearchBar from './SearchBar';
+import {SHeader, StyledImgBaykal, StyledImgBack, SelectHeaderWrapper, SelectHeader, FormWrapper, StyledBurger} from './styles/Header.styled';
 
 interface HeaderProps {
 	select?: boolean
 	isNote?: boolean
+	mobile?: boolean
+	basket?: boolean
+	disabled?: boolean | any
+	setFilter?: Dispatch<SetStateAction<string>> | any
 	formData: IFormData
 	headerActiveToogle: boolean
 	updateHeaderToogle: (status: boolean) => ({type: string, payload: boolean})
 }
 
 
-const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNote}: HeaderProps) => {
+const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNote, mobile, setFilter, disabled, basket}: HeaderProps) => {
 
 	const {from, to, currency, cost, sign} = formData
 
 	const [hover, setHover] = useState(false)
 	const [note, setNote] = useState(true)
+	const router = useRouter()
 
 	useEffect(() => setHover(false), [headerActiveToogle])
 
@@ -28,10 +35,28 @@ const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNot
 		updateHeaderToogle(!headerActiveToogle)
 		setNote(false)
 	}
+
+	const onClickRedirectMobile = () => {
+		router.push({pathname: '/'})
+	}
+
 	return (
 		<>
 			<SHeader>
-				<StyledImg src="/baykal_logo.png" alt="logo" />
+				{!mobile && <StyledImgBaykal src="/baykal_logo.png" alt="logo" />}
+				{mobile && !basket &&
+				<button onClick={onClickRedirectMobile}>
+					<StyledImgBack src="/back_select_mobile.png" alt="logo" />
+				</button>}
+				{ mobile && basket && <SelectHeader>
+							<div>
+								<p>{from}</p>
+								<img src="/arrows/arrow_header.png" alt="logo" />
+								<p>{to + ','}</p>
+								<p>{hover ? currency : sign}</p>
+							</div>
+						</SelectHeader>}
+				{mobile && !disabled && !basket && <SearchBar setFilter={setFilter} disabled={disabled} mobile={mobile} placeholder="Поиск..."/>}
 				{select && !headerActiveToogle &&
 					<SelectHeaderWrapper>
 						{note && isNote &&
@@ -40,7 +65,7 @@ const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNot
 								content="Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения"
 								property="header"
 							/>}
-						<SelectHeader
+						{ !mobile && <SelectHeader
 							onMouseEnter={() => setHover(prev => !prev)}
 							onMouseLeave={() => setHover(prev => !prev)}
 							onClick={onClick}
@@ -50,10 +75,10 @@ const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNot
 							<p>{to + ','}</p>
 							<p>{hover ? currency : sign}</p>
 							{hover && <img src="/pen_header.png" alt="pen" />}
-						</SelectHeader>
+						</SelectHeader>}
 					</SelectHeaderWrapper>}
 
-				{select && headerActiveToogle &&
+				{select && headerActiveToogle && !mobile &&
 					<FormWrapper>
 						<Form select={select} />
 					</FormWrapper>

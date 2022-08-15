@@ -7,6 +7,10 @@ export const NumberSelectionWrapper = styled.article`
 	align-items: flex-start;
 	margin-left: 119px;
 	gap: 24px;
+	@media (max-width: 1200px) {
+		margin-left: 0px;
+		margin-top: 27px;
+	}
 `
 	export const SelectionHeader = styled.header`
 		display: flex;
@@ -27,6 +31,10 @@ export const NumberSelectionWrapper = styled.article`
 			color: #606F7A;
 			width: 100%;
 			text-align: center;
+		}
+		@media (max-width: 1200px) {
+			margin-left: 0px;
+			min-width: 334px;
 		}
 	`
 
@@ -97,10 +105,18 @@ export const NumberSelectionWrapper = styled.article`
 				&:disabled {
 					background-color: white;
 				}
+				@media (max-width: 1200px) {
+					margin-left: 0px;
+					min-width: 334px;
+				}
 			}
 	`
 	export const ButtonsWrapper = styled.section`
 		display: flex;
 		gap: 9px;
 		margin-top: 21px;
+		@media (max-width: 1200px) {
+			flex-direction: column;
+			flex-wrap: 1;
+		}
 	`

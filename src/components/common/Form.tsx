@@ -19,13 +19,14 @@ function typedKeys<T>(o: T): (keyof T)[] {
 interface FormProps {
 	formData: IFormData
 	select?: boolean
+	mobile?: boolean
 	headerActiveToogle: boolean
 	updateMainForm: (formData: IFormData) => ({type: string, payload: IFormData})
 	updateHeaderToogle: (status: boolean) => ({type: string, payload: boolean})
 }
 
 
-const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeaderToogle}: FormProps) => {
+const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeaderToogle, mobile}: FormProps) => {
 	const [from, setFrom] = useState(formData.from)
 	const [to, setTo] = useState(formData.to)
 	const [currency, setCurrency] = useState(formData.currency)
@@ -60,7 +61,6 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 		});
 	}
 
-	let onClick;
 	let mainHandleSubmit = (e: MouseEvent) => {
 		e.preventDefault()
 		updateMainForm({from, to, currency, cost, sign})
@@ -71,12 +71,7 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 		updateMainForm({from, to, currency, cost, sign})
 		updateHeaderToogle(!headerActiveToogle)
 	}
-
-	if (select) {
-		onClick = selectHandleSubmit
-	} else {
-		onClick = mainHandleSubmit
-	}
+	let onClick= mainHandleSubmit;
 
 	let CurrentSelect: typeof MainSelect = MainSelect
 	let CurrentInput: typeof MainInput = MainInput
@@ -87,6 +82,7 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 		CurrentInput = SelectPageInput
 		CurrentInputWrapper = SelectInputWrapper
 		CurrentForm = SelectForm
+		onClick = selectHandleSubmit
 	}
 
 	return (

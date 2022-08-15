@@ -28,7 +28,7 @@ type Action = IUpdateMainForm | IUpdateHeaderToogle
 
 const initialState: IInitialState = {
 	formData: {
-		from: 'Сызрань',
+		from: '',
 		to: 'Москва',
 		currency: 'USD',
 		cost: '60,38',

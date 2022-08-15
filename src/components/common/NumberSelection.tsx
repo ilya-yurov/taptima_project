@@ -13,28 +13,37 @@ interface NumberSelectionProps {
 	goodData: IGoodsData
 	setIsChoosedToogle: Dispatch<SetStateAction<boolean>>
 	basket: IGoodsData[]
+	mobile?: boolean
 	deleteBasketElement: (id: number) => ({type: string, payload: number})
 	addBasketElement: (newElement: IGoodsData) => ({type: string, payload: IGoodsData})
 }
 
 const NumberSelection = ({
 	goodData, setIsChoosedToogle, basket,
-	deleteBasketElement, addBasketElement}: NumberSelectionProps) => {
-
-		console.log(JSON.stringify(basket, null, 2))
+	deleteBasketElement, addBasketElement, mobile}: NumberSelectionProps) => {
 
 	const initGoodData = goodData
-	const [count, setCount] = useState(1)
+	const [count, setCount] = useState<any>('1')
 	const [value, setValue] = useState(goodData.value + ' м3')
 	const [netto, setNetto] = useState(goodData.netto + ' кг')
 	const [brutto, setBrutto] = useState(goodData.brutto + ' кг')
 	const [cost, setCost] = useState(goodData.cost + ' руб')
 	const router = useRouter()
 
+
+
 	useEffect(() => {
 		recalculateQuantity()
 	}, [count])
 
+	const onCountChange = (e: ChangeEvent<HTMLInputElement>) => {
+		let value: string = setCorrectValue(e.target.value, false)
+		if (Number(value) === 0)
+			setCount('')
+		else
+			setCount(value)
+
+	}
 	const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
 		let value: string = setCorrectValue(e.target.value, 'м3')
 		setValue(value)
@@ -52,6 +61,7 @@ const NumberSelection = ({
 	}
 
 	const recalculateQuantity = () => {
+
 		setValue(initGoodData.value*count + ' м3')
 		setNetto(initGoodData.netto*count + ' кг')
 		setBrutto(initGoodData.brutto*count + ' кг')
@@ -59,12 +69,12 @@ const NumberSelection = ({
 	}
 
 	const onReduce = () => {
-		if (count !== 1) {
+		if (count > 1) {
 			setCount(count - 1)
 		}
 	}
 	const onIncrease = () => {
-		setCount(count + 1)
+		setCount(Number(count) + 1)
 	}
 
 	let onReset = (e: MouseEvent) => {
@@ -77,7 +87,7 @@ const NumberSelection = ({
 		let basketMatch, curCount, curValue, curNetto, curBrutto, curCost
 		if (basket.some((el => el.id === goodData.id))) {
 			basketMatch = basket.find(el => el.id === goodData.id)
-			curCount = basketMatch?.count + count
+			curCount = parseInt(basketMatch?.count) + parseInt(count)
 			curValue = parseInt(basketMatch?.value) + parseInt(clearLetters(value))
 			curNetto = parseInt(basketMatch?.netto) + parseInt(clearLetters(netto))
 			curBrutto = parseInt(basketMatch?.brutto) + parseInt(clearLetters(brutto))
@@ -105,17 +115,19 @@ const NumberSelection = ({
 			setIsChoosedToogle(prev => !prev)
 			router.push({pathname: '/basket'})
 		}
-
-		//! передаем выбранные пизиции в стор
 	}
+
+	let isDisable
+	if (count === '' || value === '' || netto === '' || brutto === '' || cost === '')
+		isDisable = true
 
 	return (
 		<NumberSelectionWrapper>
-			<SelectionHeader>
+			<SelectionHeader> {/* //! Вот это для мобилки отличается */}
 				<img src={goodData.img} alt="good's photo" />
 				<p>{goodData.description}</p>
 			</SelectionHeader>
-			<NumberWrapper>
+			{!mobile && <NumberWrapper>
 				<header>Кол-во:</header>
 				<ButtonSection>
 					<p>
@@ -130,8 +142,17 @@ const NumberSelection = ({
 						</button>
 					</p>
 				</ButtonSection>
-			</NumberWrapper>
+			</NumberWrapper>}
 			<FormWrapper action="">
+				{mobile && 
+				<input
+					name="count"
+					id="value"
+					type="text"
+					placeholder={'Кол-во'}
+					value={count}
+					onChange={onCountChange}
+				/>}
 				<input
 					name="value"
 					id="value"
@@ -169,13 +190,16 @@ const NumberSelection = ({
 					<Button
 						content={'Сбросить'}
 						property='add'
+						mobile={mobile}
 						type='reset'
 						onClick={onReset}
 					/>
 					<Button
-						content={'Добавить'}
+						content={'Продолжить'}
 						property='add'
+						disabled={isDisable}
 						type='submit'
+						mobile={mobile}
 						onClick={handleSubmit}
 					/>
 				</ButtonsWrapper>

@@ -7,7 +7,7 @@ font-size: 30px;
 background: url("/mainpage_background.png") right bottom no-repeat;
 @media (max-width: 1200px) {
 	margin: 0px auto;
-	max-width: 380px;
+	width: 380px;
 	background: none;
 	padding: 24px 20px 0px 20px;
 }
@@ -29,6 +29,8 @@ margin-bottom: 48px;
 export const SMain = styled.main`
 margin-top: 156px;
 @media (max-width: 1200px) {
+	/* min-width: 380px; */
+	
 	display: flex;
 	flex-direction: column;
 	margin-top: 35px;

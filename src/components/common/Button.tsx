@@ -157,9 +157,44 @@ const ChooseButton = styled.button`
 	background-color: #5DAAFF;
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
 	`
+	const AddSelectButtonMobile = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3px;
+	font-family: 'OpenSans';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 17px;
+	width: 100%;
+	height: 55px;
+	color: white;
+	margin-right: 20px;
+	background-color: #5DAAFF;
+	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+	`
+	const AddBasketButtonMobile = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3px;
+	font-family: 'OpenSans';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 17px;
+	width: 164px;
+	height: 55px;
+	color: white;
+	margin-right: 20px;
+	background-color: #5DAAFF;
+	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+	`
 
 interface ButtonProps {
 	disabled?: boolean
+	basket?: boolean
 	type?: 'submit' | 'reset' | 'button'
 	onClick?: (e: React.MouseEvent<Element, MouseEvent>) => void
 	icon?: 'arrow' | 'plus' | 'none'
@@ -174,7 +209,7 @@ export const Button = (props: ButtonProps) => {
 
 	let {property, select = false, content,
 		disabled = false, icon = 'none',
-		mobile = false, ...restProps} = props
+		mobile = false, basket, ...restProps} = props
 
 	let CurrentButton: typeof StyledButtonWrapper = StyledButtonWrapper;
 	if (property === 'contact')
@@ -194,8 +229,13 @@ export const Button = (props: ButtonProps) => {
 		CurrentButton = ChooseButton
 	else if (property === 'add' && !mobile)
 		CurrentButton = AddButton
-	else if (property === 'add' && mobile)
+	else if (property === 'add' && mobile) {
 		CurrentButton = AddButtonMobile
+		if (content === 'Сбросить' || content === 'Продолжить')
+			CurrentButton = AddSelectButtonMobile
+		if (basket)
+			CurrentButton = AddBasketButtonMobile
+	}
 	return (
 		<>
 			<CurrentButton
@@ -205,7 +245,7 @@ export const Button = (props: ButtonProps) => {
 				{icon === 'arrow' && <IconWrapper>
 					<img src="/arrows/arrow_button.png" alt="arrow" />
 				</IconWrapper>}
-				{icon === 'plus' && <IconWrapper>
+				{icon === 'plus' && !mobile && <IconWrapper>
 					<img src="/plus_button.png" alt="plus" />
 				</IconWrapper>}
 			</CurrentButton>

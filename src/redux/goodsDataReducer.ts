@@ -32,15 +32,6 @@ const initialState: IInitialState = {
 	goodsData: [
 		{
 			id: 1,
-			img: '/sofa.png',
-			description: 'Диван-кровать, раскладывается',
-			value: 3,
-			netto: 75,
-			brutto: 85,
-			cost: 30000
-		},
-		{
-			id: 2,
 			img: '/bed.webp',
 			description: 'Кровать',
 			value: 1,
@@ -95,13 +86,22 @@ const initialState: IInitialState = {
 		},
 		{
 			id: 8,
+			img: '/sofa.png',
+			description: 'Диван-кровать, раскладывается',
+			value: 3,
+			netto: 75,
+			brutto: 85,
+			cost: 30000
+		},
+		{
+			id: 9,
 			img: '/stool.png',
 			description: 'Табурет',
 			value: 1,
 			netto: 5,
 			brutto: 7,
 			cost: 2500
-		},
+		}
 	],
 	basket: []
 }

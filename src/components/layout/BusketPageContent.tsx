@@ -15,10 +15,21 @@ export const BusketWrapper = styled.div`
 	display: grid;
 	grid-template-rows: 40px 135px 90px 1fr;
 	gap: 10px;
+	@media (max-width: 1200px) {
+		width: 375px;
+		margin: 0px auto;
+		padding: 24px 0px 0px 0px;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
 `
 
 export const HeaderWrapper = styled.header`
-	
+	@media (max-width: 1200px) {
+		padding: 0 20px;
+	}
 `
 
 export const BusketHeader = styled.header`
@@ -29,6 +40,16 @@ export const BusketHeader = styled.header`
 	font-size: 36px;
 	line-height: 36px;
 	color: #606F7A;
+	@media (max-width: 1200px) {
+		padding: 0 20px;
+		font-family: 'OpenSans';
+		align-self: flex-start;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 22px;
+		margin-bottom: 15px;
+		line-height: 20px;
+	}
 `
 
 export const SheetHeader = styled.header`
@@ -61,12 +82,18 @@ export const SheetHeader = styled.header`
 			border-bottom-left-radius: 5px;
 		}
 	}
+	@media (max-width: 1200px) {
+
+	}
 `
 
 export const GoodsListWrapper = styled.section`
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
+	@media (max-width: 1200px) {
+		gap: 10px;
+	}
 `
 
 export const NoGoodsWrapper = styled.div`
@@ -87,7 +114,16 @@ export const NoGoodsWrapper = styled.div`
 			font-size: 20px;
 			line-height: 30px;
 			color: #606F7A;
-			padding-right: d
+			p {
+				position: static;
+			}
+		}
+	}
+	@media (max-width: 1200px) {
+		padding: 24px 20px;
+		section {
+			margin-bottom: 280px;
+			text-align: center;
 		}
 	}
 `
@@ -96,6 +132,9 @@ export const NoAddButtonWrapper = styled.section`
 	position: absolute;
 	left: 80px;
 	top: 50px;
+	@media (max-width: 1200px) {
+		top: 70px;
+	}
 `
 export const AddButtonWrapper = styled.section`
 	position: absolute;
@@ -104,6 +143,14 @@ export const AddButtonWrapper = styled.section`
 	p {
 		display: flex;
 		gap: 12px;
+	}
+	@media (max-width: 1200px) {
+		position: fixed;
+		right: 0px;
+		bottom: 30px;
+		p{
+			flex-direction: row-reverse;
+		}
 	}
 `
 export const Plug = styled.div`
@@ -118,6 +165,16 @@ interface BusketPageContentProps {
 const BusketPageContent = ({basket, deleteBasketElement}: BusketPageContentProps) => {
 
 	const [renderTrigger, setRenderTrigger] = useState(false)
+	const [mobile, setMobile] = useState<boolean>()
+
+	useEffect(() => {
+		window.innerWidth <= 1200 ? setMobile(true) : setMobile(false)
+		window.addEventListener('resize', () => {
+			window.innerWidth <= 1200 ?
+				setMobile(true) :
+				setMobile(false)
+		})
+	}, [])
 	useEffect(() => { }, [renderTrigger])
 	const router = useRouter()
 
@@ -131,9 +188,10 @@ const BusketPageContent = ({basket, deleteBasketElement}: BusketPageContentProps
 				<>
 					<BusketWrapper>
 						<HeaderWrapper>
-							<Header select={true} />
+							<Header basket={true} mobile={mobile} select={true} />
 						</HeaderWrapper>
 						<BusketHeader>Добавленная мебель ({basket.length})</BusketHeader>
+						{!mobile &&
 						<SheetHeader>
 							<Plug></Plug>
 							<Plug></Plug>
@@ -143,10 +201,13 @@ const BusketPageContent = ({basket, deleteBasketElement}: BusketPageContentProps
 							<p>Общий объем, м3</p>
 							<p>Стоимость единицы</p>
 							<p>Удалить</p>
-						</SheetHeader>
+						</SheetHeader>}
+
 						<GoodsListWrapper>
-							{basket.map(el =>
+							{basket.map((el, index) =>
 								<BasketElement
+									key={index}
+									mobile={mobile}
 									currentBasketElement={el}
 									basket={basket} deleteBasketElement={deleteBasketElement}
 									setRenderTrigger={setRenderTrigger}
@@ -157,11 +218,15 @@ const BusketPageContent = ({basket, deleteBasketElement}: BusketPageContentProps
 											icon="plus"
 											type='button'
 											property='add'
+											mobile={mobile}
+											basket={true}
 											onClick={onAddClick}
 											content='Добавить'
 										/>
 										<Button
 											type='button'
+											basket={true}
+											mobile={mobile}
 											property='add'
 											content='Рассчитать'
 										/>
@@ -174,20 +239,28 @@ const BusketPageContent = ({basket, deleteBasketElement}: BusketPageContentProps
 				<>
 					<NoGoodsWrapper>
 						<HeaderWrapper>
-							<Header select={true} />
+							<Header basket={true} mobile={mobile} select={true} />
 						</HeaderWrapper>
 						<section>
 							<img src="/no_goods.png" alt="no goods" />
 							<p>
 								Вы не добавили ни одного элемента.
 								<NoAddButtonWrapper>
+									{mobile ?
+									<Button
+										type='button'
+										property='add'
+										onClick={onAddClick}
+										content='Добавить'
+									/>
+									:
 									<Button
 										icon="plus"
 										type='button'
 										property='add'
 										onClick={onAddClick}
 										content='Добавить'
-									/>
+									/>}
 								</NoAddButtonWrapper>
 							</p>
 						</section>

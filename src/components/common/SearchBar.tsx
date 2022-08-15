@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
-import {ChangeEvent, Dispatch, MouseEvent, SetStateAction, useState} from "react"
+import {ChangeEvent, Dispatch, MouseEvent, SetStateAction, useEffect, useState} from "react"
 import {Button} from "./Button"
+import {FormNotification} from "./FormNotification"
 
 const SearchForm = styled.form`
 display: flex;
@@ -20,28 +21,56 @@ const SearchInput = styled.input`
 	justify-content: flex-start;
 	margin-right: 8px;
 	padding: 19px;
+	@media (max-width: 1200px) {
+		max-height: 22px;
+		background: none;
+		box-shadow: none;
+		font-family: 'OpenSans';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 15px;
+		line-height: 15px;
+		color: #c2c3c4;
+		border-bottom: 1.5px solid #c2c3c4;
+		max-width: 204px;
+		padding: 0px 5px 7px 0px;
+		&::placeholder {
+			color: #c2c3c4;
+		}
+	}
 `
 
 
 interface SearchBarProps {
 	placeholder: string
-	buttonText: string
+	buttonText?: any
 	disabled: boolean
 	setFilter: Dispatch<SetStateAction<string>>
+	mobile?: boolean
 }
 
-const SearchBar = ({placeholder, buttonText, disabled, setFilter}:SearchBarProps) => {
+const SearchBar = ({placeholder, buttonText, disabled, setFilter, mobile}: SearchBarProps) => {
 
 	const [value, setValue] = useState('')
+	const [note, setNote] = useState(true)
+	useEffect(() => {
+		if (disabled) {
+			setNote(false)
+		}
+	}, [disabled])
 
 	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
+		if (mobile)
+			setFilter(e.target.value)
 	}
 
 	let handleSubmit = (e: MouseEvent) => {
 		e.preventDefault()
 		setFilter(value)
 	}
+
+
 
 	return (
 		<SearchForm action="">
@@ -54,13 +83,19 @@ const SearchBar = ({placeholder, buttonText, disabled, setFilter}:SearchBarProps
 				value={value}
 				onChange={onChangeHandler}
 			/>
-			<Button
-				disabled={disabled}
-				content={buttonText}
-				property='search'
-				type='submit'
-				onClick={handleSubmit}
-			/>
+			{!mobile &&
+				<Button
+					disabled={disabled}
+					content={buttonText}
+					property='search'
+					type='submit'
+					onClick={handleSubmit}
+				/>}
+			{note && 
+			<FormNotification
+				content="Введите название мебели в строку поиска или выберите мебель из предложенного списка"
+				property="search"
+			/>}
 		</SearchForm>
 	)
 }

@@ -66,17 +66,17 @@ const SelectPageContent = ({goodsData, basket, deleteBasketElement, addBasketEle
 	return (
 		<CurrentWrapper>
 			<HeaderWrapper>
-				<Header isNote={true} select={true} />
+				<Header setFilter={setFilter} disabled={isChoosedToogle} mobile={mobile} isNote={true} select={true} />
 			</HeaderWrapper>
 			{!mobile && <LeftArticle>
-				Выберите мебель, которую нужно<br />перевезти
+				Выберите мебель, которую<br />нужно перевезти
 			</LeftArticle>}
 			{!mobile && <RightArticle>
 				Затем заполните следующие<br />поля выбранного элемента:
 			</RightArticle>}
 			{!mobile &&
 				<SearchBarWrapper>
-					<SearchBar setFilter={setFilter} disabled={isChoosedToogle} placeholder="Введите название" buttonText="Поиск" />
+					<SearchBar mobile={mobile} setFilter={setFilter} disabled={isChoosedToogle} placeholder="Введите название" buttonText="Поиск" />
 				</SearchBarWrapper>}
 			{(!mobile || (mobile && !isChoosedToogle)) &&
 				<CurrentGoodsList>
@@ -95,12 +95,11 @@ const SelectPageContent = ({goodsData, basket, deleteBasketElement, addBasketEle
 						<NotChoosedP>
 							Вы не выбрали пока ни одного элемента.
 						</NotChoosedP>}
-					{isChoosedToogle &&
-						<NumberSelection
+						{isChoosedToogle && <NumberSelection
 							basket={basket} goodData={selectedGoodData}
 							setIsChoosedToogle={setIsChoosedToogle}
 							deleteBasketElement={deleteBasketElement}
-							addBasketElement={addBasketElement}
+							addBasketElement={addBasketElement} mobile={mobile}
 						/>}
 				</CurrentChoosedElements>}
 		</CurrentWrapper>);

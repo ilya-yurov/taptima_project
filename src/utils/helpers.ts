@@ -11,10 +11,10 @@ export const setClear = (string: string, substring: string) => {
 	return result
 }
 
-export const setCorrectValue = (string: string, substring: string) => {
+export const setCorrectValue = (string: string, substring?: any) => {
 	let currentValue:string = setClear(string, substring)
 	if (isValidFieldCheck(currentValue))
-		if (currentValue.length > 0)
+		if (currentValue.length > 0 && substring)
 			return (currentValue + ' ' + substring)
 		else
 			return (currentValue)

@@ -21,9 +21,11 @@ grid-template-areas:
 }
 `;
 export const SWrapperMobile = styled.div`
+
+	width: 375px;
 	margin: 0px auto;
-	padding: 20px;
-	height: 100vh;
+	padding: 24px 20px 0px 20px;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 `;
@@ -32,7 +34,8 @@ export const HeaderWrapper = styled.article`
 `;
 export const LeftArticle = styled.article`
 	grid-area: leftArticle;
-	align-self: center;
+	padding-top: 30px;
+	
 
 	font-family: 'OpenSans';
 	font-style: normal;
@@ -44,8 +47,10 @@ export const LeftArticle = styled.article`
 `;
 export const RightArticle = styled.article`
 	grid-area: rightArticle;
-	align-self: center;
 	justify-self: center;
+	padding-top: 30px;
+
+	
 
 	font-family: 'OpenSans';
 	font-style: normal;
@@ -68,9 +73,10 @@ export const GoodsListDesktop = styled.article`
 	gap: 4px;
 `;
 export const GoodsListMobile = styled.article`
-	margin: 0px auto;
+	/* margin: 0px auto; */
 	overflow-y: auto;
 	margin-top: 25px;
+	/* min-width: 375px; */
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
