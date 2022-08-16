@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {Dispatch, MouseEvent, SetStateAction, useEffect, useState} from "react";
 import {Button} from "./Button";
+import {GoodDesktop, GoodMobile} from "./styles/GoodListItem.styled";
 
 interface GoodsListItemProps {
 	img: string
@@ -16,51 +16,6 @@ interface GoodsListItemProps {
 	id?: number
 	mobile?: boolean
 }
-const GoodDesktop = styled.section`
-	display: flex;
-	align-items: center;
-	height: 99px;
-	background: #F8FAFF;
-	border: 1px solid #E2E4EA;
-	border-radius: 3px;
-	p {
-		flex-grow: 1;
-		margin-left: 36px;
-		font-family: 'OpenSans';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 17px;
-		line-height: 17px;
-		color: #606F7A;
-	}
-	img {
-		width: 120px;
-		height: 97px;
-	}
-`;
-const GoodMobile = styled.section`
-	justify-content: center;
-	display: flex;
-	align-items: center;
-	height: 60px;
-	background: #F8FAFF;
-	border: 1px solid #E2E4EA;
-	border-radius: 3px;
-	p {
-		flex-grow: 1;
-		margin-left: 36px;
-		font-family: 'OpenSans';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 12px;
-		line-height: 12px;
-		color: #606F7A;
-	}
-	img {
-		width: 69px;
-		height: 48px;
-	}
-`;
 export const GoodsListItem = ({id, img, description, value, netto, brutto,
 	cost, setSelectedGoodData, setIsChoosedToogle, disabled, mobile}: GoodsListItemProps) => {
 
@@ -86,7 +41,6 @@ export const GoodsListItem = ({id, img, description, value, netto, brutto,
 		<GoodCurrent>
 			<img src={img} alt="item" />
 			<p>{description}</p>
-
 			{mobile ?
 				<Button
 					content='Добавить'
@@ -107,6 +61,7 @@ export const GoodsListItem = ({id, img, description, value, netto, brutto,
 							onClick={onClickHandle} />
 						:
 						<Button
+							choosed={true}
 							content='Выбрано'
 							disabled={disabled}
 							property='choose'
@@ -114,7 +69,6 @@ export const GoodsListItem = ({id, img, description, value, netto, brutto,
 							onClick={onClickHandle} />}
 				</>
 			}
-
 		</GoodCurrent>
 	);
 };

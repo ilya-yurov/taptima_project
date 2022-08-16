@@ -1,5 +1,9 @@
 const DELETE_ELEMENT = 'DELETE_ELEMENT'
 const ADD_ELEMENT = 'ADD_ELEMENT'
+const SET_COUNT = 'SET_COUNT'
+const SET_NETTO = 'SET_NETTO'
+const SET_BRUTTO = 'SET_BRUTTO'
+const SET_VALUE = 'SET_VALUE'
 
 export interface IGoodsData {
 	id?: number
@@ -12,6 +16,11 @@ export interface IGoodsData {
 	value: any
 }
 
+export interface ISetPayload {
+	index: number
+	data: any
+}
+
 interface IInitialState {
 	goodsData: IGoodsData[]
 	basket: IGoodsData[]
@@ -21,18 +30,39 @@ interface IDeleteBasketElement {
 	type: 'DELETE_ELEMENT'
 	payload: number
 }
+
 interface IAddBasketElement {
 	type: 'ADD_ELEMENT'
 	payload: IGoodsData
 }
 
-type Action = IDeleteBasketElement | IAddBasketElement
+interface ISetCountGlobal {
+	type: 'SET_COUNT'
+	payload: ISetPayload
+}
+
+interface ISetNettoGlobal {
+	type: 'SET_NETTO'
+	payload: ISetPayload
+}
+
+interface ISetBruttoGlobal {
+	type: 'SET_BRUTTO'
+	payload: ISetPayload
+}
+
+interface ISetValueGlobal {
+	type: 'SET_VALUE'
+	payload: ISetPayload
+}
+
+type Action = IDeleteBasketElement | IAddBasketElement | ISetCountGlobal | ISetNettoGlobal | ISetBruttoGlobal | ISetValueGlobal
 
 const initialState: IInitialState = {
 	goodsData: [
 		{
 			id: 1,
-			img: '/bed.webp',
+			img: '/other/bed.webp',
 			description: 'Кровать',
 			value: 1,
 			netto: 80,
@@ -41,7 +71,7 @@ const initialState: IInitialState = {
 		},
 		{
 			id: 3,
-			img: '/chair.jpg',
+			img: '/other/chair.jpg',
 			description: 'Стул',
 			value: 1,
 			netto: 10,
@@ -50,7 +80,7 @@ const initialState: IInitialState = {
 		},
 		{
 			id: 4,
-			img: '/table.jpg',
+			img: '/other/table.jpg',
 			description: 'Стол',
 			value: 2,
 			netto: 16,
@@ -59,7 +89,7 @@ const initialState: IInitialState = {
 		},
 		{
 			id: 5,
-			img: '/wardrobe.webp',
+			img: '/other/wardrobe.webp',
 			description: 'Шкаф',
 			value: 2,
 			netto: 50,
@@ -68,7 +98,7 @@ const initialState: IInitialState = {
 		},
 		{
 			id: 6,
-			img: '/pedestal.jpg',
+			img: '/other/pedestal.jpg',
 			description: 'Тумба',
 			value: 1,
 			netto: 20,
@@ -77,7 +107,7 @@ const initialState: IInitialState = {
 		},
 		{
 			id: 7,
-			img: '/shelf.jpeg',
+			img: '/other/shelf.jpeg',
 			description: 'Стеллаж',
 			value: 1,
 			netto: 22,
@@ -86,7 +116,7 @@ const initialState: IInitialState = {
 		},
 		{
 			id: 8,
-			img: '/sofa.png',
+			img: '/other/sofa.png',
 			description: 'Диван-кровать, раскладывается',
 			value: 3,
 			netto: 75,
@@ -95,7 +125,7 @@ const initialState: IInitialState = {
 		},
 		{
 			id: 9,
-			img: '/stool.png',
+			img: '/other/stool.png',
 			description: 'Табурет',
 			value: 1,
 			netto: 5,
@@ -118,6 +148,30 @@ const goodsDataReducer = (state = initialState, action: Action) => {
 				...state,
 				basket: [...state.basket, action.payload]
 			}
+		case SET_COUNT:
+			return {
+				...state,
+				...state.basket,
+				...state.basket[action.payload.index].count = action.payload.data
+			}
+		case SET_NETTO:
+			return {
+				...state,
+				...state.basket,
+				...state.basket[action.payload.index].netto = action.payload.data
+			}
+		case SET_BRUTTO:
+			return {
+				...state,
+				...state.basket,
+				...state.basket[action.payload.index].brutto = action.payload.data
+			}
+		case SET_VALUE:
+			return {
+				...state,
+				...state.basket,
+				...state.basket[action.payload.index].value = action.payload.data
+			}
 		default:
 			return state
 	}
@@ -125,5 +179,9 @@ const goodsDataReducer = (state = initialState, action: Action) => {
 
 export const deleteBasketElement = (id: number) => ({type: DELETE_ELEMENT, payload: id})
 export const addBasketElement = (newElement: IGoodsData) => ({type: ADD_ELEMENT, payload: newElement})
+export const setCountGlobal = (index: number, data: any) => ({type: SET_COUNT, payload: {index, data}})
+export const setNettoGlobal = (index: number, data: any) => ({type: SET_NETTO, payload: {index, data}})
+export const setBruttoGlobal = (index: number, data: any) => ({type: SET_BRUTTO, payload: {index, data}})
+export const setValueGlobal = (index: number, data: any) => ({type: SET_VALUE, payload: {index, data}})
 
-export default goodsDataReducer;
+export default goodsDataReducer

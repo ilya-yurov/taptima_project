@@ -95,7 +95,7 @@ line-height: 15px;
 width: 100%;
 text-align: center;
 color: #606F7A;
-background: url('/divider_input.png'), url('/mark_input.png'); right center no-repeat;
+background: url('/other/divider_input.png'), url('/other/mark_input.png'); right center no-repeat;
 background-position: right center, 100px center;
 background-repeat: no-repeat, no-repeat;
 @media (max-width: 1200px) {

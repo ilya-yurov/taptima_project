@@ -3,40 +3,30 @@ import Header from "../common/Header"
 import {GoodsListItem} from "../common/GoodsListItem"
 import {
 	SWrapperDesktop, HeaderWrapper, LeftArticle,
-	RightArticle, SearchBarWrapper, GoodsListDesktop, ChoosedElementsDesktop, SWrapperMobile, GoodsListMobile, ChoosedElementsMobile
+	RightArticle, SearchBarWrapper, GoodsListDesktop, ChoosedElementsDesktop, SWrapperMobile,
+	GoodsListMobile, ChoosedElementsMobile, NotChoosedP
 } from "./styles/SelectPageContent.styled"
-import styled from "@emotion/styled"
 import {useEffect, useState} from "react"
-import {IGoodsData, deleteBasketElement, addBasketElement} from "../../redux/goodsDataReducer"
+import {
+	IGoodsData, deleteBasketElement, addBasketElement, setCountGlobal, ISetPayload,
+	setNettoGlobal, setBruttoGlobal, setValueGlobal
+} from "../../redux/goodsDataReducer"
 import {connect} from "react-redux"
 import NumberSelection from "../common/NumberSelection"
-
-const NotChoosedP = styled.p`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 140px;
-
-	font-family: 'OpenSans';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 23px;
-	line-height: 23px;
-	color: #606F7A;
-`
-
-
 
 interface SelectPageContentProps {
 	goodsData: IGoodsData[]
 	basket: IGoodsData[]
+	setCountGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
+	setNettoGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
+	setBruttoGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
+	setValueGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
 	deleteBasketElement: (id: number) => ({type: string, payload: number})
 	addBasketElement: (newElement: IGoodsData) => ({type: string, payload: IGoodsData})
 }
 
-
-
-const SelectPageContent = ({goodsData, basket, deleteBasketElement, addBasketElement}: SelectPageContentProps) => {
+const SelectPageContent = ({goodsData, basket, deleteBasketElement, addBasketElement, setCountGlobal,
+	setNettoGlobal, setBruttoGlobal, setValueGlobal}: SelectPageContentProps) => {
 
 	const [isChoosedToogle, setIsChoosedToogle] = useState(false)
 	const [filter, setFilter] = useState('')
@@ -61,7 +51,6 @@ const SelectPageContent = ({goodsData, basket, deleteBasketElement, addBasketEle
 		CurrentGoodsList = GoodsListMobile
 		CurrentChoosedElements = ChoosedElementsMobile
 	}
-
 
 	return (
 		<CurrentWrapper>
@@ -95,20 +84,27 @@ const SelectPageContent = ({goodsData, basket, deleteBasketElement, addBasketEle
 						<NotChoosedP>
 							Вы не выбрали пока ни одного элемента.
 						</NotChoosedP>}
-						{isChoosedToogle && <NumberSelection
-							basket={basket} goodData={selectedGoodData}
-							setIsChoosedToogle={setIsChoosedToogle}
-							deleteBasketElement={deleteBasketElement}
-							addBasketElement={addBasketElement} mobile={mobile}
-						/>}
+					{isChoosedToogle && <NumberSelection
+						basket={basket} goodData={selectedGoodData}
+						isChoosedToogle={isChoosedToogle}
+						setIsChoosedToogle={setIsChoosedToogle}
+						deleteBasketElement={deleteBasketElement}
+						addBasketElement={addBasketElement} mobile={mobile}
+						setCountGlobal={setCountGlobal}
+						setNettoGlobal={setNettoGlobal}
+						setBruttoGlobal={setBruttoGlobal}
+						setValueGlobal={setValueGlobal}
+					/>}
 				</CurrentChoosedElements>}
-		</CurrentWrapper>);
+		</CurrentWrapper>)
 }
-
 
 const mapStateToProps = (state: any) => ({
 	goodsData: state.goodsData.goodsData,
 	basket: state.goodsData.basket
 })
 
-export default connect(mapStateToProps, {deleteBasketElement, addBasketElement})(SelectPageContent)
+export default connect(mapStateToProps, {
+	deleteBasketElement, addBasketElement, setCountGlobal,
+	setNettoGlobal, setBruttoGlobal, setValueGlobal
+})(SelectPageContent)

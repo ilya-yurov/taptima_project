@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const NumberSelectionWrapper = styled.article`
+	position: relative;
 	display: flex;
 	max-width: 404px;
 	flex-direction: column;

@@ -4,7 +4,7 @@ export const SWrapper = styled.div`
 height: 100vh;
 padding: 49px 97px 0px 97px;
 font-size: 30px;
-background: url("/mainpage_background.png") right bottom no-repeat;
+background: url("/other/mainpage_background.png") right bottom no-repeat;
 @media (max-width: 1200px) {
 	margin: 0px auto;
 	width: 380px;

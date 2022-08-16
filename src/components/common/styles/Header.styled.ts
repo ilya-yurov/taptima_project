@@ -26,7 +26,7 @@ display: block;
 width: 22px;
 height: 20px;
 border: none;
-background: url("/menu_burger.png");
+background: url("/other/menu_burger.png");
 }
 `
 export const SelectHeaderWrapper = styled.header`

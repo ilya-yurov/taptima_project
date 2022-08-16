@@ -20,11 +20,9 @@ interface HeaderProps {
 	updateHeaderToogle: (status: boolean) => ({type: string, payload: boolean})
 }
 
-
 const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNote, mobile, setFilter, disabled, basket}: HeaderProps) => {
 
-	const {from, to, currency, cost, sign} = formData
-
+	const {from, to, currency, sign} = formData
 	const [hover, setHover] = useState(false)
 	const [note, setNote] = useState(true)
 	const router = useRouter()
@@ -43,20 +41,20 @@ const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNot
 	return (
 		<>
 			<SHeader>
-				{!mobile && <StyledImgBaykal src="/baykal_logo.png" alt="logo" />}
+				{!mobile && <StyledImgBaykal src="/other/baykal_logo.png" alt="logo" />}
 				{mobile && !basket &&
-				<button onClick={onClickRedirectMobile}>
-					<StyledImgBack src="/back_select_mobile.png" alt="logo" />
-				</button>}
-				{ mobile && basket && <SelectHeader>
-							<div>
-								<p>{from}</p>
-								<img src="/arrows/arrow_header.png" alt="logo" />
-								<p>{to + ','}</p>
-								<p>{hover ? currency : sign}</p>
-							</div>
-						</SelectHeader>}
-				{mobile && !disabled && !basket && <SearchBar setFilter={setFilter} disabled={disabled} mobile={mobile} placeholder="Поиск..."/>}
+					<button onClick={onClickRedirectMobile}>
+						<StyledImgBack src="/other/back_select_mobile.png" alt="logo" />
+					</button>}
+				{mobile && basket && <SelectHeader>
+					<div>
+						<p>{from}</p>
+						<img src="/arrows/arrow_header.png" alt="logo" />
+						<p>{to + ','}</p>
+						<p>{hover ? currency : sign}</p>
+					</div>
+				</SelectHeader>}
+				{mobile && !disabled && !basket && <SearchBar setFilter={setFilter} disabled={disabled} mobile={mobile} placeholder="Поиск..." />}
 				{select && !headerActiveToogle &&
 					<SelectHeaderWrapper>
 						{note && isNote &&
@@ -65,7 +63,7 @@ const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNot
 								content="Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения"
 								property="header"
 							/>}
-						{ !mobile && <SelectHeader
+						{!mobile && <SelectHeader
 							onMouseEnter={() => setHover(prev => !prev)}
 							onMouseLeave={() => setHover(prev => !prev)}
 							onClick={onClick}
@@ -74,7 +72,7 @@ const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNot
 							<img src="/arrows/arrow_header.png" alt="logo" />
 							<p>{to + ','}</p>
 							<p>{hover ? currency : sign}</p>
-							{hover && <img src="/pen_header.png" alt="pen" />}
+							{hover && <img src="/other/pen_header.png" alt="pen" />}
 						</SelectHeader>}
 					</SelectHeaderWrapper>}
 
@@ -91,8 +89,8 @@ const Header = ({select, formData, headerActiveToogle, updateHeaderToogle, isNot
 				<StyledBurger />
 			</SHeader>
 		</>
-	);
-};
+	)
+}
 
 const mapStateToProps = (state: any) => ({
 	formData: state.mainForm.formData,

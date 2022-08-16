@@ -1,20 +1,10 @@
 import {useRouter} from "next/router";
 import {ChangeEvent, MouseEvent, useEffect, useState} from "react"
 import {connect} from "react-redux";
-import {IFormData, updateMainForm, updateHeaderToogle} from "../../redux/mainFormReducer";
+import {IFormData, updateMainForm, updateHeaderToogle, ICurrencyData} from "../../redux/mainFormReducer";
 import {Button} from "./Button";
 import {FormNotification} from "./FormNotification";
 import {MainForm, MainInput, MainInputWrapper, MainSelect, SButtonWrapper, SelectForm, SelectInputWrapper, SelectPageInput, SelectPageSelect, SelectPageSelectCurrency, SFormElement, SInputDisabled, SLabel} from "./styles/Form.styled";
-import {currencyData, cities} from "../../api/data";
-
-
-function typedKeys<T>(o: T): (keyof T)[] {
-	// type cast should be safe because that's what really Object.keys() does
-	return Object.keys(o) as (keyof T)[];
-}
-
-
-
 
 interface FormProps {
 	formData: IFormData
@@ -23,10 +13,12 @@ interface FormProps {
 	headerActiveToogle: boolean
 	updateMainForm: (formData: IFormData) => ({type: string, payload: IFormData})
 	updateHeaderToogle: (status: boolean) => ({type: string, payload: boolean})
+	currencyData: ICurrencyData[]
+	cities: string[]
 }
 
 
-const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeaderToogle, mobile}: FormProps) => {
+const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeaderToogle, currencyData, cities}: FormProps) => {
 	const [from, setFrom] = useState(formData.from)
 	const [to, setTo] = useState(formData.to)
 	const [currency, setCurrency] = useState(formData.currency)
@@ -34,7 +26,6 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 	const [cost, setCost] = useState(formData.cost)
 	const [isDisable, setIsDisable] = useState(true)
 	const router = useRouter()
-
 
 	useEffect(() => {
 		if (from.trim().length === 0) {
@@ -52,11 +43,11 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 	}
 	const currencyChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
 		const currencyKey = e.target.value
-		typedKeys(currencyData).forEach(k => {
-			if (k.toUpperCase() === currencyKey) {
-				setCurrency(k.toUpperCase())
-				setCost(currencyData[k].cost)
-				setSign(currencyData[k].sign)
+		currencyData.forEach(k => {
+			if (k.currency.toUpperCase() === currencyKey) {
+				setCurrency(k.currency.toUpperCase())
+				setCost(k.cost)
+				setSign(k.sign)
 			}
 		});
 	}
@@ -71,7 +62,7 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 		updateMainForm({from, to, currency, cost, sign})
 		updateHeaderToogle(!headerActiveToogle)
 	}
-	let onClick= mainHandleSubmit;
+	let onClick = mainHandleSubmit;
 
 	let CurrentSelect: typeof MainSelect = MainSelect
 	let CurrentInput: typeof MainInput = MainInput
@@ -123,7 +114,7 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 							value={currency}
 							onChange={currencyChangeHandler}
 						>
-							{Object.keys(currencyData).map((el, index) => <option key={index} value={el.toUpperCase()}>{el.toUpperCase()}</option>)}
+							{currencyData.map((el, index) => <option key={index} value={el.currency.toUpperCase()}>{el.currency.toUpperCase()}</option>)}
 						</CurrentSelect>
 					</CurrentInputWrapper>
 						:
@@ -134,7 +125,7 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 								value={currency}
 								onChange={currencyChangeHandler}
 							>
-								{Object.keys(currencyData).map((el, index) => <option key={index} value={el.toUpperCase()}>{el.toUpperCase()}</option>)}
+								{currencyData.map((el, index) => <option key={index} value={el.currency.toUpperCase()}>{el.currency.toUpperCase()}</option>)}
 							</SelectPageSelectCurrency>
 						</CurrentInputWrapper>
 					}
@@ -179,13 +170,14 @@ const Form = ({formData, select, updateMainForm, headerActiveToogle, updateHeade
 					property="main up"
 				/>}
 			</CurrentForm>
-
 		</>
 	)
 }
 
 const mapStateToProps = (state: any) => ({
 	formData: state.mainForm.formData,
+	currencyData: state.mainForm.currencyData,
+	cities: state.mainForm.cities,
 	headerActiveToogle: state.mainForm.headerActiveToogle
 })
 export default connect(mapStateToProps, {updateMainForm, updateHeaderToogle})(Form)

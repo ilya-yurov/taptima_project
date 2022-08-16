@@ -1,101 +1,10 @@
-import styled from "@emotion/styled";
-
-const DefaultNotification = styled.article`
-`
-
-const MainUpNotification = styled.article`
-	position: absolute;
-	background-color: white;
-	min-width: 329px;
-	min-height: 55px;
-	font-family: 'OpenSans';
-	font-weight: 600;
-	font-size: 15px;
-	line-height: 15px;
-	color: #5DAAFF;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	top: 130px;
-	@media (max-width: 1200px) {
-		display: none;
-	}
-`
-const MainDownNotification = styled.article`
-	position: absolute;
-	background-color: white;
-	min-width: 329px;
-	min-height: 55px;
-	font-family: 'OpenSans';
-	font-weight: 600;
-	font-size: 15px;
-	line-height: 15px;
-	color: #5DAAFF;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	top: -25px;
-	right: -107px;
-	@media (max-width: 1200px) {
-		display: none;
-	}
-`
-const HeaderNotification = styled.article`
-	position: absolute;
-	background-color: white;
-	min-width: 329px;
-	min-height: 55px;
-	font-family: 'OpenSans';
-	font-weight: 600;
-	font-size: 15px;
-	line-height: 15px;
-	color: #5DAAFF;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	top: 100px;
-	left: 320px;
-	border-radius: 3px;
-	@media (max-width: 1200px) {
-		display: none;
-	}
-`
-const SearchNotification = styled.article`
-	position: absolute;
-	max-width: 490px;
-	min-height: 86px;
-	font-family: 'OpenSans';
-	font-weight: 600;
-	font-size: 15px;
-	line-height: 23px;
-	color: #5DAAFF;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	top: 285px;
-	left: 640px;
-	border-radius: 3px;
-	background-color: white;
-	img {
-		margin-right: 20px;
-	}
-	@media (max-width: 1200px) {
-		display: none;
-	}
-`
-
-const SIconWrapper = styled.span`
-margin-left: 13px;
-margin-right: 13px;
-`
-const SHeaderIconWrapper = styled.span`
-margin-left: 13px;
-margin-right: 13px;
-`
+import {DefaultNotification, MainUpNotification, MainDownNotification,
+HeaderNotification, SearchNotification, CompleteFormNotification, Added1FormNotification,
+Added2FormNotification, Added3FormNotification, SHeaderIconWrapper, SIconWrapper} from "./styles/FormNotification.styled";
 
 interface FormNotificationProps {
 	content: string
-	property?: 'main down' | 'main up' | 'header' | 'search' | 'complete form'
+	property?: 'main down' | 'main up' | 'header' | 'search' | 'complete form' | 'added1' | 'added2' | 'added3'
 	onClick?: (e: React.MouseEvent<Element, MouseEvent>) => void
 }
 
@@ -110,19 +19,31 @@ export const FormNotification = ({content, property, onClick}: FormNotificationP
 		CurrentNotification = HeaderNotification
 	else if (property === 'search')
 		CurrentNotification = SearchNotification
+	else if (property === 'complete form')
+		CurrentNotification = CompleteFormNotification
+	else if (property === 'added1')
+		CurrentNotification = Added1FormNotification
+	else if (property === 'added2')
+		CurrentNotification = Added2FormNotification
+	else if (property === 'added3')
+		CurrentNotification = Added3FormNotification
+
 	return (
 		<CurrentNotification>
-			<SHeaderIconWrapper>
+			<SHeaderIconWrapper onClick={onClick}>
 				{property === 'header' && <img src='/arrows/arrow_up_notification.png' alt='arrow up' />}
+				{(property === 'added1' || property === 'added2' || property === 'added3') && <img src='/other/cross_notification.png' alt='cross' />}
 			</SHeaderIconWrapper>
 			{property === 'search' && <img src='/arrows/arrow_left_notification.png' alt='cross' />}
-			{content}
+			<p>{content}</p>
 			<SIconWrapper onClick={onClick}>
-				{property === 'header' && <img src='/cross_notification.png' alt='cross' />}
+				{property === 'complete form' && <img src='/arrows/arrow_down_notification.png' alt='arrow down' />}
+				{property === 'added2' && <img src='/arrows/arrow_right_notification.png' alt='arrow down' />}
+				{(property === 'header' || property === 'complete form') && <img src='/other/cross_notification.png' alt='cross' />}
 			</SIconWrapper>
 			<SIconWrapper>
 				{property === 'main up' && <img src='/arrows/arrow_up_notification.png' alt='arrow up' />}
-				{property === 'main down' && <img src='/arrows/arrow_down_notification.png' alt='arrow down' />}
+				{(property === 'main down' || property === 'added3') && <img src='/arrows/arrow_down_notification.png' alt='arrow down' />}
 			</SIconWrapper>
 		</CurrentNotification>
 	);

@@ -6,9 +6,9 @@ import mainFormReducer from "./mainFormReducer";
 let reducers = combineReducers({
 	mainForm: mainFormReducer,
 	goodsData: goodsDataReducer
-});
+})
 
-let store = createStore(reducers);
+let store = createStore(reducers)
 
-export default store;
+export default store
 

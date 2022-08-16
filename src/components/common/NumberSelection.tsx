@@ -1,26 +1,29 @@
-import styled from "@emotion/styled";
 import {useRouter} from "next/router";
-import {abort} from "process";
 import {ChangeEvent, Dispatch, MouseEvent, SetStateAction, useEffect, useState} from "react";
-import {IGoodsData} from "../../redux/goodsDataReducer";
-import {clearLetters, isValidFieldCheck, setClear, setCorrectValue} from "../../utils/helpers";
+import {IGoodsData, ISetPayload} from "../../redux/goodsDataReducer";
+import {clearLetters, setCorrectValue} from "../../utils/helpers";
 import {Button} from "./Button";
+import {FormNotification} from "./FormNotification";
 import {ButtonSection, ButtonsWrapper, FormWrapper, NumberSelectionWrapper, NumberWrapper, SelectionHeader} from "./styles/NumberSelection.styled";
-
-
 
 interface NumberSelectionProps {
 	goodData: IGoodsData
 	setIsChoosedToogle: Dispatch<SetStateAction<boolean>>
 	basket: IGoodsData[]
 	mobile?: boolean
+	isChoosedToogle?: boolean
 	deleteBasketElement: (id: number) => ({type: string, payload: number})
 	addBasketElement: (newElement: IGoodsData) => ({type: string, payload: IGoodsData})
+	setCountGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
+	setNettoGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
+	setBruttoGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
+	setValueGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
 }
 
 const NumberSelection = ({
-	goodData, setIsChoosedToogle, basket,
-	deleteBasketElement, addBasketElement, mobile}: NumberSelectionProps) => {
+	goodData, setIsChoosedToogle, basket, isChoosedToogle,
+	addBasketElement, mobile, setCountGlobal,
+	setNettoGlobal, setBruttoGlobal, setValueGlobal}: NumberSelectionProps) => {
 
 	const initGoodData = goodData
 	const [count, setCount] = useState<any>('1')
@@ -28,9 +31,8 @@ const NumberSelection = ({
 	const [netto, setNetto] = useState(goodData.netto + ' кг')
 	const [brutto, setBrutto] = useState(goodData.brutto + ' кг')
 	const [cost, setCost] = useState(goodData.cost + ' руб')
+	const [note, setNote] = useState(true)
 	const router = useRouter()
-
-
 
 	useEffect(() => {
 		recalculateQuantity()
@@ -42,7 +44,6 @@ const NumberSelection = ({
 			setCount('')
 		else
 			setCount(value)
-
 	}
 	const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
 		let value: string = setCorrectValue(e.target.value, 'м3')
@@ -56,16 +57,11 @@ const NumberSelection = ({
 		let value: string = setCorrectValue(e.target.value, 'кг')
 		setBrutto(value)
 	}
-	const onCostChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setCost(e.target.value)
-	}
 
 	const recalculateQuantity = () => {
-
-		setValue(initGoodData.value*count + ' м3')
-		setNetto(initGoodData.netto*count + ' кг')
-		setBrutto(initGoodData.brutto*count + ' кг')
-		setCost(initGoodData.cost*count + ' руб')
+		setValue(initGoodData.value * count + ' м3')
+		setNetto(initGoodData.netto * count + ' кг')
+		setBrutto(initGoodData.brutto * count + ' кг')
 	}
 
 	const onReduce = () => {
@@ -77,28 +73,21 @@ const NumberSelection = ({
 		setCount(Number(count) + 1)
 	}
 
-	let onReset = (e: MouseEvent) => {
+	const onReset = (e: MouseEvent) => {
 		e.preventDefault()
 		setIsChoosedToogle(prev => !prev)
 	}
 
-	let handleSubmit = (e: MouseEvent) => {
+	const currentGoodElementIndex = basket.findIndex((el => el.id === goodData.id))
+	const handleSubmit = (e: MouseEvent) => {
 		e.preventDefault()
-		let basketMatch, curCount, curValue, curNetto, curBrutto, curCost
+		let basketMatch
 		if (basket.some((el => el.id === goodData.id))) {
 			basketMatch = basket.find(el => el.id === goodData.id)
-			curCount = parseInt(basketMatch?.count) + parseInt(count)
-			curValue = parseInt(basketMatch?.value) + parseInt(clearLetters(value))
-			curNetto = parseInt(basketMatch?.netto) + parseInt(clearLetters(netto))
-			curBrutto = parseInt(basketMatch?.brutto) + parseInt(clearLetters(brutto))
-			curCost = parseInt(basketMatch?.cost) + parseInt(clearLetters(cost))
-			deleteBasketElement(basket.findIndex((el => el.id === goodData.id)))
-			addBasketElement({
-				id: goodData.id,
-				img: goodData.img,
-				description: goodData.description,
-				count: curCount, netto: curNetto, brutto:curBrutto, cost: curCost, value:curValue
-			})
+			setCountGlobal(currentGoodElementIndex, parseInt(basketMatch?.count) + parseInt(count))
+			setNettoGlobal(currentGoodElementIndex, parseInt(basketMatch?.netto) + parseInt(netto))
+			setBruttoGlobal(currentGoodElementIndex, parseInt(basketMatch?.brutto) + parseInt(brutto))
+			setValueGlobal(currentGoodElementIndex, parseInt(basketMatch?.value) + parseInt(value))
 			setIsChoosedToogle(prev => !prev)
 			router.push({pathname: '/basket'})
 		} else {
@@ -123,7 +112,12 @@ const NumberSelection = ({
 
 	return (
 		<NumberSelectionWrapper>
-			<SelectionHeader> {/* //! Вот это для мобилки отличается */}
+			{note && isChoosedToogle && <FormNotification
+				content="Теперь заполните поля для этого элемента"
+				property="complete form"
+				onClick={() => setNote(false)}
+			/>}
+			<SelectionHeader>
 				<img src={goodData.img} alt="good's photo" />
 				<p>{goodData.description}</p>
 			</SelectionHeader>
@@ -132,27 +126,27 @@ const NumberSelection = ({
 				<ButtonSection>
 					<p>
 						<button type='button' onClick={onReduce}>
-							<img src="/minus_selection.svg" alt="minus" />
+							<img src="/other/minus_selection.svg" alt="minus" />
 						</button>
 					</p>
 					<p>{count}</p>
 					<p>
 						<button type='button' onClick={onIncrease}>
-							<img src="plus_selection.svg" alt="plus" />
+							<img src="/other/plus_selection.svg" alt="plus" />
 						</button>
 					</p>
 				</ButtonSection>
 			</NumberWrapper>}
 			<FormWrapper action="">
-				{mobile && 
-				<input
-					name="count"
-					id="value"
-					type="text"
-					placeholder={'Кол-во'}
-					value={count}
-					onChange={onCountChange}
-				/>}
+				{mobile &&
+					<input
+						name="count"
+						id="value"
+						type="text"
+						placeholder={'Кол-во'}
+						value={count}
+						onChange={onCountChange}
+					/>}
 				<input
 					name="value"
 					id="value"
@@ -183,8 +177,7 @@ const NumberSelection = ({
 					type="text"
 					disabled={true}
 					placeholder={'Стоимость одной единицы'}
-					value={cost}
-					onChange={onCostChange}
+					value={goodData.cost + ' руб'}
 				/>
 				<ButtonsWrapper>
 					<Button

@@ -1,4 +1,3 @@
-
 export const isValidFieldCheck = (string: string) => {
 	if (!isNaN(Number(string)) && Number(string) > 0 && !string.includes('-'))
 		return true

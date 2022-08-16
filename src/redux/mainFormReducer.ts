@@ -1,4 +1,3 @@
-
 const UPDATE_FORM = 'UPDATE_FORM'
 const UPDATE_TOOGLE = 'UPDATE_TOOGLE'
 
@@ -10,8 +9,16 @@ export interface IFormData {
 	sign: string
 }
 
+export interface ICurrencyData {
+	currency: string
+	cost: string
+	sign: string
+}
+
 interface IInitialState {
 	formData: IFormData
+	currencyData: ICurrencyData[]
+	cities: string[]
 	headerActiveToogle: boolean
 }
 
@@ -19,6 +26,7 @@ interface IUpdateMainForm {
 	type: 'UPDATE_FORM'
 	payload: IFormData
 }
+
 interface IUpdateHeaderToogle {
 	type: 'UPDATE_TOOGLE'
 	payload: boolean
@@ -34,6 +42,24 @@ const initialState: IInitialState = {
 		cost: '60,38',
 		sign: '$'
 	},
+	currencyData : [
+		{
+			currency: 'usd',
+			cost: '60,38',
+			sign: '$',
+		},
+		{
+			currency: 'cny',
+			cost: '8,95',
+			sign: '¥',
+		},
+		{
+			currency: 'rub',
+			cost: '-',
+			sign: '₽',
+		}
+	],
+	cities: ['Москва', 'Крым', 'Омск'],
 	headerActiveToogle: false
 }
 
@@ -57,4 +83,4 @@ const mainFormReducer = (state = initialState, action: Action) => {
 export const updateMainForm = (formData:IFormData) => ({type: UPDATE_FORM, payload: formData})
 export const updateHeaderToogle = (newStatus: boolean) => ({type: UPDATE_TOOGLE, payload: newStatus})
 
-export default mainFormReducer;
+export default mainFormReducer
