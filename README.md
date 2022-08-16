@@ -1,10 +1,10 @@
 <h1 align="center">Test project based on Next.js framework with Typescript usage</h1>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Test+project+for+the+Taptima)](https://git.io/typing-svg)
+<h1 align="center">
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Test+project+for+the+Taptima" alt="Typing SVG" /></a>
+</h1>
 
 <h2 align="center"><a  href="https://taptima-project.vercel.app">Live Demo</a></h2>
 
-## Mobile demonstration
-![mobile](https://user-images.githubusercontent.com/76982614/184891541-559a65af-85bc-41d5-83d3-f68b92f0f241.gif)
 ## Desktop demonstration
 ![desktop_version](https://user-images.githubusercontent.com/76982614/184892483-ea7b6c74-f5d9-4f57-ad04-029b4364bd75.gif)
 
