@@ -141,9 +141,13 @@ export const AddButtonWrapper = styled.section`
 		gap: 12px;
 	}
 	@media (max-width: 1200px) {
-		position: fixed;
-		right: -5px;
-		bottom: 30px;
+	position: fixed;
+	width: 444px;
+	height: 0px;
+	top: 50%;
+	left: 50%;
+	margin-top: 280px;
+	margin-left: -250px;
 		p{
 			flex-direction: row-reverse;
 			gap: 0px;
