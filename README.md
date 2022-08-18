@@ -10,7 +10,7 @@
 
 
 ## Technologies and concepts using during the creation process:
-| **create-next-app** | **GRID/FLEX layout** | **TYPESCRIPT** | **Next.js** | **React** | **Redux** |**class/functional components** | **React Hooks** | **Emotion CSS** | **etc.**
+| **create-next-app** | **GRID/FLEX layout** | **TYPESCRIPT** | **Next.js** | **React** | **Redux** | **React Hooks** | **Emotion CSS** | **etc.**
 
 ## How to build this project:
 **You need pre-installed NodeJS, npm and Git.**
