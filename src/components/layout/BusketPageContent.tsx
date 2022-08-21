@@ -1,32 +1,48 @@
-import Header from "../common/Header"
+import Header from '../common/Header/Header'
 import {
-	IGoodsData, deleteBasketElement, setCountGlobal, ISetPayload,
-	setNettoGlobal, setBruttoGlobal, setValueGlobal
-} from "../../redux/goodsDataReducer"
-import {connect} from "react-redux"
-import BasketElement from "../common/BasketElement"
-import {useEffect, useState} from "react"
-import {Button} from "../common/Button"
-import {useRouter} from "next/router"
-import {FormNotification} from "../common/FormNotification"
+	IGoodsData,
+	deleteBasketElement,
+	setCountGlobal,
+	ISetPayload,
+	setNettoGlobal,
+	setBruttoGlobal,
+	setValueGlobal,
+} from '../../redux/goodsDataReducer'
+import { connect } from 'react-redux'
+import BasketElement from '../common/BasketElement/BasketElement'
+import { useEffect, useState } from 'react'
+import { Button } from '../common/Button'
+import { useRouter } from 'next/router'
+import { FormNotification } from '../common/FormNotification'
 import {
-	BusketWrapper, HeaderWrapper, BusketHeader, SheetHeader, Plug,
-	GoodsListWrapper, AddButtonWrapper, NoGoodsWrapper, NoAddButtonWrapper
-} from "./styles/BusketPageContent.styled"
-
-
+	BusketWrapper,
+	HeaderWrapper,
+	BusketHeader,
+	SheetHeader,
+	Plug,
+	GoodsListWrapper,
+	AddButtonWrapper,
+	NoGoodsWrapper,
+	NoAddButtonWrapper,
+} from './styles/BusketPageContent.styled'
 
 interface BusketPageContentProps {
 	basket: IGoodsData[]
-	deleteBasketElement: (id: number) => ({type: string, payload: number})
-	setCountGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
-	setNettoGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
-	setBruttoGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
-	setValueGlobal: (index: number, data: any) => ({type: string, payload: ISetPayload})
+	deleteBasketElement: (id: number) => { type: string; payload: number }
+	setCountGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	setNettoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	setBruttoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
 }
 
-const BusketPageContent = ({basket, deleteBasketElement, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal}: BusketPageContentProps) => {
-
+const BusketPageContent = ({
+	basket,
+	deleteBasketElement,
+	setCountGlobal,
+	setNettoGlobal,
+	setBruttoGlobal,
+	setValueGlobal,
+}: BusketPageContentProps) => {
 	const [renderTrigger, setRenderTrigger] = useState(false)
 	const [mobile, setMobile] = useState<boolean>()
 	const [note, setNote] = useState(true)
@@ -36,43 +52,50 @@ const BusketPageContent = ({basket, deleteBasketElement, setCountGlobal, setNett
 	useEffect(() => {
 		window.innerWidth <= 1200 ? setMobile(true) : setMobile(false)
 		window.addEventListener('resize', () => {
-			window.innerWidth <= 1200 ?
-				setMobile(true) :
-				setMobile(false)
+			window.innerWidth <= 1200 ? setMobile(true) : setMobile(false)
 		})
 	}, [])
-	useEffect(() => { }, [renderTrigger])
+	useEffect(() => {}, [renderTrigger])
 	const router = useRouter()
 
 	const onAddClick = () => {
-		router.push({pathname: '/select'})
+		router.push({ pathname: '/select' })
 	}
 
 	return (
 		<>
-			{basket.length > 0 ?
+			{basket.length > 0 ? (
 				<>
 					<BusketWrapper>
 						<HeaderWrapper>
-							<Header basket={true} mobile={mobile} select={true} />
+							<Header
+								basket={true}
+								select={true}
+							/>
 						</HeaderWrapper>
 						<BusketHeader>Добавленная мебель ({basket.length})</BusketHeader>
-						{note && <FormNotification
-							onClick={() => setNote(false)}
-							content="Чтобы отредактировать  введенные ланные, просто нажмите на поле"
-							property="added1"
-						/>}
-						{note2 && <FormNotification
-							onClick={() => setNote2(false)}
-							content="Через кнопку “Добавить” Вы можете добавлять еще элементы"
-							property="added2"
-						/>}
-						{note3 && <FormNotification
-							onClick={() => setNote3(false)}
-							content="Узнайте стоимость доставки, нажав на кнопку “Рассчитать”"
-							property="added3"
-						/>}
-						{!mobile &&
+						{note && (
+							<FormNotification
+								onClick={() => setNote(false)}
+								content='Чтобы отредактировать  введенные ланные, просто нажмите на поле'
+								property='added1'
+							/>
+						)}
+						{note2 && (
+							<FormNotification
+								onClick={() => setNote2(false)}
+								content='Через кнопку “Добавить” Вы можете добавлять еще элементы'
+								property='added2'
+							/>
+						)}
+						{note3 && (
+							<FormNotification
+								onClick={() => setNote3(false)}
+								content='Узнайте стоимость доставки, нажав на кнопку “Рассчитать”'
+								property='added3'
+							/>
+						)}
+						{!mobile && (
 							<SheetHeader>
 								<Plug></Plug>
 								<Plug></Plug>
@@ -82,9 +105,10 @@ const BusketPageContent = ({basket, deleteBasketElement, setCountGlobal, setNett
 								<p>Общий объем, м3</p>
 								<p>Стоимость единицы</p>
 								<p>Удалить</p>
-							</SheetHeader>}
+							</SheetHeader>
+						)}
 						<GoodsListWrapper>
-							{basket.map((el, index) =>
+							{basket.map((el, index) => (
 								<BasketElement
 									setCountGlobal={setCountGlobal}
 									setNettoGlobal={setNettoGlobal}
@@ -93,13 +117,15 @@ const BusketPageContent = ({basket, deleteBasketElement, setCountGlobal, setNett
 									key={index}
 									mobile={mobile}
 									currentBasketElement={el}
-									basket={basket} deleteBasketElement={deleteBasketElement}
+									basket={basket}
+									deleteBasketElement={deleteBasketElement}
 									setRenderTrigger={setRenderTrigger}
-								/>)}
+								/>
+							))}
 							<AddButtonWrapper>
 								<p>
 									<Button
-										icon="plus"
+										icon='plus'
 										type='button'
 										property='add'
 										mobile={mobile}
@@ -119,47 +145,57 @@ const BusketPageContent = ({basket, deleteBasketElement, setCountGlobal, setNett
 						</GoodsListWrapper>
 					</BusketWrapper>
 				</>
-				:
+			) : (
 				<>
 					<NoGoodsWrapper>
 						<HeaderWrapper>
-							<Header basket={true} mobile={mobile} select={true} />
+							<Header
+								basket={true}
+								select={true}
+							/>
 						</HeaderWrapper>
 						<section>
-							<img src="/other/no_goods.png" alt="no goods" />
+							<img
+								src='/other/no_goods.png'
+								alt='no goods'
+							/>
 							<p>
 								Вы не добавили ни одного элемента.
 								<NoAddButtonWrapper>
-									{mobile ?
+									{mobile ? (
 										<Button
 											type='button'
 											property='add'
 											onClick={onAddClick}
 											content='Добавить'
 										/>
-										:
+									) : (
 										<Button
-											icon="plus"
+											icon='plus'
 											type='button'
 											property='add'
 											onClick={onAddClick}
 											content='Добавить'
-										/>}
+										/>
+									)}
 								</NoAddButtonWrapper>
 							</p>
 						</section>
 					</NoGoodsWrapper>
 				</>
-			}
+			)}
 		</>
 	)
 }
 
 const mapStateToProps = (state: any) => ({
-	basket: state.goodsData.basket
+	basket: state.goodsData.basket,
 })
 
 export default connect(mapStateToProps, {
-	deleteBasketElement, setCountGlobal, setNettoGlobal,
-	setBruttoGlobal, setValueGlobal
+	deleteBasketElement,
+	setCountGlobal,
+	setNettoGlobal,
+	setBruttoGlobal,
+	setValueGlobal,
 })(BusketPageContent)

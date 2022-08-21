@@ -37,7 +37,16 @@ margin-top: 14px;
 `
 export const SFormElement = styled.div`
 `
-
+export const MobileButtonWrapper = styled.section`
+	@media (min-width: 1200px) {
+		display: none;
+	}
+`
+export const DesktopButtonWrapper = styled.section`
+	@media (max-width: 1200px) {
+		display: none;
+	}
+`
 
 export const SInputDisabled = styled.input`
 text-align: center;
@@ -55,7 +64,7 @@ color: #B7B7B7;
 }
 `
 //! Main page styles
-export const MainForm = styled.form`
+export const MainFormWrapper = styled.form`
 position: relative;
 display: flex;
 justify-items: center;
@@ -79,7 +88,7 @@ font-size: 15px;
 line-height: 15px;
 color: #606F7A;
 display: inline-block;
-background: url('/divider_input.png') right center no-repeat;
+background: url('/other/divider_input.png') right center no-repeat;
 @media (max-width: 1200px) {
 	width: 162px;
 	height: 49px;
@@ -95,7 +104,7 @@ line-height: 15px;
 width: 100%;
 text-align: center;
 color: #606F7A;
-background: url('/other/divider_input.png'), url('/other/mark_input.png'); right center no-repeat;
+background: url('/other/divider_input.png'), url('/other/mark_input.png');
 background-position: right center, 100px center;
 background-repeat: no-repeat, no-repeat;
 @media (max-width: 1200px) {
@@ -103,7 +112,7 @@ background-repeat: no-repeat, no-repeat;
 	height: 49px;
 	background: none;
 	}
-}
+
 `
 //! Select page styles
 export const SelectForm = styled.form`
@@ -137,7 +146,7 @@ background-repeat: no-repeat, no-repeat;
 	height: 49px;
 	background: none;
 	}
-}
+
 `
 export const SelectPageSelectCurrency = styled.select`
 font-family: 'Roboto';
@@ -155,7 +164,7 @@ background-repeat: no-repeat;
 	height: 49px;
 	background: none;
 	}
-}
+
 `
 
 export const SelectPageInput = styled.input`

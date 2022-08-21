@@ -100,8 +100,8 @@ export const NoGoodsWrapper = styled.div`
 			position: relative;
 			font-family: 'OpenSans';
 			font-style: normal;
-			font-weight: 400;
-			font-size: 20px;
+			/* font-weight: 400; */
+			/* font-size: 20px; */
 			line-height: 30px;
 			color: #606F7A;
 			p {

@@ -1,5 +1,5 @@
-import SearchBar from "../common/SearchBar"
-import Header from "../common/Header"
+import SearchBar from "../common/SearchBar/SearchBar"
+import Header from "../common/Header/Header"
 import {GoodsListItem} from "../common/GoodsListItem"
 import {
 	SWrapperDesktop, HeaderWrapper, LeftArticle,

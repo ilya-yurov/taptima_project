@@ -1,35 +1,56 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 
-export const StyledButtonWrapper = styled.button`
-	font-family: OpenSans;
+interface StyledButtonProps {
+	width?: string
+	height?: string
+	bg?: string
+	bgh?: string
+	color?: string
+}
+
+export const StyledButtonWrapper = styled.button<StyledButtonProps>`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3px;
+	font-family: ${props => props.theme.fonts.primary};
 	font-weight: 600;
 	font-size: 17px;
-	line-height: 17px
-`;
+	line-height: 17px;
+	color: white;
+	background-color: ${({bg}) => bg};
+	width: ${({width}) => width};
+	height: ${({height}) => height};
+	&:hover {
+		color: white;
+		background-color: #2876cc;
+	}
+`
 export const IconWrapper = styled.span`
 	margin-left: 14px;
 	margin-top: 5px;
-`;
+`
 export const ContactButton = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 3px; 
+	border-radius: 3px;
 	font-family: OpenSans;
 	font-weight: 600;
 	font-size: 17px;
 	line-height: 17px;
 	width: 132px;
 	height: 45px;
-	color: #606F7A;
+	color: #606f7a;
 	background-color: white;
 	box-shadow: 0px 4px 40px rgba(46, 80, 87, 0.12);
 	&:hover {
-		color: white;
-		background-color: #5daaff;
+		background-color: #2876cc;
 	}
-	@media (max-width: 1200px){display: none;}
-`;
+	@media (max-width: 1200px) {
+		display: none;
+	}
+`
 export const NextButton = styled.button`
 	display: flex;
 	justify-content: center;
@@ -43,7 +64,7 @@ export const NextButton = styled.button`
 	width: 163px;
 	height: 60px;
 	color: white;
-	background-color: #5DAAFF;
+	background-color: #5daaff;
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
 	&:hover {
 		background-color: #2876cc;
@@ -51,7 +72,7 @@ export const NextButton = styled.button`
 	@media (max-width: 1200px) {
 		display: none;
 	}
-`;
+`
 export const NextButtonSelect = styled.button`
 	display: flex;
 	justify-content: center;
@@ -65,7 +86,7 @@ export const NextButtonSelect = styled.button`
 	width: 124px;
 	height: 45px;
 	color: white;
-	background-color: #5DAAFF;
+	background-color: #5daaff;
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
 	&:hover {
 		background-color: #2876cc;
@@ -73,7 +94,7 @@ export const NextButtonSelect = styled.button`
 	@media (max-width: 1200px) {
 		display: none;
 	}
-`;
+`
 export const NextButtonMobile = styled.button`
 	display: none;
 	@media (max-width: 1200px) {
@@ -89,13 +110,13 @@ export const NextButtonMobile = styled.button`
 		width: 335px;
 		height: 55px;
 		color: white;
-		background-color: #5DAAFF;
+		background-color: #5daaff;
 		box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
 		&:hover {
 			background-color: #2876cc;
 		}
 	}
-`;
+`
 export const SearchButton = styled.button`
 	display: flex;
 	justify-content: center;
@@ -109,7 +130,7 @@ export const SearchButton = styled.button`
 	width: 114px;
 	height: 53px;
 	color: white;
-	background-color: #5DAAFF;
+	background-color: #5daaff;
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
 	&:hover {
 		background-color: #2876cc;
@@ -117,7 +138,7 @@ export const SearchButton = styled.button`
 	@media (max-width: 1200px) {
 		display: none;
 	}
-`;
+`
 export const ChooseButton = styled.button`
 	display: flex;
 	justify-content: center;
@@ -131,13 +152,13 @@ export const ChooseButton = styled.button`
 	min-width: 132px;
 	min-height: 45px;
 	color: white;
-	background-color: #5DAAFF;
+	background-color: #5daaff;
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
 	margin-right: 27px;
 	&:hover {
 		background-color: #2876cc;
 	}
-`;
+`
 export const ChoosedButton = styled.button`
 	display: flex;
 	justify-content: center;
@@ -150,11 +171,11 @@ export const ChoosedButton = styled.button`
 	line-height: 17px;
 	min-width: 132px;
 	min-height: 45px;
-	color: #606F7A;
+	color: #606f7a;
 	background-color: white;
 	box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.04);
 	margin-right: 27px;
-`;
+`
 export const AddButton = styled.button`
 	display: flex;
 	justify-content: center;
@@ -168,12 +189,12 @@ export const AddButton = styled.button`
 	width: 206px;
 	height: 55px;
 	color: white;
-	background-color: #5DAAFF;
+	background-color: #5daaff;
 	&:hover {
 		background-color: #2876cc;
 	}
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
-`;
+`
 export const AddButtonMobile = styled.button`
 	display: flex;
 	justify-content: center;
@@ -188,12 +209,12 @@ export const AddButtonMobile = styled.button`
 	height: 30px;
 	color: white;
 	margin-right: 20px;
-	background-color: #5DAAFF;
+	background-color: #5daaff;
 	&:hover {
 		background-color: #2876cc;
 	}
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
-`;
+`
 export const AddSelectButtonMobile = styled.button`
 	display: flex;
 	justify-content: center;
@@ -208,12 +229,12 @@ export const AddSelectButtonMobile = styled.button`
 	height: 55px;
 	color: white;
 	margin-right: 20px;
-	background-color: #5DAAFF;
+	background-color: #5daaff;
 	&:hover {
 		background-color: #2876cc;
 	}
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
-`;
+`
 export const AddBasketButtonMobile = styled.button`
 	display: flex;
 	justify-content: center;
@@ -228,9 +249,9 @@ export const AddBasketButtonMobile = styled.button`
 	height: 55px;
 	color: white;
 	margin-right: 20px;
-	background-color: #5DAAFF;
+	background-color: #5daaff;
 	&:hover {
 		background-color: #2876cc;
 	}
 	box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
-`;
+`
