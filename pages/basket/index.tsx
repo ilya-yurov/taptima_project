@@ -1,4 +1,4 @@
-import BusketPageContent from "../../src/components/layout/BusketPageContent"
+import BusketPageContent from "../../src/components/layout/BasketPageContent/BasketPageContent"
 
 const BusketPage = () => {
 	return (

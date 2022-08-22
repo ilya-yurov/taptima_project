@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, MouseEvent, SetStateAction, useEffect, useState } from 'react'
-import { Button } from '../../Button'
-import { FormNotification } from '../../FormNotification'
+import { Button } from '../../Button/Button'
+import { FormNotification } from '../../FormNotification/FormNotification'
 import { SearchForm, SearchInput } from './SearchBarDesktop.styled'
 
 interface SearchBarProps {
@@ -45,6 +45,8 @@ const SearchBarDesktop = ({ placeholder, buttonText, disabled, setFilter }: Sear
 				property='search'
 				type='submit'
 				onClick={handleSubmit}
+				width='114px'
+				height='53px'
 			/>
 			{note && (
 				<FormNotification

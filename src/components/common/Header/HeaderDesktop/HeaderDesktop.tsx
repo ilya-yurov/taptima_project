@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useTheme } from '@emotion/react'
+import { useEffect, useState } from 'react'
 import { IFormData } from '../../../../redux/mainFormReducer'
-import { Button } from '../../Button'
+import { Button } from '../../Button/Button'
 import Form from '../../Form/Form'
-import { FormNotification } from '../../FormNotification'
+import { FormNotification } from '../../FormNotification/FormNotification'
 import { FormWrapper, SelectHeader, SelectHeaderWrapper, SHeader, StyledImgBaykal } from './HeaderDesktop.styled'
 
 interface HeaderDesktopProps {
@@ -18,6 +19,7 @@ const HeaderDesktop = ({ basket, select, headerActiveToogle, formData, isNote, u
 	const { from, to, currency, sign } = formData
 	const [hover, setHover] = useState(false)
 	const [note, setNote] = useState(true)
+	const theme = useTheme()
 	useEffect(() => setHover(false), [headerActiveToogle])
 
 	const onClick = () => {
@@ -27,12 +29,7 @@ const HeaderDesktop = ({ basket, select, headerActiveToogle, formData, isNote, u
 
 	return (
 		<SHeader>
-			{!basket && !select && (
-				<StyledImgBaykal
-					src='/other/baykal_logo.png'
-					alt='logo'
-				/>
-			)}
+			{!basket && !select && <StyledImgBaykal src='/other/baykal_logo.png' alt='logo' />}
 			{select && !headerActiveToogle && (
 				<SelectHeaderWrapper>
 					{note && isNote && (
@@ -42,23 +39,12 @@ const HeaderDesktop = ({ basket, select, headerActiveToogle, formData, isNote, u
 							property='header'
 						/>
 					)}
-					<SelectHeader
-						onMouseEnter={() => setHover((prev) => !prev)}
-						onMouseLeave={() => setHover((prev) => !prev)}
-						onClick={onClick}>
+					<SelectHeader onMouseEnter={() => setHover((prev) => !prev)} onMouseLeave={() => setHover((prev) => !prev)} onClick={onClick}>
 						<p>{from}</p>
-						<img
-							src='/arrows/arrow_header.png'
-							alt='logo'
-						/>
+						<img src='/arrows/arrow_header.png' alt='logo' />
 						<p>{to + ','}</p>
 						<p>{hover ? currency : sign}</p>
-						{hover && (
-							<img
-								src='/other/pen_header.png'
-								alt='pen'
-							/>
-						)}
+						{hover && <img src='/other/pen_header.png' alt='pen' />}
 					</SelectHeader>
 				</SelectHeaderWrapper>
 			)}
@@ -71,6 +57,12 @@ const HeaderDesktop = ({ basket, select, headerActiveToogle, formData, isNote, u
 				type='button'
 				property='contact'
 				content='Связаться'
+				width='132px'
+				height='45px'
+				color={theme.colors.secondary}
+				bg={theme.backgrounds.tertiary}
+				bgh={theme.backgrounds.primary}
+				ch={theme.colors.primary}
 			/>
 		</SHeader>
 	)

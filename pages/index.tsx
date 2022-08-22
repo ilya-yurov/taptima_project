@@ -1,4 +1,4 @@
-import {MainPageContent} from '../src/components/layout/MainPageContent'
+import {MainPageContent} from '../src/components/layout/MainPageContent/MainPageContent'
 import TestComponent from '../test/TestComponent'
 
 const MainPage = () => {

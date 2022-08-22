@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { IFormData } from '../../../../redux/mainFormReducer'
 import SearchBar from '../../SearchBar/SearchBar'
 import { ImgBack, SelectHeader, StyledImgBaykal, StyledBurger, SHeader } from './HeaderMobile.styled'
@@ -23,40 +23,23 @@ const HeaderMobile = ({ formData, basket, select, disabled, setFilter, main }: H
 
 	return (
 		<SHeader>
-			{!basket && !select && (
-				<StyledImgBaykal
-					src='/other/baykal_logo.png'
-					alt='logo'
-				/>
-			)}
+			{!basket && !select && <StyledImgBaykal src='/other/baykal_logo.png' alt='logo' />}
 			{select && !basket && (
 				<button onClick={onClickRedirectMobile}>
-					<ImgBack
-						src='/other/back_select_mobile.png'
-						alt='logo'
-					/>
+					<ImgBack src='/other/back_select_mobile.png' alt='logo' />
 				</button>
 			)}
 			{basket && (
 				<SelectHeader>
 					<div>
 						<p>{from}</p>
-						<img
-							src='/arrows/arrow_header.png'
-							alt='logo'
-						/>
+						<img src='/arrows/arrow_header.png' alt='logo' />
 						<p>{to + ','}</p>
 						<p>{sign}</p>
 					</div>
 				</SelectHeader>
 			)}
-			{!main && !basket && (
-				<SearchBar
-					setFilter={setFilter}
-					disabled={disabled}
-					placeholder='Поиск...'
-				/>
-			)}
+			{!main && !basket && <SearchBar setFilter={setFilter} disabled={disabled} placeholder='Поиск...' />}
 			<StyledBurger />
 		</SHeader>
 	)
