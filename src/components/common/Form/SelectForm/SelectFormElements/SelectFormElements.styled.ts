@@ -8,10 +8,10 @@ export const SelectInputWrapper = styled.div`
 	@media (max-width: 1200px) {
 	}
 `
-export const SelectPageInput = styled.input`
+export const SelectPageInput = styled.input<{ ff: string }>`
 	text-align: center;
 	flex: 1;
-	font-family: 'Roboto';
+	font-family: ${({ ff }) => ff};
 	font-weight: 500;
 	font-size: 15px;
 	line-height: 15px;
@@ -27,8 +27,8 @@ export const SelectPageInput = styled.input`
 		background: none;
 	}
 `
-export const SelectPageSelect = styled.select`
-	font-family: 'Roboto';
+export const SelectPageSelect = styled.select<{ ff: string }>`
+	font-family: ${({ ff }) => ff};
 	font-weight: 500;
 	font-size: 15px;
 	line-height: 15px;
@@ -47,8 +47,8 @@ export const SelectPageSelect = styled.select`
 		background: none;
 	}
 `
-export const SelectPageSelectCurrency = styled.select`
-	font-family: 'Roboto';
+export const SelectPageSelectCurrency = styled.select<{ ff: string }>`
+	font-family: ${({ ff }) => ff};
 	font-weight: 500;
 	font-size: 15px;
 	line-height: 15px;

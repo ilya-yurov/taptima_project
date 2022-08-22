@@ -11,8 +11,6 @@ export const GoodDesktop = styled.section`
 	p {
 		flex-grow: 1;
 		margin-left: 36px;
-		font-family: 'OpenSans';
-		font-style: normal;
 		font-weight: 400;
 		font-size: 17px;
 		line-height: 17px;
@@ -26,7 +24,7 @@ export const GoodDesktop = styled.section`
 		display: none;
 	}
 `
-export const GoodMobile = styled.section`
+export const GoodMobile = styled.section<{fz: string}>`
 	justify-content: center;
 	display: flex;
 	align-items: center;
@@ -34,15 +32,14 @@ export const GoodMobile = styled.section`
 	background: #f8faff;
 	border: 1px solid #e2e4ea;
 	border-radius: 3px;
-	padding-right: 27px;
+	padding-right: 17px;
 	p {
 		flex-grow: 1;
-		max-width: 130px;
-		margin-left: 36px;
-		font-family: 'OpenSans';
-		font-style: normal;
+		max-width: 80px;
+		margin-left: 20px;
+		margin-right: 20px;
 		font-weight: 400;
-		font-size: 12px;
+		font-size: ${({fz}) => fz};
 		line-height: 12px;
 		color: #606f7a;
 	}

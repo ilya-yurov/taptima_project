@@ -11,8 +11,6 @@ export const MobileElementWrapper = styled.article`
 			flex-grow: 1;
 			height: 100%;
 			max-width: 115px;
-			font-family: 'OpenSans';
-			font-style: normal;
 			font-weight: 600;
 			font-size: 17px;
 			line-height: 18px;
@@ -55,8 +53,6 @@ export const DescriptionWrapper = styled.section`
 		align-items: center;
 		height: 18px;
 		div {
-			font-family: 'OpenSans';
-			font-style: normal;
 			font-weight: 600;
 			font-size: 13px;
 			line-height: 12px;

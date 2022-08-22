@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
-import { HeaderWrapper, NoGoodsWrapper, NoAddButtonWrapper } from './NoGoodsPage.styled'
+import { HeaderWrapper, NoGoodsWrapper, NoAddButtonWrapper, MainContent, MainSection } from './NoGoodsPage.styled'
 import styled from '@emotion/styled'
 import Header from '../../../common/Header/Header'
 import { Button } from '../../../common/Button/Button'
+import {useTheme} from '@emotion/react'
 
 export const MobileButtonsWrapper = styled.section`
 	@media (min-width: 1200px) {
@@ -17,6 +18,7 @@ export const DesktopButtonsWrapper = styled.section`
 
 const NoGoodsPage = () => {
 	const router = useRouter()
+	const theme = useTheme()
 
 	const onAddClick = () => {
 		router.push({ pathname: '/select' })
@@ -28,9 +30,9 @@ const NoGoodsPage = () => {
 				<HeaderWrapper>
 					<Header basket={true} select={true} />
 				</HeaderWrapper>
-				<section>
+				<MainSection>
 					<img src='/other/no_goods.png' alt='no goods' />
-					<p>
+					<MainContent fz={theme.fontSizes.big}>
 						Вы не добавили ни одного элемента.
 						<NoAddButtonWrapper>
 							<MobileButtonsWrapper>
@@ -40,8 +42,8 @@ const NoGoodsPage = () => {
 								<Button icon='plus' type='button' property='add' onClick={onAddClick} content='Добавить' width='206px' height='55px' />
 							</DesktopButtonsWrapper>
 						</NoAddButtonWrapper>
-					</p>
-				</section>
+					</MainContent>
+				</MainSection>
 			</NoGoodsWrapper>
 		</>
 	)

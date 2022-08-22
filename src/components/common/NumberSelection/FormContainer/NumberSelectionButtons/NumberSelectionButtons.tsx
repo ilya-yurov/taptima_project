@@ -68,8 +68,8 @@ const NumberSelectionButtons = ({
 		<>
 			<MobileButtonsWrapper>
 				<ButtonsWrapper>
-					<Button content={'Сбросить'} property='add' type='reset' onClick={onReset} width='335px' height='55px' />
-					<Button content={'Продолжить'} property='add' disabled={isDisable} type='submit' onClick={handleSubmit} width='335px' height='55px' />
+					<Button content={'Сбросить'} property='add' type='reset' onClick={onReset} width='280px' height='55px' />
+					<Button content={'Продолжить'} property='add' disabled={isDisable} type='submit' onClick={handleSubmit} width='280px' height='55px' />
 				</ButtonsWrapper>
 			</MobileButtonsWrapper>
 			<DesktopButtonsWrapper>

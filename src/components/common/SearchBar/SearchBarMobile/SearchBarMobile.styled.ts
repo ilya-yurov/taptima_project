@@ -8,8 +8,6 @@ export const SearchInput = styled.input`
 	max-height: 22px;
 	background: none;
 	box-shadow: none;
-	font-family: 'OpenSans';
-	font-style: normal;
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 15px;

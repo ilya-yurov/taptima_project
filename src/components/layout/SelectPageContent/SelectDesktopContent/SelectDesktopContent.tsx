@@ -2,7 +2,7 @@ import { GoodsListItem } from '../../../common/GoodListItem/GoodsListItem'
 import Header from '../../../common/Header/Header'
 import NumberSelection from '../../../common/NumberSelection/NumberSelection'
 import SearchBar from '../../../common/SearchBar/SearchBar'
-import { ISelectPropsObject } from '../../interfaces/interfaces'
+import { ISelectPropsObject } from '../interfaces/interfaces'
 import {
 	ChoosedElementsDesktop,
 	GoodsListDesktop,

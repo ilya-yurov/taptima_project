@@ -13,11 +13,10 @@ export const SelectHeaderWrapper = styled.header`
 	flex-grow: 1;
 `
 
-export const SelectHeader = styled.header`
+export const SelectHeader = styled.header<{ ff: string }>`
 	width: 261px;
 	height: 45px;
-	font-family: 'Roboto';
-	font-style: normal;
+	font-family: ${({ ff }) => ff};
 	font-weight: 500;
 	font-size: 17px;
 	line-height: 17px;

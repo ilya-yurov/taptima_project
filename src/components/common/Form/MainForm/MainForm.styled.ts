@@ -3,6 +3,8 @@
 import styled from "@emotion/styled"
 
 export const MobileButtonWrapper = styled.section`
+margin: 0px auto;
+
 	@media (min-width: 1200px) {
 		display: none;
 	}
@@ -21,7 +23,8 @@ margin-top: '48px';
 max-width: 700px;
 @media (max-width: 1200px) {
 margin-top: 10px;
-	max-width: 335px;
+	margin-right: -10px;
+	max-width: 320px;
 	gap: 10px;
 	flex-wrap: wrap;
 }

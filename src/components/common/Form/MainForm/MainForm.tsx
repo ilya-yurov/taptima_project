@@ -57,7 +57,7 @@ const MainForm = ({ formData, updateMainForm, currencyData, cities }: FormProps)
 						<Button width='163px' height='60px' icon='arrow' disabled={isDisable} type='submit' property='next' onClick={mainHandleSubmit} content='Далее' />
 					</DesktopButtonWrapper>
 					<MobileButtonWrapper>
-						<Button disabled={isDisable} type='submit' property='next' onClick={mainHandleSubmit} content='Выбрать мебель' width='335px' height='55px' />
+						<Button disabled={isDisable} type='submit' property='next' onClick={mainHandleSubmit} content='Выбрать мебель' width='280px' height='55px' />
 					</MobileButtonWrapper>
 				</SButtonWrapper>
 				{isDisable && <FormNotification content='Для начала заполните поля выше' property='main up' />}

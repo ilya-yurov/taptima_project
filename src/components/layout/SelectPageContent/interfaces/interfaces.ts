@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import { IGoodsData, ISetPayload } from '../../../redux/goodsDataReducer'
+import { IGoodsData, ISetPayload } from '../../../../redux/goodsDataReducer'
 
 export interface ISelectPropsObject {
 	goodsData: IGoodsData[]

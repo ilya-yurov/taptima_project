@@ -10,7 +10,6 @@ export const SHeader = styled.header`
 export const ImgBack = styled.img`
 	width: 29px;
 	height: 20px;
-	background-color: #eff3f9;
 `
 
 export const StyledImgBaykal = styled.img`
@@ -21,7 +20,6 @@ export const StyledImgBaykal = styled.img`
 export const SelectHeader = styled.header`
 	width: 261px;
 	height: 45px;
-	font-style: normal;
 	font-size: 17px;
 	line-height: 17px;
 	color: #606F7A;
@@ -30,7 +28,6 @@ export const SelectHeader = styled.header`
 	justify-content: flex-start;
 	align-items: flex-start;
 	margin-left: 0px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	div {
 		align-items: center;

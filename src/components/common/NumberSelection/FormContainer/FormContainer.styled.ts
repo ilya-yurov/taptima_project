@@ -8,8 +8,6 @@ input {
 	width: 319px;
 	height: 53px;
 	padding: 19px;
-	font-family: 'OpenSans';
-	font-style: normal;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 15px;
@@ -21,7 +19,7 @@ input {
 	}
 	@media (max-width: 1200px) {
 		margin-left: 0px;
-		min-width: 334px;
+		max-width: 280px;
 	}
 }
 `

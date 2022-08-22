@@ -24,8 +24,6 @@ export const NumberSelectionWrapper = styled.article`
 			height: 70px;
 		}
 		p {
-			font-family: 'OpenSans';
-			font-style: normal;
 			font-weight: 400;
 			font-size: 17px;
 			line-height: 17px;
@@ -35,7 +33,7 @@ export const NumberSelectionWrapper = styled.article`
 		}
 		@media (max-width: 1200px) {
 			margin-left: 0px;
-			min-width: 334px;
+			min-width: 280px;
 		}
 	`
 
@@ -44,8 +42,6 @@ export const NumberSelectionWrapper = styled.article`
 		align-items: center;
 		gap: 35px;
 		header {
-			font-family: 'OpenSans';
-			font-style: normal;
 			font-weight: 400;
 			font-size: 15px;
 			line-height: 15px;
@@ -79,8 +75,6 @@ export const NumberSelectionWrapper = styled.article`
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				font-family: 'OpenSans';
-				font-style: normal;
 				font-weight: 400;
 				font-size: 15px;
 				line-height: 15px;
@@ -95,8 +89,6 @@ export const NumberSelectionWrapper = styled.article`
 				width: 319px;
 				height: 53px;
 				padding: 19px;
-				font-family: 'OpenSans';
-				font-style: normal;
 				font-weight: 400;
 				font-size: 15px;
 				line-height: 15px;

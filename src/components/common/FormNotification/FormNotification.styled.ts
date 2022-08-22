@@ -6,7 +6,6 @@ export const MainUpNotification = styled.article`
 	background-color: white;
 	min-width: 329px;
 	min-height: 55px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 15px;
@@ -24,7 +23,6 @@ export const MainDownNotification = styled.article`
 	background-color: white;
 	min-width: 329px;
 	min-height: 55px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 15px;
@@ -43,7 +41,6 @@ export const HeaderNotification = styled.article`
 	background-color: white;
 	min-width: 329px;
 	min-height: 55px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 15px;
@@ -63,7 +60,6 @@ export const CompleteFormNotification = styled.article`
 	background-color: white;
 	min-width: 457px;
 	min-height: 55px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 15px;
@@ -91,7 +87,6 @@ export const Added1FormNotification = styled.article`
 	background-color: white;
 	min-width: 638px;
 	min-height: 55px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 15px;
@@ -111,7 +106,6 @@ export const Added2FormNotification = styled.article`
 	background-color: white;
 	min-width: 457px;
 	min-height: 55px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 15px;
@@ -131,7 +125,6 @@ export const Added3FormNotification = styled.article`
 	background-color: white;
 	min-width: 457px;
 	min-height: 55px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 15px;
@@ -153,7 +146,6 @@ export const SearchNotification = styled.article`
 	position: absolute;
 	max-width: 490px;
 	min-height: 86px;
-	font-family: 'OpenSans';
 	font-weight: 600;
 	font-size: 15px;
 	line-height: 23px;

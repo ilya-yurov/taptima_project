@@ -1,7 +1,7 @@
 export const baseTheme = {
 	colors: {
-		primary: 'white',
-		secondary: '#606f7a',
+		primary: '#606f7a',
+		secondary: 'white',
 	},
 	backgrounds: {
 		primary: '#5daaff',
@@ -16,5 +16,7 @@ export const baseTheme = {
 		primary: '17px',
 		secondary: '12px',
 		tertiary: '10px',
+		medimum: '20px',
+		big: '25px',
 	},
 }

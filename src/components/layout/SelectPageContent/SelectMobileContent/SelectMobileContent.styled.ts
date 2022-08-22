@@ -22,15 +22,13 @@ export const NotChoosedP = styled.p`
 	flex-direction: column;
 	align-items: center;
 	padding-top: 140px;
-	font-family: 'OpenSans';
-	font-style: normal;
 	font-weight: 400;
 	font-size: 23px;
 	line-height: 23px;
 	color: #606f7a;
 `
 export const SWrapperMobile = styled.div`
-	width: 375px;
+	width: 320px;
 	margin: 0px auto;
 	padding: 24px 20px 0px 20px;
 	height: 100%;

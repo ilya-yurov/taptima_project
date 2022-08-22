@@ -33,7 +33,7 @@ export const GoodsListItem = ({ id, img, description, value, netto, brutto, cost
 
 	return (
 		<>
-			<GoodMobile>
+			<GoodMobile fz={theme.fontSizes.tertiary}>
 				<img src={img} alt='item' />
 				<p>{description}</p>
 				<Button
@@ -64,8 +64,8 @@ export const GoodsListItem = ({ id, img, description, value, netto, brutto, cost
 							height='45px'
 							bg={theme.backgrounds.tertiary}
 							bgh={theme.backgrounds.tertiary}
-							color={theme.colors.secondary}
-							ch={theme.colors.secondary}
+							color={theme.colors.primary}
+							ch={theme.colors.primary}
 						/>
 					)}
 				</>

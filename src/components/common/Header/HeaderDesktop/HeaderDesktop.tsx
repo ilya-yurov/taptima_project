@@ -39,7 +39,7 @@ const HeaderDesktop = ({ basket, select, headerActiveToogle, formData, isNote, u
 							property='header'
 						/>
 					)}
-					<SelectHeader onMouseEnter={() => setHover((prev) => !prev)} onMouseLeave={() => setHover((prev) => !prev)} onClick={onClick}>
+					<SelectHeader ff={theme.fonts.secondary} onMouseEnter={() => setHover((prev) => !prev)} onMouseLeave={() => setHover((prev) => !prev)} onClick={onClick}>
 						<p>{from}</p>
 						<img src='/arrows/arrow_header.png' alt='logo' />
 						<p>{to + ','}</p>
@@ -59,10 +59,10 @@ const HeaderDesktop = ({ basket, select, headerActiveToogle, formData, isNote, u
 				content='Связаться'
 				width='132px'
 				height='45px'
-				color={theme.colors.secondary}
+				color={theme.colors.primary}
 				bg={theme.backgrounds.tertiary}
 				bgh={theme.backgrounds.primary}
-				ch={theme.colors.primary}
+				ch={theme.colors.secondary}
 			/>
 		</SHeader>
 	)

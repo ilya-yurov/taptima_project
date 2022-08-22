@@ -5,8 +5,6 @@ export const SearchForm = styled.form`
 `
 
 export const SearchInput = styled.input`
-	font-family: 'OpenSans';
-	font-style: normal;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 15px;

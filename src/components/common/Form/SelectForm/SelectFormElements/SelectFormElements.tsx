@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 import { ICurrencyData } from '../../../../../redux/mainFormReducer'
 import { SelectInputWrapper, SelectPageInput, SelectPageSelect, SelectPageSelectCurrency, SFormElement } from './SelectFormElements.styled'
@@ -16,6 +17,7 @@ interface SelectFormElementsProps {
 }
 
 const SelectFormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, currencyData, from, to, currency, cities }: SelectFormElementsProps) => {
+	const theme = useTheme()
 	const fromChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setFrom(e.target.value)
 	}
@@ -36,12 +38,12 @@ const SelectFormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, cur
 		<>
 			<SFormElement>
 				<SelectInputWrapper>
-					<SelectPageInput type='text' name='from' id='from' required value={from} onChange={fromChangeHandler} />
+					<SelectPageInput ff={theme.fonts.secondary} type='text' name='from' id='from' required value={from} onChange={fromChangeHandler} />
 				</SelectInputWrapper>
 			</SFormElement>
 			<SFormElement>
 				<SelectInputWrapper>
-					<SelectPageSelect name='to' id='to' value={to} onChange={toChangeHandler}>
+					<SelectPageSelect ff={theme.fonts.secondary} name='to' id='to' value={to} onChange={toChangeHandler}>
 						{cities.map((el, index) => (
 							<option key={index} value={el}>
 								{el}
@@ -52,7 +54,7 @@ const SelectFormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, cur
 			</SFormElement>
 			<SFormElement>
 				<SelectInputWrapper>
-					<SelectPageSelectCurrency name='currency' id='currency' value={currency} onChange={currencyChangeHandler}>
+					<SelectPageSelectCurrency ff={theme.fonts.secondary} name='currency' id='currency' value={currency} onChange={currencyChangeHandler}>
 						{currencyData.map((el, index) => (
 							<option key={index} value={el.currency.toUpperCase()}>
 								{el.currency.toUpperCase()}

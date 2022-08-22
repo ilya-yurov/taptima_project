@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 import { ICurrencyData } from '../../../../../redux/mainFormReducer'
 import { FormNotification } from '../../../FormNotification/FormNotification'
@@ -19,6 +20,7 @@ interface FormElementsProps {
 }
 
 const FormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, currencyData, from, to, currency, cities, isDisable, cost }: FormElementsProps) => {
+	const theme = useTheme()
 	const fromChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setFrom(e.target.value)
 	}
@@ -38,15 +40,19 @@ const FormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, currencyD
 	return (
 		<>
 			<SFormElement>
-				<SLabel htmlFor='from'>Откуда</SLabel>
+				<SLabel ff={theme.fonts.secondary} htmlFor='from'>
+					Откуда
+				</SLabel>
 				<MainInputWrapper>
-					<MainInput type='text' name='from' id='from' required value={from} onChange={fromChangeHandler} />
+					<MainInput ff={theme.fonts.secondary} type='text' name='from' id='from' required value={from} onChange={fromChangeHandler} />
 				</MainInputWrapper>
 			</SFormElement>
 			<SFormElement>
-				<SLabel htmlFor='to'>Куда</SLabel>
+				<SLabel ff={theme.fonts.secondary} htmlFor='to'>
+					Куда
+				</SLabel>
 				<MainInputWrapper>
-					<MainSelect name='to' id='to' value={to} onChange={toChangeHandler}>
+					<MainSelect ff={theme.fonts.secondary} name='to' id='to' value={to} onChange={toChangeHandler}>
 						{cities.map((el, index) => (
 							<option key={index} value={el}>
 								{el}
@@ -56,9 +62,11 @@ const FormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, currencyD
 				</MainInputWrapper>
 			</SFormElement>
 			<SFormElement>
-				<SLabel htmlFor='currency'>Валюта</SLabel>
+				<SLabel ff={theme.fonts.secondary} htmlFor='currency'>
+					Валюта
+				</SLabel>
 				<MainInputWrapper>
-					<MainSelect name='currency' id='currency' value={currency} onChange={currencyChangeHandler}>
+					<MainSelect ff={theme.fonts.secondary} name='currency' id='currency' value={currency} onChange={currencyChangeHandler}>
 						{currencyData.map((el, index) => (
 							<option key={index} value={el.currency.toUpperCase()}>
 								{el.currency.toUpperCase()}
@@ -68,10 +76,12 @@ const FormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, currencyD
 				</MainInputWrapper>
 			</SFormElement>
 			<SFormElement>
-				<SLabel htmlFor='cost'>Курс</SLabel>
+				<SLabel ff={theme.fonts.secondary} htmlFor='cost'>
+					Курс
+				</SLabel>
 				{!isDisable && <FormNotification content='Теперь нажмите на кнопку “Далее”' property='main down' />}
 				<MainInputWrapper>
-					<SInputDisabled name='cost' id='cost' value={cost} disabled />
+					<SInputDisabled ff={theme.fonts.secondary} name='cost' id='cost' value={cost} disabled />
 				</MainInputWrapper>
 			</SFormElement>
 		</>

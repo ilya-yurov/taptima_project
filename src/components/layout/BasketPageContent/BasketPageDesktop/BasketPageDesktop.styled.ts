@@ -23,17 +23,13 @@ export const HeaderWrapper = styled.header`
 `
 export const BusketHeader = styled.header`
 	align-self: center;
-	font-family: 'OpenSans';
-	font-style: normal;
 	font-weight: 400;
 	font-size: 36px;
 	line-height: 36px;
 	color: #606f7a;
 	@media (max-width: 1200px) {
 		padding: 0 20px;
-		font-family: 'OpenSans';
 		align-self: flex-start;
-		font-style: normal;
 		font-weight: 600;
 		font-size: 22px;
 		margin-bottom: 15px;
@@ -47,8 +43,6 @@ export const SheetHeader = styled.header`
 	background-color: #f8faff;
 	color: #606f7a;
 	border-radius: 5px;
-	font-family: 'OpenSans';
-	font-style: normal;
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 14px;

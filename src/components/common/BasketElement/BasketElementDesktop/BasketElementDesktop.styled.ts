@@ -1,21 +1,17 @@
-import styled from "@emotion/styled";
-
+import styled from '@emotion/styled'
 
 export const DesktopElementWrapper = styled.article`
 	display: grid;
 	grid-template-columns: 120px 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	grid-template-areas: "img description count netto brutto value cost delete";
+	grid-template-areas: 'img description count netto brutto value cost delete';
 	justify-content: center;
 	align-items: center;
-	font-family: 'OpenSans';
-	font-style: normal;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 23px;
-	color: #606F7A;
-
-	background-color: #F8FAFF;
-	border: 1px solid #E2E4EA;
+	color: #606f7a;
+	background-color: #f8faff;
+	border: 1px solid #e2e4ea;
 	border-radius: 5px;
 	p {
 		text-align: center;
@@ -23,9 +19,9 @@ export const DesktopElementWrapper = styled.article`
 		justify-content: center;
 		align-items: center;
 		height: 100%;
-		border-right: 1px solid #E2E4EA;
+		border-right: 1px solid #e2e4ea;
 		button {
-		background-color: #F8FAFF;
+			background-color: #f8faff;
 		}
 		&:last-child {
 			border: none;
@@ -34,14 +30,12 @@ export const DesktopElementWrapper = styled.article`
 	input {
 		background-color: #f8faff;
 		text-align: center;
-		font-family: 'OpenSans';
-		font-style: normal;
 		font-weight: 400;
 		font-size: 15px;
 		line-height: 23px;
-		color: #606F7A;
+		color: #606f7a;
 	}
-`;
+`
 
 export const GoodInfo = styled.p`
 	text-align: center;
@@ -49,32 +43,29 @@ export const GoodInfo = styled.p`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
+	border-right: 1px solid #e2e4ea;
 	&:hover {
 		background: url('/other/edit_basket.png') 150px center no-repeat;
 	}
-`;
+`
 
 export const MobileElementWrapper = styled.article`
 	border-radius: 5px;
-	background-color: #FCFDFF;
+	background-color: #fcfdff;
 	section {
 		display: flex;
 		align-items: center;
-		p{
+		p {
 			margin-left: 20px;
 			flex-grow: 1;
 			height: 100%;
 			max-width: 115px;
-			font-family: 'OpenSans';
-			font-style: normal;
 			font-weight: 600;
-			font-size: 17px;
 			line-height: 18px;
-			color: #606F7A;
+			color: #606f7a;
 		}
 	}
-`;
+`
 
 export const GoodImg = styled.img`
 	width: 119px;
@@ -82,7 +73,7 @@ export const GoodImg = styled.img`
 	@media (max-width: 1200px) {
 		width: 108px;
 	}
-`;
+`
 export const StyledIcon = styled.button`
 	border: 1px solid black;
 	width: 35px;
@@ -99,7 +90,7 @@ export const StyledIcon = styled.button`
 		width: 20px;
 		height: 20px;
 	}
-	`;
+`
 
 export const GoodImgWrapper = styled.div`
 	grid-area: img;
@@ -108,8 +99,8 @@ export const GoodImgWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
-`;
+	border-right: 1px solid #e2e4ea;
+`
 export const GoodDescriptionWrapper = styled.div`
 	grid-area: description;
 	text-align: center;
@@ -117,8 +108,8 @@ export const GoodDescriptionWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
-`;
+	border-right: 1px solid #e2e4ea;
+`
 export const GoodCountWrapper = styled.div`
 	grid-area: count;
 	text-align: center;
@@ -126,11 +117,11 @@ export const GoodCountWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
+	border-right: 1px solid #e2e4ea;
 	&:hover {
 		background: url('/other/edit_basket.png') 150px center no-repeat;
 	}
-`;
+`
 export const GoodNettoWrapper = styled.div`
 	grid-area: netto;
 	text-align: center;
@@ -138,11 +129,11 @@ export const GoodNettoWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
+	border-right: 1px solid #e2e4ea;
 	&:hover {
 		background: url('/other/edit_basket.png') 150px center no-repeat;
 	}
-`;
+`
 export const GoodBruttoWrapper = styled.div`
 	grid-area: brutto;
 	text-align: center;
@@ -150,11 +141,11 @@ export const GoodBruttoWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
+	border-right: 1px solid #e2e4ea;
 	&:hover {
 		background: url('/other/edit_basket.png') 150px center no-repeat;
 	}
-`;
+`
 export const GoodValueWrapper = styled.div`
 	grid-area: value;
 	text-align: center;
@@ -162,11 +153,11 @@ export const GoodValueWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
+	border-right: 1px solid #e2e4ea;
 	&:hover {
 		background: url('/other/edit_basket.png') 150px center no-repeat;
 	}
-`;
+`
 export const GoodCostWrapper = styled.div`
 	grid-area: cost;
 	text-align: center;
@@ -174,8 +165,8 @@ export const GoodCostWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
-	`;
+	border-right: 1px solid #e2e4ea;
+`
 export const GoodDeleteWrapper = styled.div`
 	grid-area: delete;
 	text-align: center;
@@ -183,11 +174,11 @@ export const GoodDeleteWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	border-right: 1px solid #E2E4EA;
+	border-right: 1px solid #e2e4ea;
 	button {
 		background-color: inherit;
 	}
-`;
+`
 
 export const DescriptionWrapper = styled.section`
 	display: flex;
@@ -200,16 +191,14 @@ export const DescriptionWrapper = styled.section`
 		align-items: center;
 		height: 18px;
 		div {
-			font-family: 'OpenSans';
-			font-style: normal;
 			font-weight: 600;
 			font-size: 13px;
 			line-height: 12px;
-			color: #606F7A;
+			color: #606f7a;
 			padding: 0px 10px 0px 10px;
 		}
 		&:last-child {
 			margin-bottom: 10px;
 		}
 	}
-`;
+`
