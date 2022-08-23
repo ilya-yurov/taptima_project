@@ -1,6 +1,7 @@
+import { useTheme } from '@emotion/react'
 import { Dispatch, SetStateAction } from 'react'
-import {IGoodsData} from '../../../../redux/goodsDataReducer';
-import {DescriptionWrapper, GoodImg, MobileElementWrapper, StyledIcon} from './BasketElementMobile.styled';
+import { IGoodsData } from '../../../../redux/goodsDataReducer'
+import { DescriptionWrapper, GoodImg, MobileElementWrapper, StyledIcon } from './BasketElementMobile.styled'
 
 interface BasketElementProps {
 	basket: IGoodsData[]
@@ -10,35 +11,26 @@ interface BasketElementProps {
 }
 
 const BasketElementMobile = ({ basket, deleteBasketElement, currentBasketElement, setRenderTrigger }: BasketElementProps) => {
+	const theme = useTheme()
 	const currentGoodElementIndex = basket.findIndex((el) => el.id === currentBasketElement.id)
 	const onDeleteHandler = () => {
 		deleteBasketElement(currentGoodElementIndex)
 		setRenderTrigger((prev) => !prev)
 	}
-
 	return (
 		<>
-			<MobileElementWrapper>
+			<MobileElementWrapper fw={theme.weight.secondary}>
 				<section>
-					<GoodImg
-						src={currentBasketElement.img}
-						alt="good's photo"
-					/>
+					<GoodImg src={currentBasketElement.img} alt="good's photo" />
 					<p>{currentBasketElement.description}</p>
 					<StyledIcon>
-						<img
-							src='/other/redact_basket.png'
-							alt='redact'
-						/>
+						<img src='/other/redact_basket.png' alt='redact' />
 					</StyledIcon>
 					<StyledIcon onClick={onDeleteHandler}>
-						<img
-							src='/other/delete_basket.png'
-							alt='delete'
-						/>
+						<img src='/other/delete_basket.png' alt='delete' />
 					</StyledIcon>
 				</section>
-				<DescriptionWrapper>
+				<DescriptionWrapper fw={theme.weight.secondary}>
 					<article>
 						<div>Кол-во:</div>
 						<div>{currentBasketElement.count}</div>

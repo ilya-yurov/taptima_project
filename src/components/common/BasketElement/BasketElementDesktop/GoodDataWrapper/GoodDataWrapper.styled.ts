@@ -11,7 +11,6 @@ export const GoodWrapper = styled.div`
 		background: url('/other/edit_basket.png') 150px center no-repeat;
 	}
 `
-
 export const GoodCountWrapper = styled(GoodWrapper)`
 	grid-area: count;
 `

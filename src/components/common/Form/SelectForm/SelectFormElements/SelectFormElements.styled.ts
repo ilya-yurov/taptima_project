@@ -8,13 +8,12 @@ export const SelectInputWrapper = styled.div`
 	@media (max-width: 1200px) {
 	}
 `
-export const SelectPageInput = styled.input<{ ff: string }>`
+export const SelectPageInput = styled.input<{ fw: string; ff: string }>`
 	text-align: center;
 	flex: 1;
 	font-family: ${({ ff }) => ff};
-	font-weight: 500;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #606f7a;
 	display: inline-block;
 	background: url('/other/divider_small_input.png') right center no-repeat;
@@ -27,11 +26,10 @@ export const SelectPageInput = styled.input<{ ff: string }>`
 		background: none;
 	}
 `
-export const SelectPageSelect = styled.select<{ ff: string }>`
+export const SelectPageSelect = styled.select<{ fw: string; ff: string }>`
 	font-family: ${({ ff }) => ff};
-	font-weight: 500;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	width: 100%;
 	text-align: center;
 	color: #606f7a;
@@ -47,11 +45,10 @@ export const SelectPageSelect = styled.select<{ ff: string }>`
 		background: none;
 	}
 `
-export const SelectPageSelectCurrency = styled.select<{ ff: string }>`
+export const SelectPageSelectCurrency = styled.select<{ fw: string; ff: string }>`
 	font-family: ${({ ff }) => ff};
-	font-weight: 500;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	width: 100%;
 	text-align: center;
 	color: #606f7a;

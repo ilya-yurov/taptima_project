@@ -21,16 +21,15 @@ export const HeaderWrapper = styled.header`
 		padding: 0 20px;
 	}
 `
-export const BasketHeader = styled.header`
+export const BasketHeader = styled.header<{ fw: string }>`
 	align-self: center;
-	font-weight: 400;
 	font-size: 36px;
 	line-height: 36px;
 	color: #606f7a;
 	@media (max-width: 1200px) {
 		padding: 0 20px;
 		align-self: flex-start;
-		font-weight: 600;
+		font-weight: ${({ fw }) => fw};
 		font-size: 22px;
 		margin-bottom: 15px;
 		line-height: 20px;

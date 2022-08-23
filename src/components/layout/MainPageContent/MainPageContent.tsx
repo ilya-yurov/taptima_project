@@ -1,7 +1,7 @@
 import Header from '../../common/Header/Header'
 import Form from '../../common/Form/Form'
 import { SWrapper, SMain, SArticle } from './MainPageContent.styled'
-import {useTheme} from '@emotion/react'
+import { useTheme } from '@emotion/react'
 
 export const MainPageContent = () => {
 	const theme = useTheme()
@@ -9,7 +9,7 @@ export const MainPageContent = () => {
 		<SWrapper>
 			<Header main={true} />
 			<SMain>
-				<SArticle fz={theme.fontSizes.big}>
+				<SArticle fw={theme.weight.quaternary} fz={theme.fontSizes.big}>
 					Рассчитайте <br />
 					стоимость доставки из Китая
 				</SArticle>

@@ -25,19 +25,10 @@ const SearchBar = ({ placeholder, buttonText, disabled, setFilter }: SearchBarPr
 	return (
 		<>
 			<MobileWrapper>
-				<SearchBarMobile
-					placeholder={placeholder}
-					disabled={disabled}
-					setFilter={setFilter}
-				/>
+				<SearchBarMobile placeholder={placeholder} disabled={disabled} setFilter={setFilter} />
 			</MobileWrapper>
 			<DesktopWrapper>
-				<SearchBarDesktop
-					buttonText={buttonText}
-					placeholder={placeholder}
-					disabled={disabled}
-					setFilter={setFilter}
-				/>
+				<SearchBarDesktop buttonText={buttonText} placeholder={placeholder} disabled={disabled} setFilter={setFilter} />
 			</DesktopWrapper>
 		</>
 	)

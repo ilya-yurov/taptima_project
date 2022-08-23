@@ -24,6 +24,8 @@ export const NoGoodsWrapper = styled.div`
 `
 export const MainSection = styled.section`
 	justify-self: center;
+	display: flex;
+	flex-direction: column;
 	align-self: center;
 	margin-bottom: 200px;
 	@media (max-width: 1200px) {
@@ -31,8 +33,7 @@ export const MainSection = styled.section`
 		text-align: center;
 	}
 `
-
-export const MainContent = styled.p<{ fz: string }>`
+export const MainContent = styled.section<{ fz: string }>`
 	position: relative;
 	line-height: 30px;
 	color: #606f7a;
@@ -43,9 +44,10 @@ export const MainContent = styled.p<{ fz: string }>`
 `
 export const NoAddButtonWrapper = styled.section`
 	position: absolute;
-	left: 80px;
+	left: 120px;
 	top: 50px;
 	@media (max-width: 1200px) {
+		left: 80px;
 		top: 80px;
 	}
 `

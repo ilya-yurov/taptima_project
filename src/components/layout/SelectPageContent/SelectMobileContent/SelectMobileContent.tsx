@@ -1,7 +1,7 @@
 import { GoodsListItem } from '../../../common/GoodListItem/GoodsListItem'
 import Header from '../../../common/Header/Header'
 import NumberSelection from '../../../common/NumberSelection/NumberSelection'
-import {ISelectPropsObject} from '../interfaces/interfaces'
+import { ISelectPropsObject } from '../interfaces/interfaces'
 import { ChoosedElementsMobile, GoodsListMobile, HeaderWrapper, NotChoosedP, SWrapperMobile } from './SelectMobileContent.styled'
 
 interface SelectMobileContentProps {
@@ -25,7 +25,6 @@ const SelectMobileContent = ({ props }: SelectMobileContentProps) => {
 		setBruttoGlobal,
 		setValueGlobal,
 	} = props
-
 	return (
 		<>
 			<SWrapperMobile>

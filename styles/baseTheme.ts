@@ -19,4 +19,10 @@ export const baseTheme = {
 		medimum: '20px',
 		big: '25px',
 	},
+	weight: {
+		primary: '400',
+		secondary: '600',
+		tertiary: '500',
+		quaternary: '300',
+	},
 }

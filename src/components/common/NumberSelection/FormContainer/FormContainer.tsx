@@ -34,19 +34,7 @@ interface FormContainerProps {
 	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
 }
 
-const FormContainer = ({
-	goodData,
-	isDisable,
-	setters,
-	basket,
-	values,
-	setCountGlobal,
-	setNettoGlobal,
-	setBruttoGlobal,
-	setValueGlobal,
-	setIsChoosedToogle,
-	addBasketElement,
-}: FormContainerProps) => {
+const FormContainer = ({ goodData, isDisable, setters, basket, values, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal, setIsChoosedToogle, addBasketElement }: FormContainerProps) => {
 	const { setNetto, setBrutto, setValue, setCount } = setters
 	const { value, netto, brutto, count } = values
 	const onCountChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -66,7 +54,6 @@ const FormContainer = ({
 		let value: string = setCorrectValue(e.target.value, 'кг')
 		setBrutto(value)
 	}
-
 	return (
 		<>
 			<FormWrapper action=''>

@@ -1,9 +1,9 @@
-import BusketPageContent from "../../src/components/layout/BasketPageContent/BasketPageContent"
+import BusketPageContent from '../../src/components/layout/BasketPageContent/BasketPageContent'
 
 const BusketPage = () => {
 	return (
 		<div>
-			<BusketPageContent/>
+			<BusketPageContent />
 		</div>
 	)
 }

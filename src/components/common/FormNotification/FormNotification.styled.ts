@@ -1,14 +1,13 @@
 import styled from '@emotion/styled'
 
-export const DefaultNotification = styled.article``
-export const MainUpNotification = styled.article`
+export const DefaultNotification = styled.article<{ fw: string }>``
+export const MainUpNotification = styled.article<{ fw: string }>`
 	position: absolute;
 	background-color: white;
 	min-width: 329px;
 	min-height: 55px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #5daaff;
 	display: flex;
 	justify-content: center;
@@ -18,14 +17,13 @@ export const MainUpNotification = styled.article`
 		display: none;
 	}
 `
-export const MainDownNotification = styled.article`
+export const MainDownNotification = styled.article<{ fw: string }>`
 	position: absolute;
 	background-color: white;
 	min-width: 329px;
 	min-height: 55px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #5daaff;
 	display: flex;
 	justify-content: center;
@@ -36,14 +34,13 @@ export const MainDownNotification = styled.article`
 		display: none;
 	}
 `
-export const HeaderNotification = styled.article`
+export const HeaderNotification = styled.article<{ fw: string }>`
 	position: absolute;
 	background-color: white;
 	min-width: 329px;
 	min-height: 55px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #5daaff;
 	display: flex;
 	justify-content: center;
@@ -55,14 +52,13 @@ export const HeaderNotification = styled.article`
 		display: none;
 	}
 `
-export const CompleteFormNotification = styled.article`
+export const CompleteFormNotification = styled.article<{ fw: string }>`
 	position: absolute;
 	background-color: white;
 	min-width: 457px;
 	min-height: 55px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #5daaff;
 	display: flex;
 	justify-content: center;
@@ -82,14 +78,13 @@ export const CompleteFormNotification = styled.article`
 		display: none;
 	}
 `
-export const Added1FormNotification = styled.article`
+export const Added1FormNotification = styled.article<{ fw: string }>`
 	position: absolute;
 	background-color: white;
 	min-width: 638px;
 	min-height: 55px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #5daaff;
 	display: flex;
 	justify-content: center;
@@ -101,14 +96,13 @@ export const Added1FormNotification = styled.article`
 		display: none;
 	}
 `
-export const Added2FormNotification = styled.article`
+export const Added2FormNotification = styled.article<{ fw: string }>`
 	position: absolute;
 	background-color: white;
 	min-width: 457px;
 	min-height: 55px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #5daaff;
 	display: flex;
 	justify-content: center;
@@ -120,14 +114,13 @@ export const Added2FormNotification = styled.article`
 		display: none;
 	}
 `
-export const Added3FormNotification = styled.article`
+export const Added3FormNotification = styled.article<{ fw: string }>`
 	position: absolute;
 	background-color: white;
 	min-width: 457px;
 	min-height: 55px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #5daaff;
 	display: flex;
 	justify-content: center;
@@ -142,11 +135,11 @@ export const Added3FormNotification = styled.article`
 		display: none;
 	}
 `
-export const SearchNotification = styled.article`
+export const SearchNotification = styled.article<{ fw: string }>`
 	position: absolute;
 	max-width: 490px;
 	min-height: 86px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
 	line-height: 23px;
 	color: #5daaff;

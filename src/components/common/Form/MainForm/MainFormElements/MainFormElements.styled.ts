@@ -1,13 +1,12 @@
 import styled from '@emotion/styled'
 
 export const SFormElement = styled.div``
-export const MainInput = styled.input<{ ff: string }>`
+export const MainInput = styled.input<{ ff: string; fw: string }>`
 	text-align: center;
 	flex: 1;
 	font-family: ${({ ff }) => ff};
-	font-weight: 500;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #606f7a;
 	display: inline-block;
 	background: url('/other/divider_input.png') right center no-repeat;
@@ -27,11 +26,10 @@ export const MainInputWrapper = styled.div`
 		min-height: 49px;
 	}
 `
-export const MainSelect = styled.select<{ ff: string }>`
+export const MainSelect = styled.select<{ fw: string; ff: string }>`
 	font-family: ${({ ff }) => ff};
-	font-weight: 500;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	width: 100%;
 	text-align: center;
 	color: #606f7a;
@@ -44,12 +42,11 @@ export const MainSelect = styled.select<{ ff: string }>`
 		background: none;
 	}
 `
-export const SInputDisabled = styled.input<{ ff: string }>`
+export const SInputDisabled = styled.input<{ fw: string; ff: string }>`
 	text-align: center;
 	font-family: ${({ ff }) => ff};
-	font-weight: 500;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	background-color: #ffffff;
 	flex: 1;
 	color: #b7b7b7;
@@ -59,11 +56,10 @@ export const SInputDisabled = styled.input<{ ff: string }>`
 		align-self: center;
 	}
 `
-export const SLabel = styled.label<{ ff: string }>`
+export const SLabel = styled.label<{ fw: string; ff: string }>`
 	font-family: ${({ ff }) => ff};
-	font-weight: 500;
+	font-weight: ${({ fw }) => fw};
 	font-size: 15px;
-	line-height: 15px;
 	color: #b7b7b7;
 	display: inline-block;
 	margin-bottom: 16px;

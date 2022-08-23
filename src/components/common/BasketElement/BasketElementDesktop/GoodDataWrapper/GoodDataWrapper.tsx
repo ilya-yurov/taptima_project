@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from 'react'
-import {IGoodsData, ISetPayload} from '../../../../../redux/goodsDataReducer'
+import { IGoodsData, ISetPayload } from '../../../../../redux/goodsDataReducer'
 import GoodDataInput from './GoodDataInput/GoodDataInput'
 import { GoodBruttoWrapper, GoodCountWrapper, GoodNettoWrapper, GoodValueWrapper } from './GoodDataWrapper.styled'
 
@@ -12,14 +12,7 @@ interface GoodDataWrapperProps {
 	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
 }
 
-const GoodDataWrapper = ({
-	currentBasketElement,
-	setCountGlobal,
-	setNettoGlobal,
-	currentGoodElementIndex,
-	setBruttoGlobal,
-	setValueGlobal,
-}: GoodDataWrapperProps) => {
+const GoodDataWrapper = ({ currentBasketElement, setCountGlobal, setNettoGlobal, currentGoodElementIndex, setBruttoGlobal, setValueGlobal }: GoodDataWrapperProps) => {
 	const [count, setCount] = useState(currentBasketElement.count)
 	const [netto, setNetto] = useState(currentBasketElement.netto)
 	const [brutto, setBrutto] = useState(currentBasketElement.brutto)
@@ -57,7 +50,6 @@ const GoodDataWrapper = ({
 		setEditValueMode(false)
 		setValueGlobal(currentGoodElementIndex, value)
 	}
-
 	return (
 		<>
 			{!editCountMode && <GoodCountWrapper onClick={onEditCountMode}>{currentBasketElement.count}</GoodCountWrapper>}

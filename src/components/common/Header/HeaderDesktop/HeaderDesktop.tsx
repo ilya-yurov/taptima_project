@@ -32,14 +32,8 @@ const HeaderDesktop = ({ basket, select, headerActiveToogle, formData, isNote, u
 			{!basket && !select && <StyledImgBaykal src='/other/baykal_logo.png' alt='logo' />}
 			{select && !headerActiveToogle && (
 				<SelectHeaderWrapper>
-					{note && isNote && (
-						<FormNotification
-							onClick={() => setNote(false)}
-							content='Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения'
-							property='header'
-						/>
-					)}
-					<SelectHeader ff={theme.fonts.secondary} onMouseEnter={() => setHover((prev) => !prev)} onMouseLeave={() => setHover((prev) => !prev)} onClick={onClick}>
+					{note && isNote && <FormNotification onClick={() => setNote(false)} content='Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения' property='header' />}
+					<SelectHeader fw={theme.weight.primary} ff={theme.fonts.secondary} onMouseEnter={() => setHover((prev) => !prev)} onMouseLeave={() => setHover((prev) => !prev)} onClick={onClick}>
 						<p>{from}</p>
 						<img src='/arrows/arrow_header.png' alt='logo' />
 						<p>{to + ','}</p>

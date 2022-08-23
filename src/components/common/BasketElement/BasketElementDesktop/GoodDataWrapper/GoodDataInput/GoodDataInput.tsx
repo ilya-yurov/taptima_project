@@ -7,7 +7,6 @@ interface ISeters {
 	setBrutto: Dispatch<SetStateAction<any>>
 	setValue: Dispatch<SetStateAction<any>>
 }
-
 interface GoodDataInputProps {
 	name: 'count' | 'netto' | 'brutto' | 'value'
 	value: any
@@ -47,17 +46,7 @@ const GoodDataInput = ({ name, value, seters }: GoodDataInputProps) => {
 			}
 			break
 	}
-
-	return (
-		<input
-			autoFocus
-			name={name}
-			id={name}
-			type='text'
-			value={value}
-			onChange={onChange}
-		/>
-	)
+	return <input autoFocus name={name} id={name} type='text' value={value} onChange={onChange} />
 }
 
 export default GoodDataInput

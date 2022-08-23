@@ -38,12 +38,12 @@ const SelectFormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, cur
 		<>
 			<SFormElement>
 				<SelectInputWrapper>
-					<SelectPageInput ff={theme.fonts.secondary} type='text' name='from' id='from' required value={from} onChange={fromChangeHandler} />
+					<SelectPageInput fw={theme.weight.tertiary} ff={theme.fonts.secondary} type='text' name='from' id='from' required value={from} onChange={fromChangeHandler} />
 				</SelectInputWrapper>
 			</SFormElement>
 			<SFormElement>
 				<SelectInputWrapper>
-					<SelectPageSelect ff={theme.fonts.secondary} name='to' id='to' value={to} onChange={toChangeHandler}>
+					<SelectPageSelect fw={theme.weight.tertiary} ff={theme.fonts.secondary} name='to' id='to' value={to} onChange={toChangeHandler}>
 						{cities.map((el, index) => (
 							<option key={index} value={el}>
 								{el}
@@ -54,7 +54,7 @@ const SelectFormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, cur
 			</SFormElement>
 			<SFormElement>
 				<SelectInputWrapper>
-					<SelectPageSelectCurrency ff={theme.fonts.secondary} name='currency' id='currency' value={currency} onChange={currencyChangeHandler}>
+					<SelectPageSelectCurrency fw={theme.weight.tertiary} ff={theme.fonts.secondary} name='currency' id='currency' value={currency} onChange={currencyChangeHandler}>
 						{currencyData.map((el, index) => (
 							<option key={index} value={el.currency.toUpperCase()}>
 								{el.currency.toUpperCase()}

@@ -28,17 +28,7 @@ interface NumberSelectionProps {
 	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
 }
 
-const NumberSelection = ({
-	goodData,
-	setIsChoosedToogle,
-	basket,
-	isChoosedToogle,
-	addBasketElement,
-	setCountGlobal,
-	setNettoGlobal,
-	setBruttoGlobal,
-	setValueGlobal,
-}: NumberSelectionProps) => {
+const NumberSelection = ({ goodData, setIsChoosedToogle, basket, isChoosedToogle, addBasketElement, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal }: NumberSelectionProps) => {
 	return (
 		<>
 			<DesktopWrapper>

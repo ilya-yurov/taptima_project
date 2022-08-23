@@ -9,6 +9,7 @@ interface StyledButtonProps {
 	color?: string
 	ff?: string
 	fz?: string
+	fw?: string
 }
 
 export const StyledButtonWrapper = styled.button<StyledButtonProps>`
@@ -17,7 +18,7 @@ export const StyledButtonWrapper = styled.button<StyledButtonProps>`
 	align-items: center;
 	border-radius: 3px;
 	font-family: ${({ ff }) => ff};
-	font-weight: 600;
+	font-weight: ${({ fw = 600 }) => fw};
 	font-size: ${({ fz }) => fz};
 	line-height: 17px;
 	color: ${({ color }) => color};

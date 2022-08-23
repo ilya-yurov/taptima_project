@@ -6,6 +6,7 @@ import Header from '../../../common/Header/Header'
 import { FormNotification } from '../../../common/FormNotification/FormNotification'
 import BasketElement from '../../../common/BasketElement/BasketElement'
 import { Button } from '../../../common/Button/Button'
+import { useTheme } from '@emotion/react'
 
 interface IBasketPropsObject {
 	basket: IGoodsData[]
@@ -29,22 +30,21 @@ const BasketPageDesktop = ({ props }: BasketPageDesktopProps) => {
 	const [note3, setNote3] = useState(true)
 	useEffect(() => {}, [renderTrigger])
 	const router = useRouter()
-
+	const theme = useTheme()
 	const onAddClick = () => {
 		router.push({ pathname: '/select' })
 	}
-
 	return (
 		<>
 			<BusketWrapper>
 				<HeaderWrapper>
 					<Header basket={true} select={true} />
 				</HeaderWrapper>
-				<BusketHeader>Добавленная мебель ({basket.length})</BusketHeader>
+				<BusketHeader fw={theme.weight.secondary}>Добавленная мебель ({basket.length})</BusketHeader>
 				{note && <FormNotification onClick={() => setNote(false)} content='Чтобы отредактировать  введенные ланные, просто нажмите на поле' property='added1' />}
 				{note2 && <FormNotification onClick={() => setNote2(false)} content='Через кнопку “Добавить” Вы можете добавлять еще элементы' property='added2' />}
 				{note3 && <FormNotification onClick={() => setNote3(false)} content='Узнайте стоимость доставки, нажав на кнопку “Рассчитать”' property='added3' />}
-				<SheetHeader>
+				<SheetHeader fw={theme.weight.secondary}>
 					<Plug></Plug>
 					<Plug></Plug>
 					<p>Кол-во</p>

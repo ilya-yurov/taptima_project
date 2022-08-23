@@ -21,29 +21,28 @@ export const HeaderWrapper = styled.header`
 		padding: 0 20px;
 	}
 `
-export const BusketHeader = styled.header`
+export const BusketHeader = styled.header<{ fw: string }>`
 	align-self: center;
-	font-weight: 400;
 	font-size: 36px;
 	line-height: 36px;
 	color: #606f7a;
 	@media (max-width: 1200px) {
 		padding: 0 20px;
 		align-self: flex-start;
-		font-weight: 600;
+		font-weight: ${({ fw }) => fw};
 		font-size: 22px;
 		margin-bottom: 15px;
 		line-height: 20px;
 	}
 `
-export const SheetHeader = styled.header`
+export const SheetHeader = styled.header<{ fw: string }>`
 	display: grid;
 	grid-template-columns: 120px 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	text-align: center;
 	background-color: #f8faff;
 	color: #606f7a;
 	border-radius: 5px;
-	font-weight: 600;
+	font-weight: ${({ fw }) => fw};
 	font-size: 14px;
 	line-height: 14px;
 	p {

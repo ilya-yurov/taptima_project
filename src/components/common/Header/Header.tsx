@@ -30,33 +30,17 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
 	const { select, formData, headerActiveToogle, updateHeaderToogle, isNote, setFilter, disabled, basket, main } = props
-
 	return (
 		<>
 			<MobileWrapper>
-				<HeaderMobile
-					formData={formData}
-					select={select}
-					basket={basket}
-					disabled={disabled}
-					setFilter={setFilter}
-					main={main}
-				/>
+				<HeaderMobile formData={formData} select={select} basket={basket} disabled={disabled} setFilter={setFilter} main={main} />
 			</MobileWrapper>
 			<DesktopWrapper>
-				<HeaderDesktop
-					select={select}
-					isNote={isNote}
-					headerActiveToogle={headerActiveToogle}
-					basket={basket}
-					formData={formData}
-					updateHeaderToogle={updateHeaderToogle}
-				/>
+				<HeaderDesktop select={select} isNote={isNote} headerActiveToogle={headerActiveToogle} basket={basket} formData={formData} updateHeaderToogle={updateHeaderToogle} />
 			</DesktopWrapper>
 		</>
 	)
 }
-
 const mapStateToProps = (state: any) => ({
 	formData: state.mainForm.formData,
 	headerActiveToogle: state.mainForm.headerActiveToogle,

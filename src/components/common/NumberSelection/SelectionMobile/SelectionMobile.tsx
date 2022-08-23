@@ -14,16 +14,7 @@ interface NumberSelectionProps {
 	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
 }
 
-const SelectionMobile = ({
-	goodData,
-	setIsChoosedToogle,
-	basket,
-	addBasketElement,
-	setCountGlobal,
-	setNettoGlobal,
-	setBruttoGlobal,
-	setValueGlobal,
-}: NumberSelectionProps) => {
+const SelectionMobile = ({ goodData, setIsChoosedToogle, basket, addBasketElement, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal }: NumberSelectionProps) => {
 	const initGoodData = goodData
 	const [count, setCount] = useState<any>('1')
 	const [value, setValue] = useState(goodData.value + ' м3')
@@ -35,7 +26,6 @@ const SelectionMobile = ({
 	useEffect(() => {
 		recalculateQuantity()
 	}, [count])
-
 	const recalculateQuantity = () => {
 		setValue(initGoodData.value * count + ' м3')
 		setNetto(initGoodData.netto * count + ' кг')
@@ -43,7 +33,6 @@ const SelectionMobile = ({
 	}
 	let isDisable
 	if (count === '' || value === '' || netto === '' || brutto === '' || cost === '') isDisable = true
-
 	return (
 		<NumberSelectionWrapper>
 			<SelectionHeader>

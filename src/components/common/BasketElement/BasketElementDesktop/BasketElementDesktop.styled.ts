@@ -6,7 +6,6 @@ export const DesktopElementWrapper = styled.article`
 	grid-template-areas: 'img description count netto brutto value cost delete';
 	justify-content: center;
 	align-items: center;
-	font-weight: 400;
 	font-size: 15px;
 	line-height: 23px;
 	color: #606f7a;
@@ -30,13 +29,11 @@ export const DesktopElementWrapper = styled.article`
 	input {
 		background-color: #f8faff;
 		text-align: center;
-		font-weight: 400;
 		font-size: 15px;
 		line-height: 23px;
 		color: #606f7a;
 	}
 `
-
 export const GoodInfo = styled.p`
 	text-align: center;
 	display: flex;
@@ -48,8 +45,7 @@ export const GoodInfo = styled.p`
 		background: url('/other/edit_basket.png') 150px center no-repeat;
 	}
 `
-
-export const MobileElementWrapper = styled.article`
+export const MobileElementWrapper = styled.article<{ fw: string }>`
 	border-radius: 5px;
 	background-color: #fcfdff;
 	section {
@@ -60,13 +56,12 @@ export const MobileElementWrapper = styled.article`
 			flex-grow: 1;
 			height: 100%;
 			max-width: 115px;
-			font-weight: 600;
+			font-weight: ${({ fw }) => fw};
 			line-height: 18px;
 			color: #606f7a;
 		}
 	}
 `
-
 export const GoodImg = styled.img`
 	width: 119px;
 	height: 96px;
@@ -91,7 +86,6 @@ export const StyledIcon = styled.button`
 		height: 20px;
 	}
 `
-
 export const GoodImgWrapper = styled.div`
 	grid-area: img;
 	text-align: center;
@@ -180,7 +174,7 @@ export const GoodDeleteWrapper = styled.div`
 	}
 `
 
-export const DescriptionWrapper = styled.section`
+export const DescriptionWrapper = styled.section<{ fw: string }>`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
@@ -191,7 +185,7 @@ export const DescriptionWrapper = styled.section`
 		align-items: center;
 		height: 18px;
 		div {
-			font-weight: 600;
+			font-weight: ${({ fw }) => fw};
 			font-size: 13px;
 			line-height: 12px;
 			color: #606f7a;

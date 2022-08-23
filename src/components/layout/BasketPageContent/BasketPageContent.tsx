@@ -30,7 +30,6 @@ const BusketPageContent = ({ basket, deleteBasketElement, setCountGlobal, setNet
 	const [renderTrigger, setRenderTrigger] = useState(false)
 	const props = { renderTrigger, setRenderTrigger, basket, deleteBasketElement, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal }
 	useEffect(() => {}, [renderTrigger])
-
 	return (
 		<>
 			{basket.length > 0 ? (

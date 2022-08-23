@@ -35,7 +35,6 @@ export const Button = (props: ButtonProps) => {
 		icon = 'none',
 		...restProps
 	} = props
-
 	return (
 		<>
 			<StyledButtonWrapper bg={bg} fz={fz} ch={ch} bgh={bgh} color={color} width={width} height={height} disabled={disabled} {...restProps}>

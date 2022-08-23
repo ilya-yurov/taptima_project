@@ -29,8 +29,10 @@ export const GlobalTheme = css`
 	body {
 		padding: 0;
 		margin: 0;
+		font-weight: 400;
 		font-family: OpenSans;
 		font-style: normal;
+		line-height: 15px;
 		background-color: #eff3f9;
 	}
 

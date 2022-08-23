@@ -27,7 +27,6 @@ const SelectForm = ({ formData, updateMainForm, headerActiveToogle, updateHeader
 			setIsDisable(false)
 		}
 	}, [from])
-
 	let selectHandleSubmit = (e: MouseEvent) => {
 		e.preventDefault()
 		updateMainForm({ from, to, currency, cost, sign })

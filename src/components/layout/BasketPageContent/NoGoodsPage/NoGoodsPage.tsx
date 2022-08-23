@@ -3,7 +3,7 @@ import { HeaderWrapper, NoGoodsWrapper, NoAddButtonWrapper, MainContent, MainSec
 import styled from '@emotion/styled'
 import Header from '../../../common/Header/Header'
 import { Button } from '../../../common/Button/Button'
-import {useTheme} from '@emotion/react'
+import { useTheme } from '@emotion/react'
 
 export const MobileButtonsWrapper = styled.section`
 	@media (min-width: 1200px) {
@@ -19,11 +19,9 @@ export const DesktopButtonsWrapper = styled.section`
 const NoGoodsPage = () => {
 	const router = useRouter()
 	const theme = useTheme()
-
 	const onAddClick = () => {
 		router.push({ pathname: '/select' })
 	}
-
 	return (
 		<>
 			<NoGoodsWrapper>

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const MobileElementWrapper = styled.article`
+export const MobileElementWrapper = styled.article<{ fw: string }>`
 	border-radius: 5px;
 	background-color: #fcfdff;
 	section {
@@ -11,19 +11,17 @@ export const MobileElementWrapper = styled.article`
 			flex-grow: 1;
 			height: 100%;
 			max-width: 115px;
-			font-weight: 600;
+			font-weight: ${({ fw }) => fw};
 			font-size: 17px;
 			line-height: 18px;
 			color: #606f7a;
 		}
 	}
 `
-
 export const GoodImg = styled.img`
 	width: 108px;
 	height: 96px;
 `
-
 export const StyledIcon = styled.button`
 	border: 1px solid black;
 	width: 35px;
@@ -41,8 +39,7 @@ export const StyledIcon = styled.button`
 		height: 20px;
 	}
 `
-
-export const DescriptionWrapper = styled.section`
+export const DescriptionWrapper = styled.section<{ fw: string }>`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
@@ -53,7 +50,7 @@ export const DescriptionWrapper = styled.section`
 		align-items: center;
 		height: 18px;
 		div {
-			font-weight: 600;
+			font-weight: ${({ fw }) => fw};
 			font-size: 13px;
 			line-height: 12px;
 			color: #606f7a;

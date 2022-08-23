@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import {
 	DefaultNotification,
 	MainUpNotification,
@@ -19,6 +20,7 @@ interface FormNotificationProps {
 }
 
 export const FormNotification = ({ content, property, onClick }: FormNotificationProps) => {
+	const theme = useTheme()
 	let CurrentNotification: typeof DefaultNotification = DefaultNotification
 	switch (property) {
 		case 'main up':
@@ -46,9 +48,8 @@ export const FormNotification = ({ content, property, onClick }: FormNotificatio
 			CurrentNotification = Added3FormNotification
 			break
 	}
-
 	return (
-		<CurrentNotification>
+		<CurrentNotification fw={theme.weight.secondary}>
 			<SHeaderIconWrapper onClick={onClick}>
 				{property === 'header' && <img src='/arrows/arrow_up_notification.png' alt='arrow up' />}
 				{(property === 'added1' || property === 'added2' || property === 'added3') && <img src='/other/cross_notification.png' alt='cross' />}

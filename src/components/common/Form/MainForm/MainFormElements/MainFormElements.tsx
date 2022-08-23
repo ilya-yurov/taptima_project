@@ -40,19 +40,19 @@ const FormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, currencyD
 	return (
 		<>
 			<SFormElement>
-				<SLabel ff={theme.fonts.secondary} htmlFor='from'>
+				<SLabel fw={theme.weight.tertiary} ff={theme.fonts.secondary} htmlFor='from'>
 					Откуда
 				</SLabel>
 				<MainInputWrapper>
-					<MainInput ff={theme.fonts.secondary} type='text' name='from' id='from' required value={from} onChange={fromChangeHandler} />
+					<MainInput fw={theme.weight.tertiary} ff={theme.fonts.secondary} type='text' name='from' id='from' required value={from} onChange={fromChangeHandler} />
 				</MainInputWrapper>
 			</SFormElement>
 			<SFormElement>
-				<SLabel ff={theme.fonts.secondary} htmlFor='to'>
+				<SLabel fw={theme.weight.tertiary} ff={theme.fonts.secondary} htmlFor='to'>
 					Куда
 				</SLabel>
 				<MainInputWrapper>
-					<MainSelect ff={theme.fonts.secondary} name='to' id='to' value={to} onChange={toChangeHandler}>
+					<MainSelect fw={theme.weight.tertiary} ff={theme.fonts.secondary} name='to' id='to' value={to} onChange={toChangeHandler}>
 						{cities.map((el, index) => (
 							<option key={index} value={el}>
 								{el}
@@ -62,11 +62,11 @@ const FormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, currencyD
 				</MainInputWrapper>
 			</SFormElement>
 			<SFormElement>
-				<SLabel ff={theme.fonts.secondary} htmlFor='currency'>
+				<SLabel fw={theme.weight.tertiary} ff={theme.fonts.secondary} htmlFor='currency'>
 					Валюта
 				</SLabel>
 				<MainInputWrapper>
-					<MainSelect ff={theme.fonts.secondary} name='currency' id='currency' value={currency} onChange={currencyChangeHandler}>
+					<MainSelect fw={theme.weight.tertiary} ff={theme.fonts.secondary} name='currency' id='currency' value={currency} onChange={currencyChangeHandler}>
 						{currencyData.map((el, index) => (
 							<option key={index} value={el.currency.toUpperCase()}>
 								{el.currency.toUpperCase()}
@@ -76,12 +76,12 @@ const FormElements = ({ setFrom, setTo, setCurrency, setCost, setSign, currencyD
 				</MainInputWrapper>
 			</SFormElement>
 			<SFormElement>
-				<SLabel ff={theme.fonts.secondary} htmlFor='cost'>
+				<SLabel fw={theme.weight.tertiary} ff={theme.fonts.secondary} htmlFor='cost'>
 					Курс
 				</SLabel>
 				{!isDisable && <FormNotification content='Теперь нажмите на кнопку “Далее”' property='main down' />}
 				<MainInputWrapper>
-					<SInputDisabled ff={theme.fonts.secondary} name='cost' id='cost' value={cost} disabled />
+					<SInputDisabled fw={theme.weight.tertiary} ff={theme.fonts.secondary} name='cost' id='cost' value={cost} disabled />
 				</MainInputWrapper>
 			</SFormElement>
 		</>

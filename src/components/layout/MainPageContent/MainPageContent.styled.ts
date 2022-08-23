@@ -12,7 +12,7 @@ export const SWrapper = styled.div`
 		padding: 24px 20px 0px 20px;
 	}
 `
-export const SArticle = styled.article<{ fz: string }>`
+export const SArticle = styled.article<{ fw: string; fz: string }>`
 	font-size: 48px;
 	line-height: 64px;
 	color: #606f7a;
@@ -20,7 +20,7 @@ export const SArticle = styled.article<{ fz: string }>`
 	@media (max-width: 1200px) {
 		letter-spacing: -1px;
 		margin-bottom: 0px;
-		font-weight: 300;
+		font-weight: ${({ fw }) => fw};
 		font-size: ${({ fz }) => fz};
 		line-height: 40px;
 	}

@@ -17,17 +17,7 @@ interface NumberSelectionProps {
 	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
 }
 
-const SelectionDesktop = ({
-	goodData,
-	setIsChoosedToogle,
-	basket,
-	isChoosedToogle,
-	addBasketElement,
-	setCountGlobal,
-	setNettoGlobal,
-	setBruttoGlobal,
-	setValueGlobal,
-}: NumberSelectionProps) => {
+const SelectionDesktop = ({ goodData, setIsChoosedToogle, basket, isChoosedToogle, addBasketElement, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal }: NumberSelectionProps) => {
 	const initGoodData = goodData
 	const [count, setCount] = useState<any>('1')
 	const [value, setValue] = useState(goodData.value + ' м3')
@@ -40,7 +30,6 @@ const SelectionDesktop = ({
 	useEffect(() => {
 		recalculateQuantity()
 	}, [count])
-
 	const recalculateQuantity = () => {
 		setValue(initGoodData.value * count + ' м3')
 		setNetto(initGoodData.netto * count + ' кг')
@@ -56,7 +45,6 @@ const SelectionDesktop = ({
 	}
 	let isDisable
 	if (count === '' || value === '' || netto === '' || brutto === '' || cost === '') isDisable = true
-
 	return (
 		<NumberSelectionWrapper>
 			{note && isChoosedToogle && <FormNotification content='Теперь заполните поля для этого элемента' property='complete form' onClick={() => setNote(false)} />}

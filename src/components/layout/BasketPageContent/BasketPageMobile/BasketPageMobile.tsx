@@ -5,6 +5,7 @@ import { IGoodsData, ISetPayload } from '../../../../redux/goodsDataReducer'
 import Header from '../../../common/Header/Header'
 import BasketElement from '../../../common/BasketElement/BasketElement'
 import { Button } from '../../../common/Button/Button'
+import { useTheme } from '@emotion/react'
 
 interface IBasketPropsObject {
 	basket: IGoodsData[]
@@ -25,17 +26,16 @@ const BasketPageMobile = ({ props }: BasketPageMobileProps) => {
 	const { basket, deleteBasketElement, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal, renderTrigger, setRenderTrigger } = props
 	useEffect(() => {}, [renderTrigger])
 	const router = useRouter()
-
+	const theme = useTheme()
 	const onAddClick = () => {
 		router.push({ pathname: '/select' })
 	}
-
 	return (
 		<BasketWrapper>
 			<HeaderWrapper>
 				<Header basket={true} select={true} />
 			</HeaderWrapper>
-			<BasketHeader>Добавленная мебель ({basket.length})</BasketHeader>
+			<BasketHeader fw={theme.weight.secondary}>Добавленная мебель ({basket.length})</BasketHeader>
 			<GoodsListWrapper>
 				{basket.map((el, index) => (
 					<BasketElement

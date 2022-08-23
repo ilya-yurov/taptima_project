@@ -1,14 +1,5 @@
 import { useState } from 'react'
-import {
-	IGoodsData,
-	deleteBasketElement,
-	addBasketElement,
-	setCountGlobal,
-	ISetPayload,
-	setNettoGlobal,
-	setBruttoGlobal,
-	setValueGlobal,
-} from '../../../redux/goodsDataReducer'
+import { IGoodsData, deleteBasketElement, addBasketElement, setCountGlobal, ISetPayload, setNettoGlobal, setBruttoGlobal, setValueGlobal } from '../../../redux/goodsDataReducer'
 import { connect } from 'react-redux'
 import SelectMobileContent from './SelectMobileContent/SelectMobileContent'
 import styled from '@emotion/styled'
@@ -36,16 +27,7 @@ interface SelectPageContentProps {
 	addBasketElement: (newElement: IGoodsData) => { type: string; payload: IGoodsData }
 }
 
-const SelectPageContent = ({
-	goodsData,
-	basket,
-	deleteBasketElement,
-	addBasketElement,
-	setCountGlobal,
-	setNettoGlobal,
-	setBruttoGlobal,
-	setValueGlobal,
-}: SelectPageContentProps) => {
+const SelectPageContent = ({ goodsData, basket, deleteBasketElement, addBasketElement, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal }: SelectPageContentProps) => {
 	const [isChoosedToogle, setIsChoosedToogle] = useState(false)
 	const [filter, setFilter] = useState('')
 	const [selectedGoodData, setSelectedGoodData] = useState({ img: '', description: '', value: 0, netto: 0, brutto: 0, cost: 0 })

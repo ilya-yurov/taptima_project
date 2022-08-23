@@ -32,7 +32,6 @@ const Form = ({ formData, select, updateMainForm, headerActiveToogle, updateHead
 		</>
 	)
 }
-
 const mapStateToProps = (state: any) => ({
 	formData: state.mainForm.formData,
 	currencyData: state.mainForm.currencyData,

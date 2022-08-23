@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { Dispatch, SetStateAction } from 'react'
 import { IFormData } from '../../../../redux/mainFormReducer'
@@ -16,11 +17,10 @@ interface HeaderMobileProps {
 const HeaderMobile = ({ formData, basket, select, disabled, setFilter, main }: HeaderMobileProps) => {
 	const { from, to, sign } = formData
 	const router = useRouter()
-
+	const theme = useTheme()
 	const onClickRedirectMobile = () => {
 		router.push({ pathname: '/' })
 	}
-
 	return (
 		<SHeader>
 			{!basket && !select && <StyledImgBaykal src='/other/baykal_logo.png' alt='logo' />}
@@ -30,7 +30,7 @@ const HeaderMobile = ({ formData, basket, select, disabled, setFilter, main }: H
 				</button>
 			)}
 			{basket && (
-				<SelectHeader>
+				<SelectHeader fw={theme.weight.secondary}>
 					<div>
 						<p>{from}</p>
 						<img src='/arrows/arrow_header.png' alt='logo' />

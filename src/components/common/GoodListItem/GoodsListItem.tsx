@@ -23,29 +23,18 @@ export const GoodsListItem = ({ id, img, description, value, netto, brutto, cost
 			setIsChoosedLocal(false)
 		}
 	}, [disabled])
-	
 	const onClickHandle = (e: MouseEvent) => {
 		e.preventDefault()
 		setSelectedGoodData({ id, img, description, value, netto, brutto, cost })
 		setIsChoosedLocal((prev) => !prev)
 		setIsChoosedToogle((prev) => !prev)
 	}
-
 	return (
 		<>
 			<GoodMobile fz={theme.fontSizes.tertiary}>
 				<img src={img} alt='item' />
 				<p>{description}</p>
-				<Button
-					content='Добавить'
-					disabled={disabled}
-					property='add'
-					type='button'
-					onClick={onClickHandle}
-					width='68px'
-					height='30px'
-					fz={theme.fontSizes.tertiary}
-				/>
+				<Button content='Добавить' disabled={disabled} property='add' type='button' onClick={onClickHandle} width='68px' height='30px' fz={theme.fontSizes.tertiary} />
 			</GoodMobile>
 			<GoodDesktop>
 				<img src={img} alt='item' />

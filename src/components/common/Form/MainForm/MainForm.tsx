@@ -22,7 +22,6 @@ const MainForm = ({ formData, updateMainForm, currencyData, cities }: FormProps)
 	const [cost, setCost] = useState(formData.cost)
 	const [isDisable, setIsDisable] = useState(true)
 	const router = useRouter()
-	const theme = useTheme()
 	useEffect(() => {
 		if (from.trim().length === 0) {
 			setIsDisable(true)

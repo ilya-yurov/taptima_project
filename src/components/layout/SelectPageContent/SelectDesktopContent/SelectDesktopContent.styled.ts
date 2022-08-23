@@ -16,7 +16,6 @@ export const HeaderWrapper = styled.article`
 export const LeftArticle = styled.article`
 	grid-area: leftArticle;
 	padding-top: 30px;
-	font-weight: 400;
 	font-size: 36px;
 	line-height: 48px;
 	color: #606f7a;
@@ -26,7 +25,6 @@ export const NotChoosedP = styled.p`
 	flex-direction: column;
 	align-items: center;
 	padding-top: 140px;
-	font-weight: 400;
 	font-size: 23px;
 	line-height: 23px;
 	color: #606f7a;
@@ -35,7 +33,6 @@ export const RightArticle = styled.article`
 	grid-area: rightArticle;
 	justify-self: center;
 	padding-top: 30px;
-	font-weight: 400;
 	font-size: 36px;
 	line-height: 48px;
 	color: #606f7a;

@@ -12,12 +12,11 @@ export const StyledImgBaykal = styled.img`
 export const SelectHeaderWrapper = styled.header`
 	flex-grow: 1;
 `
-
-export const SelectHeader = styled.header<{ ff: string }>`
+export const SelectHeader = styled.header<{ fw: string; ff: string }>`
 	width: 261px;
 	height: 45px;
 	font-family: ${({ ff }) => ff};
-	font-weight: 500;
+	font-weight: ${({ fw }) => fw};
 	font-size: 17px;
 	line-height: 17px;
 	color: #606f7a;
@@ -33,7 +32,6 @@ export const SelectHeader = styled.header<{ ff: string }>`
 		margin-left: 60px;
 	}
 `
-
 export const FormWrapper = styled.div`
 	flex-grow: 1;
 `

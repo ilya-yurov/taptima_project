@@ -1,11 +1,9 @@
-import {MainPageContent} from '../src/components/layout/MainPageContent/MainPageContent'
-import TestComponent from '../test/TestComponent'
+import { MainPageContent } from '../src/components/layout/MainPageContent/MainPageContent'
 
 const MainPage = () => {
 	return (
 		<>
-			<MainPageContent/>
-			{/* <TestComponent bg='yellow'/> */}
+			<MainPageContent />
 		</>
 	)
 }
