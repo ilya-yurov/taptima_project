@@ -26,7 +26,7 @@ const HeaderMobile = ({ formData, basket, select, disabled, setFilter, main }: H
 			{!basket && !select && <StyledImgBaykal src='/other/baykal_logo.png' alt='logo' />}
 			{select && !basket && (
 				<button onClick={onClickRedirectMobile}>
-					<ImgBack src='/other/back_select_mobile.png' alt='logo' />
+					<ImgBack bg={theme.backgrounds.mainbody} src='/other/back_select_mobile.png' alt='logo' />
 				</button>
 			)}
 			{basket && (

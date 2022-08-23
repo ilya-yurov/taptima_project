@@ -6,9 +6,10 @@ export const SHeader = styled.header`
 	justify-content: space-between;
 	align-items: flex-start;
 `
-export const ImgBack = styled.img`
+export const ImgBack = styled.img<{bg: string}>`
 	width: 29px;
 	height: 20px;
+	background-color: ${({bg}) => bg}
 `
 export const StyledImgBaykal = styled.img`
 	width: 163px;

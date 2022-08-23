@@ -7,6 +7,7 @@ export const baseTheme = {
 		primary: '#5daaff',
 		secondary: '#2876cc',
 		tertiary: 'white',
+		mainbody: '#eff3f9'
 	},
 	fonts: {
 		primary: 'OpenSans',
