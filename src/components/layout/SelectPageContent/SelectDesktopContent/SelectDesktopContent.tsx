@@ -13,7 +13,7 @@ const SelectDesktopContent = ({ props }: SelectDesktopContentProps) => {
 	const {
 		setFilter,
 		isChoosedToogle,
-		goodsData,
+		goodsDataInitial,
 		filter,
 		setSelectedGoodData,
 		setIsChoosedToogle,
@@ -46,7 +46,7 @@ const SelectDesktopContent = ({ props }: SelectDesktopContentProps) => {
 					<SearchBar setFilter={setFilter} disabled={isChoosedToogle} placeholder='Введите название' buttonText='Поиск' />
 				</SearchBarWrapper>
 				<GoodsListDesktop>
-					{goodsData
+					{goodsDataInitial
 						?.filter((obj) => obj.description.toLowerCase().includes(filter.toLowerCase()))
 						.map((el, index) => (
 							<GoodsListItem

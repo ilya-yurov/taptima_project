@@ -1,21 +1,21 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { BasketWrapper, HeaderWrapper, BasketHeader, GoodsListWrapper, AddButtonWrapper } from './BasketPageMobile.styled'
-import { IGoodsData, ISetPayload } from '../../../../redux/goodsDataReducer'
 import Header from '../../../common/Header/Header'
 import BasketElement from '../../../common/BasketElement/BasketElement'
 import { Button } from '../../../common/Button/Button'
 import { useTheme } from '@emotion/react'
+import {IGoodsData} from '../../../../store/goodsData'
 
 interface IBasketPropsObject {
 	basket: IGoodsData[]
 	renderTrigger: boolean
 	setRenderTrigger: Dispatch<SetStateAction<boolean>>
-	deleteBasketElement: (id: number) => { type: string; payload: number }
-	setCountGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setNettoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setBruttoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	deleteBasketElement: (id: number) => void
+	setCountGlobal: (index: number, data: any) => void
+	setNettoGlobal: (index: number, data: any) => void
+	setBruttoGlobal: (index: number, data: any) => void
+	setValueGlobal: (index: number, data: any) => void
 }
 
 interface BasketPageMobileProps {

@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react'
 import { useEffect, useState } from 'react'
-import { IFormData } from '../../../../redux/mainFormReducer'
+import {IFormData} from '../../../../store/mainForm'
 import { Button } from '../../Button/Button'
 import Form from '../../Form/Form'
 import { FormNotification } from '../../FormNotification/FormNotification'
@@ -12,7 +12,7 @@ interface HeaderDesktopProps {
 	basket?: boolean
 	formData: IFormData
 	headerActiveToogle: boolean
-	updateHeaderToogle: (status: boolean) => { type: string; payload: boolean }
+	updateHeaderToogle: (status: boolean) => void
 }
 
 const HeaderDesktop = ({ basket, select, headerActiveToogle, formData, isNote, updateHeaderToogle }: HeaderDesktopProps) => {

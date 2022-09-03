@@ -1,5 +1,5 @@
 import { MouseEvent, useEffect, useState } from 'react'
-import { ICurrencyData, IFormData } from '../../../../redux/mainFormReducer'
+import {ICurrencyData, IFormData} from '../../../../store/mainForm'
 import { Button } from '../../Button/Button'
 import { SelectFormWrapper, SButtonWrapper, MobileButtonWrapper, DesktopButtonWrapper } from './SelectForm.styled'
 import SelectFormElements from './SelectFormElements/SelectFormElements'
@@ -7,8 +7,8 @@ import SelectFormElements from './SelectFormElements/SelectFormElements'
 interface FormProps {
 	formData: IFormData
 	headerActiveToogle: boolean
-	updateMainForm: (formData: IFormData) => { type: string; payload: IFormData }
-	updateHeaderToogle: (status: boolean) => { type: string; payload: boolean }
+	updateMainForm: (formData: IFormData) => void
+	updateHeaderToogle: (status: boolean) => void
 	currencyData: ICurrencyData[]
 	cities: string[]
 }

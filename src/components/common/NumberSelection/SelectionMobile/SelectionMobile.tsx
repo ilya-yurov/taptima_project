@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { IGoodsData, ISetPayload } from '../../../../redux/goodsDataReducer'
+import {IGoodsData} from '../../../../store/goodsData'
 import FormContainer from '../FormContainer/FormContainer'
 import { NumberSelectionWrapper, SelectionHeader } from './SelectionMobile.styled'
 
@@ -7,11 +7,11 @@ interface NumberSelectionProps {
 	goodData: IGoodsData
 	setIsChoosedToogle: Dispatch<SetStateAction<boolean>>
 	basket: IGoodsData[]
-	addBasketElement: (newElement: IGoodsData) => { type: string; payload: IGoodsData }
-	setCountGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setNettoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setBruttoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	addBasketElement: (newElement: IGoodsData) => void
+	setCountGlobal: (index: number, data: any) => void
+	setNettoGlobal: (index: number, data: any) => void
+	setBruttoGlobal: (index: number, data: any) => void
+	setValueGlobal: (index: number, data: any) => void
 }
 
 const SelectionMobile = ({ goodData, setIsChoosedToogle, basket, addBasketElement, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal }: NumberSelectionProps) => {

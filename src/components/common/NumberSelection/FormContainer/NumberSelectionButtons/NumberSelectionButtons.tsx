@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { Dispatch, MouseEvent, SetStateAction } from 'react'
-import { IGoodsData, ISetPayload } from '../../../../../redux/goodsDataReducer'
+import {IGoodsData} from '../../../../../store/goodsData'
 import { clearLetters } from '../../../../../utils/helpers'
 import { Button } from '../../../Button/Button'
 import { IValues } from '../FormContainer'
@@ -12,11 +12,11 @@ interface NumberSelectionButtonsProps {
 	setIsChoosedToogle: Dispatch<SetStateAction<boolean>>
 	basket: IGoodsData[]
 	isDisable?: boolean
-	addBasketElement: (newElement: IGoodsData) => { type: string; payload: IGoodsData }
-	setCountGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setNettoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setBruttoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	addBasketElement: (newElement: IGoodsData) => void
+	setCountGlobal: (index: number, data: any) => void
+	setNettoGlobal: (index: number, data: any) => void
+	setBruttoGlobal: (index: number, data: any) => void
+	setValueGlobal: (index: number, data: any) => void
 }
 
 const NumberSelectionButtons = ({

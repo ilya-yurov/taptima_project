@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
+import {observer} from 'mobx-react-lite'
 import { Dispatch, SetStateAction } from 'react'
-import { connect } from 'react-redux'
-import { IFormData, updateMainForm, updateHeaderToogle } from '../../../redux/mainFormReducer'
+import mainForm from '../../../store/mainForm'
 import HeaderDesktop from './HeaderDesktop/HeaderDesktop'
 import HeaderMobile from './HeaderMobile/HeaderMobile'
 
@@ -23,27 +23,27 @@ interface HeaderProps {
 	main?: boolean
 	disabled?: boolean | any
 	setFilter?: Dispatch<SetStateAction<string>> | any
-	formData: IFormData
-	headerActiveToogle: boolean
-	updateHeaderToogle: (status: boolean) => { type: string; payload: boolean }
 }
 
-const Header = (props: HeaderProps) => {
-	const { select, formData, headerActiveToogle, updateHeaderToogle, isNote, setFilter, disabled, basket, main } = props
+const Header = observer((props: HeaderProps) => {
+	const { select, isNote, setFilter, disabled, basket, main } = props
 	return (
 		<>
 			<MobileWrapper>
-				<HeaderMobile formData={formData} select={select} basket={basket} disabled={disabled} setFilter={setFilter} main={main} />
+				<HeaderMobile formData={mainForm.formData} select={select} basket={basket} disabled={disabled} setFilter={setFilter} main={main} />
 			</MobileWrapper>
 			<DesktopWrapper>
-				<HeaderDesktop select={select} isNote={isNote} headerActiveToogle={headerActiveToogle} basket={basket} formData={formData} updateHeaderToogle={updateHeaderToogle} />
+				<HeaderDesktop
+					select={select}
+					isNote={isNote}
+					headerActiveToogle={mainForm.headerActiveToogle}
+					basket={basket}
+					formData={mainForm.formData}
+					updateHeaderToogle={mainForm.updateToogle}
+				/>
 			</DesktopWrapper>
 		</>
 	)
-}
-const mapStateToProps = (state: any) => ({
-	formData: state.mainForm.formData,
-	headerActiveToogle: state.mainForm.headerActiveToogle,
 })
 
-export default connect(mapStateToProps, { updateMainForm, updateHeaderToogle })(Header)
+export default Header

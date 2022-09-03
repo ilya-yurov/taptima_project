@@ -12,7 +12,7 @@ const SelectMobileContent = ({ props }: SelectMobileContentProps) => {
 	const {
 		setFilter,
 		isChoosedToogle,
-		goodsData,
+		goodsDataInitial,
 		filter,
 		setSelectedGoodData,
 		setIsChoosedToogle,
@@ -33,7 +33,7 @@ const SelectMobileContent = ({ props }: SelectMobileContentProps) => {
 				</HeaderWrapper>
 				{!isChoosedToogle && (
 					<GoodsListMobile>
-						{goodsData
+						{goodsDataInitial
 							?.filter((obj) => obj.description.toLowerCase().includes(filter.toLowerCase()))
 							.map((el, index) => (
 								<GoodsListItem

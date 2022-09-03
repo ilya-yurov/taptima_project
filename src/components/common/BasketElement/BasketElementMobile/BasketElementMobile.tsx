@@ -1,11 +1,11 @@
 import { useTheme } from '@emotion/react'
 import { Dispatch, SetStateAction } from 'react'
-import { IGoodsData } from '../../../../redux/goodsDataReducer'
+import {IGoodsData} from '../../../../store/goodsData'
 import { DescriptionWrapper, GoodImg, MobileElementWrapper, StyledIcon } from './BasketElementMobile.styled'
 
 interface BasketElementProps {
 	basket: IGoodsData[]
-	deleteBasketElement: (id: number) => { type: string; payload: number }
+	deleteBasketElement: (id: number) => void
 	currentBasketElement: IGoodsData
 	setRenderTrigger: Dispatch<SetStateAction<boolean>>
 }

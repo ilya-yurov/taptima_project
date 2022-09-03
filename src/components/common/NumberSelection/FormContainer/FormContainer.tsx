@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
-import { IGoodsData, ISetPayload } from '../../../../redux/goodsDataReducer'
+import {IGoodsData} from '../../../../store/goodsData'
 import { setCorrectValue } from '../../../../utils/helpers'
 import { FormWrapper, InputCount } from './FormContainer.styled'
 import NumberSelectionButtons from './NumberSelectionButtons/NumberSelectionButtons'
@@ -27,11 +27,11 @@ interface FormContainerProps {
 	basket: IGoodsData[]
 	isDisable?: boolean
 	isChoosedToogle?: boolean
-	addBasketElement: (newElement: IGoodsData) => { type: string; payload: IGoodsData }
-	setCountGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setNettoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setBruttoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	addBasketElement: (newElement: IGoodsData) => void
+	setCountGlobal: (index: number, data: any) => void
+	setNettoGlobal: (index: number, data: any) => void
+	setBruttoGlobal: (index: number, data: any) => void
+	setValueGlobal: (index: number, data: any) => void
 }
 
 const FormContainer = ({ goodData, isDisable, setters, basket, values, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal, setIsChoosedToogle, addBasketElement }: FormContainerProps) => {

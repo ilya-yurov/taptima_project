@@ -1,15 +1,15 @@
 import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { MouseEvent, useEffect, useState } from 'react'
-import { ICurrencyData, IFormData } from '../../../../redux/mainFormReducer'
 import { Button } from '../../Button/Button'
 import { FormNotification } from '../../FormNotification/FormNotification'
 import FormElements from './MainFormElements/MainFormElements'
 import { DesktopButtonWrapper, MainFormWrapper, MobileButtonWrapper, SButtonWrapper } from './MainForm.styled'
+import {ICurrencyData, IFormData} from '../../../../store/mainForm'
 
 interface FormProps {
 	formData: IFormData
-	updateMainForm: (formData: IFormData) => { type: string; payload: IFormData }
+	updateMainForm: (formData: IFormData) => void
 	currencyData: ICurrencyData[]
 	cities: string[]
 }

@@ -1,15 +1,15 @@
 import { MouseEvent, useState } from 'react'
-import { IGoodsData, ISetPayload } from '../../../../../redux/goodsDataReducer'
+import {IGoodsData} from '../../../../../store/goodsData'
 import GoodDataInput from './GoodDataInput/GoodDataInput'
 import { GoodBruttoWrapper, GoodCountWrapper, GoodNettoWrapper, GoodValueWrapper } from './GoodDataWrapper.styled'
 
 interface GoodDataWrapperProps {
 	currentBasketElement: IGoodsData
 	currentGoodElementIndex: number
-	setCountGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setNettoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setBruttoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	setCountGlobal: (index: number, data: any) => void
+	setNettoGlobal: (index: number, data: any) => void
+	setBruttoGlobal: (index: number, data: any) => void
+	setValueGlobal: (index: number, data: any) => void
 }
 
 const GoodDataWrapper = ({ currentBasketElement, setCountGlobal, setNettoGlobal, currentGoodElementIndex, setBruttoGlobal, setValueGlobal }: GoodDataWrapperProps) => {

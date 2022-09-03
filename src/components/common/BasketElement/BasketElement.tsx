@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { Dispatch, SetStateAction } from 'react'
-import { IGoodsData, ISetPayload } from '../../../redux/goodsDataReducer'
+import {IGoodsData} from '../../../store/goodsData'
 import BasketElementDesktop from './BasketElementDesktop/BasketElementDesktop'
 import BasketElementMobile from './BasketElementMobile/BasketElementMobile'
 
@@ -17,13 +17,13 @@ export const DesktopWrapper = styled.section`
 
 interface BasketElementProps {
 	basket: IGoodsData[]
-	deleteBasketElement: (id: number) => { type: string; payload: number }
+	deleteBasketElement: (id: number) => void
 	currentBasketElement: IGoodsData
 	setRenderTrigger: Dispatch<SetStateAction<boolean>>
-	setCountGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setNettoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setBruttoGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
-	setValueGlobal: (index: number, data: any) => { type: string; payload: ISetPayload }
+	setCountGlobal: (index: number, data: any) => void
+	setNettoGlobal: (index: number, data: any) => void
+	setBruttoGlobal: (index: number, data: any) => void
+	setValueGlobal: (index: number, data: any) => void
 }
 
 const BasketElement = ({ basket, deleteBasketElement, currentBasketElement, setRenderTrigger, setCountGlobal, setNettoGlobal, setBruttoGlobal, setValueGlobal }: BasketElementProps) => {
