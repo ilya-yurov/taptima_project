@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react'
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
-import { ICurrencyData } from '../../../../../redux/mainFormReducer'
+import {ICurrencyData} from '../../../../../store/mainForm'
 import { FormNotification } from '../../../FormNotification/FormNotification'
 import { SFormElement, MainInput, MainInputWrapper, MainSelect, SInputDisabled, SLabel } from './MainFormElements.styled'
 

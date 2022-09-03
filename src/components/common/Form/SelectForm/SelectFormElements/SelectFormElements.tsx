@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react'
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
-import { ICurrencyData } from '../../../../../redux/mainFormReducer'
+import {ICurrencyData} from '../../../../../store/mainForm'
 import { SelectInputWrapper, SelectPageInput, SelectPageSelect, SelectPageSelectCurrency, SFormElement } from './SelectFormElements.styled'
 
 interface SelectFormElementsProps {

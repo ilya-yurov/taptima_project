@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { Dispatch, SetStateAction } from 'react'
-import { IFormData } from '../../../../redux/mainFormReducer'
+import {IFormData} from '../../../../store/mainForm'
 import SearchBar from '../../SearchBar/SearchBar'
 import { ImgBack, SelectHeader, StyledImgBaykal, StyledBurger, SHeader } from './HeaderMobile.styled'
 
